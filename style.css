@@ -444,7 +444,14 @@ section {
     height: 100%;
 }
 
-
+.list-box-2{
+    display: flex;
+    flex-direction: column;
+}
+.content-2{
+    display: flex;
+    flex-direction: row;
+}
 /* 服務區 */
 #service {
     background-color: var(--light);
