@@ -1,0 +1,702 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "osaka-re";
+    src: url(./webfonts/osaka-re.ttf);
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* eric/css/reset/end */
+
+
+/* 變數區:自己先定義一些顏色 */
+:root {
+    /* 灰階 */
+    --light: #F2edf0;
+    --grey: #ffedf8;
+    --deep-blue: #000d36c8;
+    /* 變數區:主色調 */
+    --bg-color-1: #ffaba3;
+    --bg-color-2: #bbdafb9a;
+    --bg-color-3: #ffc88d;
+    --alpha-red:rgb(188, 35, 21,.5);
+}
+
+
+/* 共用區 */
+
+* {
+    box-sizing: border-box;
+    /* 不累加邊框與內距的寬度 */
+}
+
+
+body {
+    /* 有空格or中文就需要引號，英文要在中文前面，因為英文沒有中文字就會跳過 */
+    font-family:
+        /*西文*/
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+        /*中文*/
+        "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    color: var(--deep-blue);
+    /* 整個網站的預設字色 */ }
+
+
+html,body{
+    /* 捲動效果:預設時間速度無法改，要改用js */
+scroll-behavior: smooth;
+}
+
+img {
+    width: 100%;
+    /* SVG本來就是100% 這裡是預設其他圖檔 */
+}
+
+a {
+    display: block;
+    color: #555;
+    text-decoration: none;
+    /* 取消預設的底線裝飾 */
+}
+
+.glassmorphism {
+    /* border-radius: 99px; */
+    border-radius: calc(infinity * 1px);
+    padding: 10px 50px 5px;
+    /* background-color: rgba(255, 255, 255, .4); 白底 */
+    background-image: linear-gradient(to bottom right, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.08));
+    /* background-image: linear-gradient(5deg,white 50%, gray 50%);  */
+    backdrop-filter: blur(5px);
+    /* 背景模糊 */
+    /* filter: drop-shadow(2px 2px 3px #000 );整個都黑掉 */
+    box-shadow: 2px 2px 1px rgb(111, 17, 17, .8),
+        inset(-1px -1px 1px rgb(86, 86, 86, .1));
+}
+
+.list-box {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+}
+
+.item {
+    margin: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 1px 1px 5px rgb(111, 17, 17, .8);
+    display: flex;
+}
+
+.item h1 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.content {
+    padding: 15px 20px 20px;
+}
+
+
+/* 頁首區 */
+.tapbar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* 主軸（水平）均分 */
+    align-items: center;
+    /* 副軸（垂直）置中 */
+    padding: 5px 10px;
+z-index: 999;
+ /* 確保他在最上面*/
+}
+
+.tapbar ul {
+    display: flex;
+}
+
+.tapbar nav {
+    display: flex;
+    /* 要做彈性調整必加這個 */
+    flex-direction: column;
+    /* 主軸由水平改成垂直 */
+    align-items: flex-end;
+    /* 副軸水平齊平尾巴 */
+
+}
+
+.menu a {
+    /* 不設定在ul因為a也會要調整就要寫兩次 */
+    margin: 0 15px;
+    padding-bottom: 5px;
+    border-bottom: solid 2px transparent;
+    /* .menu a:hover 2px造成滑鼠滑上去會動一下 所以這裡先給 */
+    transition: 1s;
+    /* 預設值：all,ease 不寫也可*/
+}
+
+.menu a:hover {
+    border-bottom: solid 2px #555;
+    /* 2px造成滑鼠滑上去會動一下 */
+    /* 有樣式、顏色、粗細 樣式一定要寫 */
+}
+
+
+.icon a {
+    width: 32px;
+    height: 32px;
+    /* padding: 5px 會把背景加進去圖片變成37px */
+    margin: 5px;
+    transition: .4s;
+}
+
+.icon-ig {
+    background-image: url(./images/icon-ig.svg);
+    background-size: 100%;
+    /* svg其實不用寫，其他都要寫這個１００％ */
+}
+
+.icon-fb {
+    background-image: url(./images/icon-fb.svg);
+}
+
+.icon-line {
+    background-image: url(./images/icon-line.svg);
+
+}
+
+.icon-ig:hover {
+    background-image: url(./images/icon-ig-hover.svg);
+    background-size: 100%;
+    /* svg其實不用寫，其他都要寫這個１００％ */
+}
+
+.icon-fb:hover {
+    background-image: url(./images/icon-fb-hover.svg);
+}
+
+.icon-line:hover {
+    background-image: url(./images/icon-line-hover.svg);
+
+}
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    /* 主軸：垂直*/
+    justify-content: center;
+    /* 主軸(垂直)置中*/
+    align-items: center;
+    /* 副軸(水平)置中*/
+    height: 100vh;
+}
+
+.title {
+    border-bottom: 5px solid var(--bg-color-3);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    /*框跟內容之間的距離*/
+}
+
+.title h2 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.title h3 {
+    font-size: 2rem;
+    /* font-weight: 400; */
+    font-style: normal;
+    padding-top: 1px;
+}
+
+.logo {
+    width: 60px;
+    /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
+}
+
+#banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    /* background-color: aquamarine; */
+    background-repeat: round;
+    /* 區塊行高抓元素，故沒設定、沒東西的時候會是0 */
+    background-image: url(./images/banner_1.jpg);
+    /* htnl是用scr這裡是用url */
+    /* background一定要獨立 不可以縮寫 */
+    background-size: cover;
+}
+
+#banner h1 {
+    font-family: "osaka-re";
+    font-size: 10rem;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #f5d2d2;
+    /* rgba(237, 6, 6,.5); / */
+    /* 文字漸層怎麼套！套用背景圖片（件層）先填滿顏色透明再進行裁減 */
+    -webkit-background-clip: text;
+    /*因為功能太新，用-webkit確保chrome會用*/
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* text-fill-color: transparent;  */
+    background-image: linear-gradient(10deg, rgba(251, 182, 6, 0.8), rgba(242, 61, 191, 0.5));
+    filter: drop-shadow(0 0 5px rgba(44, 41, 35, 0.8));
+    /* 其他陰影方式
+    text-shadow: 0 0 5px #555;
+    box-shadow: 0 0 5px #555;
+    backdrop-filter: drop-shadow(0 0 5px rgba(44, 41, 35, 0.8)); */
+}
+
+/* 最新消息區 */
+#news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100hv;
+    /* 區塊行高抓元素，故沒設定、沒東西的時候會是0 */
+    /* background一定要獨立 不可以縮寫 */
+    /* background-size: cover; */
+    background-color: var(--bg-color-2);
+}
+
+
+#news figure {
+    height: 33vh;
+    overflow: hidden;
+}
+
+#news p {
+    line-height: 1.4;
+    text-align: justify;
+    /* 中文字專用的齊行 */
+    /* 多行省略以下這五行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+}
+
+#news img {
+    object-fit: cover;
+    /* 自動置中剪裁 */
+    height: 100%;
+}
+
+
+/* 服務區 */
+#service {
+    background-color: var(--light);
+}
+
+#service .item {
+
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+#service a {
+    width: 100%;
+    color: var(--light);
+    background-color: #f5d2d2;
+}
+
+#service p {
+    /* 單行省略 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* 文字不換行 */
+}
+
+
+.svc-1 {
+    background-image: url(/images/pt_svc1.jpg);
+}
+
+.svc-2 {
+    background-image: url(/images/pt_svc2.jpg);
+}
+
+.svc-3 {
+    background-image: url(/images/pt_svc3.jpg);
+}
+
+.svc-4 {
+    background-image: url(/images/pt_svc4.jpg);
+}
+
+/* 影片區 */
+#video {
+    /* 靜音才能自動播 */
+    background-color: #f5d2d2;
+
+}
+
+#video video {
+    height: 65vh;
+}
+
+/* 關於我們區 */
+#about{
+    position: relative;
+}
+
+#about video{
+    position: absolute;
+    z-index: -1;
+
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    
+    filter: opacity(40%)  brightness(120%) saturate(50%);
+    background-color: #ffaba3;
+}
+
+#about .container{
+    background-color: var(--alpha-red);
+    width: 65%;
+    height: 80%;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#about p{
+    overflow: auto;
+    padding-right: 15px;
+    height: 100%;
+    color: var(--grey);
+}
+
+#about p::-webkit-scrollbar{
+    /* 去w3c找樣式 */
+    background-color: #ffaba3;
+    width: 15px;
+    height: 15px;
+    border-radius: 30px;
+}
+
+#about p::-webkit-scrollbar-track{ 
+    /* 同上 */
+    background-color: #e2c9b4;
+    border-radius: 30px;
+}
+
+#about p::-webkit-scrollbar-button {
+    background-color: blue;
+    width: 15px;
+    height: 15px;
+}
+
+#about p::-webkit-scrollbar-thumb{
+    background-color: #ec6f09;
+    border-radius: 30px;
+}
+
+
+
+/* 聯絡區 */
+#contact {
+    background: url(./images/bg_contact.jpg) center fixed;
+    background-size: cover;
+    /* 自動剪裁*/
+    /* cover 靠左上對齊 上下不動，切多出來的右 所以要center*/
+    /* background-position: center;背景置中 */
+    /* background-attachment: fixed; 固定背景 */
+}
+
+
+#form-contact>* {
+    display: block;
+    width: 100%;
+    /* 這裡權重是id */
+}
+
+
+/* codepen button */
+
+#form-contact {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-contact label {
+    margin: 20px 0 5px;
+    font-size: .8rem;
+}
+
+#form-contact small {
+    font-size: .75rem;
+    margin-top: 10px;
+    text-align: center;
+    color: #565656;
+}
+
+
+#form-contact input,
+#form-contact textarea {
+    padding: 5px;
+    border-radius: 9px;
+    color: #023465;
+    /* outline: none; for foucs會有一個外誆 */
+}
+
+#form-contact input:focus,
+#form-contact textarea:focus {
+    outline: #ffaba3 solid 3px;
+    /* outline: none; for foucs會有一個外誆 */
+}
+
+#form-contact input::placeholder {
+    font-size: 0.75rem;
+    color: #ffc88d;
+}
+
+/* codepen button */
+
+#form-contact button {
+    /* position: relative; */
+    /* outline: none; */
+    /* text-decoration: none; */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* text-transform: uppercase;強制大小寫 */
+    height: 30px;
+    width: 50%;
+    opacity: 1;
+    background-color: transparent;
+    border: 1px solid rgba(22, 76, 167, 0.6);
+    margin: 20px;
+    color: aliceblue;
+}
+
+button span {
+    color: var(--deep-blue);
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: 10px;
+    /* 字句會導致最後一個字會有空白，可用另外空白做解法 */
+    padding-left: 10px;
+}
+
+button:hover {
+    animation: rotate 0.7s ease-in-out both;
+}
+
+button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+
+    75% {
+        transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+}
+
+@keyframes storm {
+    0% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+    }
+
+    25% {
+        transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+
+    50% {
+        transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+
+    75% {
+        transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+    }
+}
+
+
+footer {
+    background-color: var(--bg-color-1);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
