@@ -155,7 +155,7 @@ table {
     --bg-color-1: #ffaba3;
     --bg-color-2: #bbdafb9a;
     --bg-color-3: #ffc88d;
-    --alpha-red:rgb(188, 35, 21,.5);
+    --alpha-red: rgb(188, 35, 21, .5);
 }
 
 
@@ -175,12 +175,14 @@ body {
         /*中文*/
         "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
     color: var(--deep-blue);
-    /* 整個網站的預設字色 */ }
+    /* 整個網站的預設字色 */
+}
 
 
-html,body{
+html,
+body {
     /* 捲動效果:預設時間速度無法改，要改用js */
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 img {
@@ -239,28 +241,39 @@ a {
     position: fixed;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    /* 主軸（水平）均分 */
-    align-items: center;
-    /* 副軸（垂直）置中 */
-    padding: 5px 10px;
-z-index: 999;
- /* 確保他在最上面*/
+    flex-direction: column;
+    padding: 10px;
+    z-index: 999;
+    /* 確保他在最上面*/
 }
 
-.tapbar ul {
-    display: flex;
+
+.logo {
+    width: 60px;
+    /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
 }
+
 
 .tapbar nav {
     display: flex;
-    /* 要做彈性調整必加這個 */
     flex-direction: column;
-    /* 主軸由水平改成垂直 */
-    align-items: flex-end;
-    /* 副軸水平齊平尾巴 */
-
+    justify-content: flex-start;
+    align-items: center;
 }
+
+
+nav .icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav .menu {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .menu a {
     /* 不設定在ul因為a也會要調整就要寫兩次 */
@@ -350,25 +363,28 @@ section {
     padding-top: 1px;
 }
 
-.logo {
-    width: 60px;
-    /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
-}
-
 #banner {
-    display: flex;
+
     justify-content: center;
     align-items: center;
-
     height: 100vh;
     /* background-color: aquamarine; */
-    background-repeat: round;
     /* 區塊行高抓元素，故沒設定、沒東西的時候會是0 */
-    background-image: url(./images/banner_1.jpg);
     /* htnl是用scr這裡是用url */
+    /* background-image: url(./images/banner_1.jpg); */
     /* background一定要獨立 不可以縮寫 */
-    background-size: cover;
+
+
 }
+
+#banner img {
+    /* border-radius: 90px; */
+    /* clip-path: polygon(39% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 0 26%, 39% 26%); */
+    height: 50%;
+    overflow: hidden;
+    /* 確保圓角正常顯示 */
+}
+
 
 #banner h1 {
     font-family: "osaka-re";
@@ -488,23 +504,23 @@ section {
 }
 
 /* 關於我們區 */
-#about{
+#about {
     position: relative;
 }
 
-#about video{
+#about video {
     position: absolute;
     z-index: -1;
 
     object-fit: cover;
-    width:100%;
-    height:100%;
-    
-    filter: opacity(40%)  brightness(120%) saturate(50%);
+    width: 100%;
+    height: 100%;
+
+    filter: opacity(40%) brightness(120%) saturate(50%);
     background-color: #ffaba3;
 }
 
-#about .container{
+#about .container {
     background-color: var(--alpha-red);
     width: 65%;
     height: 80%;
@@ -515,14 +531,14 @@ section {
 }
 
 
-#about p{
+#about p {
     overflow: auto;
     padding-right: 15px;
     height: 100%;
     color: var(--grey);
 }
 
-#about p::-webkit-scrollbar{
+#about p::-webkit-scrollbar {
     /* 去w3c找樣式 */
     background-color: #ffaba3;
     width: 15px;
@@ -530,7 +546,7 @@ section {
     border-radius: 30px;
 }
 
-#about p::-webkit-scrollbar-track{ 
+#about p::-webkit-scrollbar-track {
     /* 同上 */
     background-color: #e2c9b4;
     border-radius: 30px;
@@ -542,7 +558,7 @@ section {
     height: 15px;
 }
 
-#about p::-webkit-scrollbar-thumb{
+#about p::-webkit-scrollbar-thumb {
     background-color: #ec6f09;
     border-radius: 30px;
 }
@@ -700,3 +716,12 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+
+/* 設定RWD斷點 */
+/* 標準螢幕  */
+@media (min-width:821 ){}
+/* 平板 ipad air */
+@media (max-width:820 ){}
+/* 手機 */
+@media (max-width:640 ){}
