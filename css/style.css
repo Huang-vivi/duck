@@ -147,15 +147,12 @@ table {
 
 /* 變數區:自己先定義一些顏色 */
 :root {
-    /* 灰階 */
-    --light: #F2edf0;
-    --grey: #ffedf8;
-    --deep-blue: #000d36c8;
+    /* 著色系 */
+    --main-blue: rgb(32, 52, 72);
+    --main-white: #EDEBE4;
+    --main-yellow: #FFCC70;
     /* 變數區:主色調 */
-    --bg-color-1: #ffaba3;
-    --bg-color-2: #bbdafb9a;
-    --bg-color-3: #ffc88d;
-    --alpha-red: rgb(188, 35, 21, .5);
+
 }
 
 
@@ -192,23 +189,8 @@ img {
 
 a {
     display: block;
-    color: #555;
     text-decoration: none;
     /* 取消預設的底線裝飾 */
-}
-
-.glassmorphism {
-    /* border-radius: 99px; */
-    border-radius: calc(infinity * 1px);
-    padding: 10px 50px 5px;
-    /* background-color: rgba(255, 255, 255, .4); 白底 */
-    background-image: linear-gradient(to bottom right, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.08));
-    /* background-image: linear-gradient(5deg,white 50%, gray 50%);  */
-    backdrop-filter: blur(5px);
-    /* 背景模糊 */
-    /* filter: drop-shadow(2px 2px 3px #000 );整個都黑掉 */
-    box-shadow: 2px 2px 1px rgb(111, 17, 17, .8),
-        inset(-1px -1px 1px rgb(86, 86, 86, .1));
 }
 
 .list-box {
@@ -237,52 +219,38 @@ a {
 
 
 /* 頁首區 */
-.tapbar {
+.topbar {
     position: fixed;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 10px;
+    background-color: var(--main-blue);
     z-index: 999;
     /* 確保他在最上面*/
+    align-items: center;
 }
 
-
-.logo {
-    width: 60px;
+.topbar .logo {
+    width: 35px;
     /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
 }
 
-
-.tapbar nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-
-nav .icon {
+.topbar ul {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-between;
 }
-
-nav .menu {
-    display: flex;
-    flex-direction: column;
-}
-
-
 
 .menu a {
-    /* 不設定在ul因為a也會要調整就要寫兩次 */
+    display: flex;
+    flex-direction: column;
     margin: 0 15px;
-    padding-bottom: 5px;
     border-bottom: solid 2px transparent;
     /* .menu a:hover 2px造成滑鼠滑上去會動一下 所以這裡先給 */
     transition: 1s;
-    /* 預設值：all,ease 不寫也可*/
+    color: var(--main-white);
 }
 
 .menu a:hover {
@@ -290,46 +258,6 @@ nav .menu {
     /* 2px造成滑鼠滑上去會動一下 */
     /* 有樣式、顏色、粗細 樣式一定要寫 */
 }
-
-
-.icon a {
-    width: 32px;
-    height: 32px;
-    /* padding: 5px 會把背景加進去圖片變成37px */
-    margin: 5px;
-    transition: .4s;
-}
-
-.icon-ig {
-    background-image: url(./images/icon-ig.svg);
-    background-size: 100%;
-    /* svg其實不用寫，其他都要寫這個１００％ */
-}
-
-.icon-fb {
-    background-image: url(./images/icon-fb.svg);
-}
-
-.icon-line {
-    background-image: url(./images/icon-line.svg);
-
-}
-
-.icon-ig:hover {
-    background-image: url(./images/icon-ig-hover.svg);
-    background-size: 100%;
-    /* svg其實不用寫，其他都要寫這個１００％ */
-}
-
-.icon-fb:hover {
-    background-image: url(./images/icon-fb-hover.svg);
-}
-
-.icon-line:hover {
-    background-image: url(./images/icon-line-hover.svg);
-
-}
-
 
 section {
     display: flex;
@@ -343,7 +271,7 @@ section {
 }
 
 .title {
-    border-bottom: 5px solid var(--bg-color-3);
+    border-bottom: 5px solid var(--main-blue);
     padding: 10px;
     text-align: center;
     margin-bottom: 20px;
@@ -364,27 +292,62 @@ section {
 }
 
 #banner {
-
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
-    /* background-color: aquamarine; */
-    /* 區塊行高抓元素，故沒設定、沒東西的時候會是0 */
-    /* htnl是用scr這裡是用url */
-    /* background-image: url(./images/banner_1.jpg); */
-    /* background一定要獨立 不可以縮寫 */
-
-
+    background-size: cover;
+    background-color: var(--main-white);
+    position: relative;
+    color: var(--main-blue);
 }
 
-#banner img {
-    /* border-radius: 90px; */
-    /* clip-path: polygon(39% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 0 26%, 39% 26%); */
-    height: 50%;
+#banner a {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    border-bottom: solid 2px transparent;
+    /* .menu a:hover 2px造成滑鼠滑上去會動一下 所以這裡先給 */
+    transition: 1s;
+    color: var(--main-blue);
+}
+
+#banner a:hover {
+    border-bottom: solid 2px #555;
+    /* 2px造成滑鼠滑上去會動一下 */
+    /* 有樣式、顏色、粗細 樣式一定要寫 */
+}
+
+
+.bn-right {
+    display: flex;
+    flex-direction: column;
+    /* border: #023465 solid 1px; */
+    color: var(--main-blue);
+    margin-left: 20px;
+    width: 100%;
+    height: 80vh;
+    /* 设置容器高度 */
     overflow: hidden;
-    /* 確保圓角正常顯示 */
+    /* 隐藏溢出部分 */
 }
 
+.bn-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 图片填充方式，保持比例并填充容器 */
+}
+
+.bn-left {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    align-items: center;
+    margin: 50px;
+    /* border: #023465 solid 1px; */
+}
 
 #banner h1 {
     font-family: "osaka-re";
@@ -393,19 +356,7 @@ section {
     line-height: 1.5;
     font-weight: bold;
     color: #f5d2d2;
-    /* rgba(237, 6, 6,.5); / */
-    /* 文字漸層怎麼套！套用背景圖片（件層）先填滿顏色透明再進行裁減 */
-    -webkit-background-clip: text;
-    /*因為功能太新，用-webkit確保chrome會用*/
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* text-fill-color: transparent;  */
-    background-image: linear-gradient(10deg, rgba(251, 182, 6, 0.8), rgba(242, 61, 191, 0.5));
-    filter: drop-shadow(0 0 5px rgba(44, 41, 35, 0.8));
-    /* 其他陰影方式
-    text-shadow: 0 0 5px #555;
-    box-shadow: 0 0 5px #555;
-    backdrop-filter: drop-shadow(0 0 5px rgba(44, 41, 35, 0.8)); */
+
 }
 
 /* 最新消息區 */
@@ -444,14 +395,16 @@ section {
     height: 100%;
 }
 
-.list-box-2{
+.list-box-2 {
     display: flex;
     flex-direction: column;
 }
-.content-2{
+
+.content-2 {
     display: flex;
     flex-direction: row;
 }
+
 /* 服務區 */
 #service {
     background-color: var(--light);
@@ -727,8 +680,10 @@ footer {
 
 /* 設定RWD斷點 */
 /* 標準螢幕  */
-@media (min-width:821 ){}
+@media (min-width:821) {}
+
 /* 平板 ipad air */
-@media (max-width:820 ){}
+@media (max-width:820) {}
+
 /* 手機 */
-@media (max-width:640 ){}
+@media (max-width:640) {}
