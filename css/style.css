@@ -171,8 +171,8 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
+
 
 
 body {
@@ -181,7 +181,7 @@ body {
         /*西文*/
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
         /*中文*/
-        "Noto Serif TC","HanaMinA","蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+        "Noto Serif TC", "HanaMinA", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
     color: var(--deep-blue);
     background-color: var(--main-white);
     /* 整個網站的預設字色 */
@@ -291,13 +291,12 @@ section {
 }
 
 .title h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 900;
-    font-style: italic;
 }
 
 .title h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* font-weight: 400; */
     font-style: normal;
     padding-top: 1px;
@@ -371,331 +370,35 @@ section {
 
 }
 
+/* 資訊區 */
+#category {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    padding: 20px;
+}
+
+.textmenu {
+    display: flex;
+
+}
+
+.texture {
+    display: flex;
+}
+
+.info {
+    display: flex;
+   
+}
+
+
 /* 最新消息區 */
-#news {
+#news .title{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100hv;
-    /* 區塊行高抓元素，故沒設定、沒東西的時候會是0 */
-    /* background一定要獨立 不可以縮寫 */
-    /* background-size: cover; */
-    background-color: var(--bg-color-2);
 }
 
-
-#news figure {
-    height: 33vh;
-    overflow: hidden;
-}
-
-#news p {
-    line-height: 1.4;
-    text-align: justify;
-    /* 中文字專用的齊行 */
-    /* 多行省略以下這五行 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-}
-
-#news img {
-    object-fit: cover;
-    /* 自動置中剪裁 */
-    height: 100%;
-}
-
-.list-box-2 {
+.content-2{
     display: flex;
-    flex-direction: column;
+    padding: 20px;
 }
-
-.content-2 {
-    display: flex;
-    flex-direction: row;
-}
-
-/* 服務區 */
-#service {
-    background-color: var(--light);
-}
-
-#service .item {
-
-    height: 60vh;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-
-    display: flex;
-    align-items: flex-end;
-}
-
-#service a {
-    width: 100%;
-    color: var(--light);
-    background-color: #f5d2d2;
-}
-
-#service p {
-    /* 單行省略 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    /* 文字不換行 */
-}
-
-
-.svc-1 {
-    background-image: url(/images/pt_svc1.jpg);
-}
-
-.svc-2 {
-    background-image: url(/images/pt_svc2.jpg);
-}
-
-.svc-3 {
-    background-image: url(/images/pt_svc3.jpg);
-}
-
-.svc-4 {
-    background-image: url(/images/pt_svc4.jpg);
-}
-
-/* 影片區 */
-#video {
-    /* 靜音才能自動播 */
-    background-color: #f5d2d2;
-
-}
-
-#video video {
-    height: 65vh;
-}
-
-/* 關於我們區 */
-#about {
-    position: relative;
-}
-
-#about video {
-    position: absolute;
-    z-index: -1;
-
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-
-    filter: opacity(40%) brightness(120%) saturate(50%);
-    background-color: #ffaba3;
-}
-
-#about .container {
-    background-color: var(--alpha-red);
-    width: 65%;
-    height: 80%;
-    padding: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-#about p {
-    overflow: auto;
-    padding-right: 15px;
-    height: 100%;
-    color: var(--grey);
-}
-
-#about p::-webkit-scrollbar {
-    /* 去w3c找樣式 */
-    background-color: #ffaba3;
-    width: 15px;
-    height: 15px;
-    border-radius: 30px;
-}
-
-#about p::-webkit-scrollbar-track {
-    /* 同上 */
-    background-color: #e2c9b4;
-    border-radius: 30px;
-}
-
-#about p::-webkit-scrollbar-button {
-    background-color: blue;
-    width: 15px;
-    height: 15px;
-}
-
-#about p::-webkit-scrollbar-thumb {
-    background-color: #ec6f09;
-    border-radius: 30px;
-}
-
-
-
-/* 聯絡區 */
-#contact {
-    background: url(./images/bg_contact.jpg) center fixed;
-    background-size: cover;
-    /* 自動剪裁*/
-    /* cover 靠左上對齊 上下不動，切多出來的右 所以要center*/
-    /* background-position: center;背景置中 */
-    /* background-attachment: fixed; 固定背景 */
-}
-
-
-#form-contact>* {
-    display: block;
-    width: 100%;
-    /* 這裡權重是id */
-}
-
-
-/* codepen button */
-
-#form-contact {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#form-contact label {
-    margin: 20px 0 5px;
-    font-size: .8rem;
-}
-
-#form-contact small {
-    font-size: .75rem;
-    margin-top: 10px;
-    text-align: center;
-    color: #565656;
-}
-
-
-#form-contact input,
-#form-contact textarea {
-    padding: 5px;
-    border-radius: 9px;
-    color: #023465;
-    /* outline: none; for foucs會有一個外誆 */
-}
-
-#form-contact input:focus,
-#form-contact textarea:focus {
-    outline: #ffaba3 solid 3px;
-    /* outline: none; for foucs會有一個外誆 */
-}
-
-#form-contact input::placeholder {
-    font-size: 0.75rem;
-    color: #ffc88d;
-}
-
-/* codepen button */
-
-#form-contact button {
-    /* position: relative; */
-    /* outline: none; */
-    /* text-decoration: none; */
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    /* text-transform: uppercase;強制大小寫 */
-    height: 30px;
-    width: 50%;
-    opacity: 1;
-    background-color: transparent;
-    border: 1px solid rgba(22, 76, 167, 0.6);
-    margin: 20px;
-    color: aliceblue;
-}
-
-button span {
-    color: var(--deep-blue);
-    font-size: .8rem;
-    font-weight: 500;
-    letter-spacing: 10px;
-    /* 字句會導致最後一個字會有空白，可用另外空白做解法 */
-    padding-left: 10px;
-}
-
-button:hover {
-    animation: rotate 0.7s ease-in-out both;
-}
-
-button:hover span {
-    animation: storm 0.7s ease-in-out both;
-    animation-delay: 0.06s;
-}
-
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg) translate3d(0, 0, 0);
-    }
-
-    25% {
-        transform: rotate(3deg) translate3d(0, 0, 0);
-    }
-
-    50% {
-        transform: rotate(-3deg) translate3d(0, 0, 0);
-    }
-
-    75% {
-        transform: rotate(1deg) translate3d(0, 0, 0);
-    }
-
-    100% {
-        transform: rotate(0deg) translate3d(0, 0, 0);
-    }
-}
-
-@keyframes storm {
-    0% {
-        transform: translate3d(0, 0, 0) translateZ(0);
-    }
-
-    25% {
-        transform: translate3d(4px, 0, 0) translateZ(0);
-    }
-
-    50% {
-        transform: translate3d(-3px, 0, 0) translateZ(0);
-    }
-
-    75% {
-        transform: translate3d(2px, 0, 0) translateZ(0);
-    }
-
-    100% {
-        transform: translate3d(0, 0, 0) translateZ(0);
-    }
-}
-
-
-footer {
-    background-color: var(--bg-color-1);
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* 設定RWD斷點 */
-/* 標準螢幕  */
-@media (min-width:821) {}
-
-/* 平板 ipad air */
-@media (max-width:820) {}
-
-/* 手機 */
-@media (max-width:640) {}
