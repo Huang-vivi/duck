@@ -152,8 +152,8 @@ table {
 /* 變數區:自己先定義一些顏色 */
 :root {
     /* 著色系 */
-    --main-blue: rgb(32, 52, 72);
-    --main-white: #EDEBE4;
+    --main-blue: #22668D;
+    --main-white: #FFFADD;
     --main-yellow: #FFCC70;
     /* 變數區:主色調 */
 
@@ -230,47 +230,6 @@ a {
 }
 
 
-/* 頁首區 */
-.topbar {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: var(--main-blue);
-    z-index: 999;
-    /* 確保他在最上面*/
-    align-items: center;
-}
-
-.topbar .logo {
-    width: 35px;
-    /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
-}
-
-.topbar ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.menu a {
-    display: flex;
-    flex-direction: column;
-    margin: 0 15px;
-    border-bottom: solid 2px transparent;
-    /* .menu a:hover 2px造成滑鼠滑上去會動一下 所以這裡先給 */
-    transition: 1s;
-    color: var(--main-white);
-}
-
-.menu a:hover {
-    border-bottom: solid 2px #555;
-    /* 2px造成滑鼠滑上去會動一下 */
-    /* 有樣式、顏色、粗細 樣式一定要寫 */
-}
-
 section {
     display: flex;
     flex-direction: column;
@@ -302,62 +261,89 @@ section {
     padding-top: 1px;
 }
 
-#banner {
+
+/* 頁首區 */
+.topbar {
+    position: fixed;
+    height: 90px;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 120px;
+    background-color: var(--main-white);
+    color: var(--main-blue);
+    z-index: 999;
+    /* 確保他在最上面*/
+    align-items: center;
+}
+
+.topbar-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 100vh;
-    background-size: cover;
-    background-color: var(--main-white);
-    position: relative;
-    color: var(--main-blue);
 }
 
-#banner a {
+.topbar .logo {
+    width: 150px;
+    /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
+}
+
+.topbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu a {
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
+    margin: 0 15px;
     border-bottom: solid 2px transparent;
     /* .menu a:hover 2px造成滑鼠滑上去會動一下 所以這裡先給 */
     transition: 1s;
     color: var(--main-blue);
 }
 
-#banner a:hover {
+.menu a:hover {
     border-bottom: solid 2px #555;
     /* 2px造成滑鼠滑上去會動一下 */
     /* 有樣式、顏色、粗細 樣式一定要寫 */
 }
 
 
-.bn-right {
-    display: flex;
-    flex-direction: column;
-    /* border: #023465 solid 1px; */
-    color: var(--main-blue);
-    margin-left: 20px;
-    width: 100%;
-    height: 80vh;
-    /* 设置容器高度 */
-    overflow: hidden;
-    /* 隐藏溢出部分 */
-}
+/* Banner 區 */
 
-.bn-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* 图片填充方式，保持比例并填充容器 */
-}
-
-.bn-left {
-    display: flex;
-    flex-direction: column;
-    justify-self: flex-end;
+#banner {
     align-items: center;
-    margin: 50px;
-    /* border: #023465 solid 1px; */
+    height: 100vh;
+    background-color: var(--main-white);
+
+    position: relative;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--main-white);
+}
+
+.cta-box {
+    background-color: var(--main-yellow);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--main-blue);
+    z-index: 1; /* 确保 .cta-box 在 img 上面 */
+
+}
+
+.banner img {
+
+    width: 90vw;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 30px;
+
 }
 
 #banner h1 {
@@ -374,7 +360,7 @@ section {
 #category {
     display: flex;
     flex-direction: column;
-    flex:1;
+    flex: 1;
     padding: 20px;
 }
 
@@ -389,16 +375,40 @@ section {
 
 .info {
     display: flex;
-   
+
 }
 
 
 /* 最新消息區 */
-#news .title{
+#news .title {
     display: flex;
 }
 
-.content-2{
+.content-2 {
     display: flex;
     padding: 20px;
+}
+
+
+
+footer {
+    background-color: var(--main-blue);
+    border-radius: 200px 200px 0 0;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    color: var(--main-white);
+}
+
+
+.scalloped-box {
+    --r: 30px;
+    /* radius of circles */
+    height: 350px;
+    aspect-ratio: 1;
+    padding: calc(1.5*var(--r));
+    background: #e97f02;
+    mask:
+        linear-gradient(#000 0 0) no-repeat 50%/calc(100% - 2*var(--r)) calc(100% - 2*var(--r)),
+        radial-gradient(farthest-side, #000 97%, #0000) 0 0/calc(2*var(--r)) calc(2*var(--r)) round;
 }
