@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "jf-openhuninn-2.0";
+  src: url('/webfonts/jf-openhuninn-2.0.ttf');
+}
+@import "reset";
+@import "varible";
+
+ /* 共用CSS */
+
+* {
+  box-sizing: border-box;
+  /* 不累加邊框與內距的寬度 */
+}
+
+html,
+body {
+  /* 捲動效果:預設時間速度無法改，要改用js */
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font : {
+    family:
+      $font-family-en,
+      $font-family-tc;
+  }
+
+  color: $main-blue;
+  background-color: $main-white;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  /* 主軸：垂直 */
+  justify-content: center;
+  /* 主軸(垂直)置中 */
+  align-items: center;
+  /* 副軸(水平)置中 */
+  height: 100vh;
+}
+
+h1 {
+  //border-bottom: $interval-s solid $main-blue;
+  padding: $interval-l;
+  text-align: center;
+  margin-bottom: $interval-m ;
+  font-size: map-get($font-size, Xl);
+}
+
+h2 {
+  font-size: map-get($font-size, l);
+
+}
+
+h3 {
+  font-size: map-get($font-size, m);
+  padding-top: $interval-s;
+
+}
+
+
+img {
+  width: 100%;
+  /* SVG本來就是100% 這裡是預設其他圖檔 */
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  /* 取消預設的底線裝飾 */
+
+
+  .menu &,.search & {
+    display: flex;
+    flex-direction: column;
+    margin:$interval-x-l;
+    border-bottom: solid 2px transparent;
+    transition: 1s;
+    color:  $main-blue;
+  }
+
+  .menu &:hover {
+    border-bottom: solid 2px $main-blue;
+  }
+
+}
+
+
+@import "index";
