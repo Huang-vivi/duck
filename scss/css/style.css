@@ -1,0 +1,551 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+@font-face {
+  font-family: "jf-openhuninn-2.0";
+  src: url("/webfonts/jf-openhuninn-2.0.ttf");
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* eric/css/reset/end */
+/* 共用CSS */
+* {
+  box-sizing: border-box;
+  /* 不累加邊框與內距的寬度 */
+}
+
+html,
+body {
+  /* 捲動效果:預設時間速度無法改，要改用js */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "jf-openhuninn-2.0", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  font-weight: 700;
+  color: #22668D;
+  background-color: #FFFADD;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  /* 主軸：垂直 */
+  justify-content: flex-start;
+  /* 主軸(垂直)置中 */
+  align-items: center;
+  /* 副軸(水平)置中 */
+  height: 100vh;
+}
+
+h1 {
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.noto-sans-tc-bold {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.subTitle {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+.subTitle img {
+  width: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.subTitle h2 {
+  color: #22668D;
+  position: relative;
+  letter-spacing: 2px;
+}
+.subTitle h2::after {
+  content: ""; /* 添加伪元素内容 */
+  position: absolute; /* 绝对定位 */
+  bottom: 0; /* 底部对齐 */
+  left: 0; /* 左边对齐 */
+  width: 100%; /* 宽度为父元素的100% */
+  height: 8px; /* 高度为2px，即底部边线高度 */
+  background-color: #FFCC70; /* 底线颜色 */
+  z-index: -1; /* 将底线置于文字的背后 */
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 24px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+img {
+  width: 100%;
+  /* SVG本來就是100% 這裡是預設其他圖檔 */
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #22668D;
+  /* 取消預設的底線裝飾 */
+}
+.menu a, .search a {
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  border-bottom: solid 2px transparent;
+  transition: 1s;
+  color: #22668D;
+}
+.menu a:hover {
+  border-bottom: solid 2px #22668D;
+}
+
+.logo {
+  width: 150px;
+  /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
+}
+
+footer {
+  width: 100%;
+  background-color: #22668D;
+  border-radius: 200px 200px 0 0;
+  height: 340px;
+  display: flex;
+  justify-content: space-evenly;
+  color: #FFFADD;
+  padding: 100px;
+}
+footer .info {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+}
+footer .info > * {
+  margin: 5px;
+}
+footer .logo {
+  flex: 1;
+}
+footer .sitemap {
+  flex: 4;
+  align-items: center;
+}
+footer .sitemap .menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 150px;
+}
+footer .sitemap .menu li {
+  margin: 0;
+  display: block;
+}
+footer .sitemap .menu a {
+  color: #FFFADD;
+  writing-mode: vertical-rl;
+  /* 从右向左垂直书写 */
+  text-orientation: upright;
+  /* 文字方向正常显示 */
+  margin: 10px 5px;
+}
+footer .sitemap .media {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 150px;
+}
+footer .sitemap .media li {
+  margin: 3px;
+  display: block;
+}
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* 頁首區 */
+.topbar {
+  position: fixed;
+  height: 90px;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 120px;
+  background-color: #FFFADD;
+  color: #22668D;
+  z-index: 999;
+  /* 確保他在最上面*/
+}
+.topbar .topbar-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Banner區 */
+#banner {
+  position: relative;
+  height: 100vh;
+}
+#banner .bn-cta {
+  position: absolute;
+  top: 75%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  color: #22668D;
+  z-index: 1;
+  /* 确保 .cta-box 在 img 上面 */
+  height: 300px;
+  background-color: #FFCC70;
+  border-radius: 60% 90% 70% 80%/80% 90% 60% 80%;
+  width: 22%;
+  height: 28%;
+  text-align: center;
+  align-content: center;
+  animation: fadeInFromButtom 2s ease forwards;
+}
+#banner .bn-cta h2 {
+  margin: 5px;
+  line-height: 1.5;
+}
+#banner img {
+  width: 90vw;
+  height: 80vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 30px;
+  margin-top: 90px;
+  animation: fadeIn 2s ease forwards;
+}
+
+#category .textMenu {
+  padding: 20px 180px;
+  text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#category .textMenu .texture {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 0 10px;
+  height: 100%;
+  justify-content: space-between;
+  /* 元素均匀分布 */
+  align-items: center;
+  flex: 1.5;
+}
+#category .textMenu .texture:hover {
+  background-color: rgba(34, 102, 141, 0.2);
+  border-radius: 30px;
+}
+#category .textMenu .texture:hover .hover img {
+  visibility: visible;
+}
+#category .textMenu .texture .show {
+  margin-bottom: 15px;
+}
+#category .textMenu .texture .show img {
+  width: 18vw;
+  height: 18vh;
+  border-radius: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 15px;
+}
+#category .textMenu .texture .hover img {
+  height: 20px;
+  width: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  visibility: hidden;
+}
+#category .textMenu .logo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  height: 100%;
+  flex: 1;
+}
+#category .textMenu .logo img {
+  width: 80%;
+  min-width: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.textureList {
+  width: 100%;
+  height: 40vw;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(/images/bg2.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.textureList .texture-info {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  border-left: 5px #22668D solid;
+  border-right: 5px #22668D solid;
+  flex: 3;
+}
+.textureList .texture-info a {
+  background-color: #22668D;
+  border-radius: 99px;
+  display: block;
+  margin: 5px;
+  color: #FFFADD;
+  width: 6rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+.textureList .productList {
+  flex: 7;
+  width: 80vw;
+  margin-bottom: 50px;
+}
+.textureList .productList .texture {
+  display: flex;
+  justify-content: space-evenly;
+}
+.textureList .productList .texture .product1 .productImg {
+  height: 200px;
+  width: 200px;
+}
+.textureList .productList .texture .product1 .productInfo {
+  width: 200px;
+  text-align: justify;
+}
+.textureList .productList .texture .product1 .productInfo p {
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.mask {
+  position: relative;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.mask-1 {
+  -webkit-mask-image: url(/images/mask.svg);
+          mask-image: url(/images/mask.svg);
+}
+
+.decorate {
+  width: 100%;
+}
+
+.list-box {
+  width: 80%;
+  max-width: 1200px;
+  display: flex;
+}
+
+.item {
+  margin: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 1px 1px 5px rgba(111, 17, 17, 0.8);
+  display: flex;
+}
+.item h1 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.content {
+  padding: 15px 20px 20px;
+}
+
+/* 資訊區 */
+/* 最新消息區 */
+.service {
+  height: 65vh;
+}
+
+.news {
+  height: 35vh;
+}/*# sourceMappingURL=style.css.map */

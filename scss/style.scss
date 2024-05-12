@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 @font-face {
   font-family: "jf-openhuninn-2.0";
   src: url('/webfonts/jf-openhuninn-2.0.ttf');
 }
+
 @import "reset";
 @import "varible";
 
- /* 共用CSS */
+/* 共用CSS */
 
 * {
   box-sizing: border-box;
@@ -24,6 +26,8 @@ body {
     family:
       $font-family-en,
       $font-family-tc;
+
+      weight:$font-weight-bold;
   }
 
   color: $main-blue;
@@ -34,7 +38,7 @@ section {
   display: flex;
   flex-direction: column;
   /* 主軸：垂直 */
-  justify-content: center;
+  justify-content: flex-start;
   /* 主軸(垂直)置中 */
   align-items: center;
   /* 副軸(水平)置中 */
@@ -49,15 +53,52 @@ h1 {
   font-size: map-get($font-size, Xl);
 }
 
+.noto-sans-tc-bold {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: map-get($font-size, l)
+}
+
+.subTitle {
+  display: flex;
+  align-items: center;
+  margin: $interval-l;
+
+  img {
+    width: 120px;
+    object-fit: cover;
+  }
+
+  h2{
+    font-size: map-get($font-size, Xl);
+    color: $main-blue;
+    position: relative;
+    letter-spacing:2px;
+
+    &::after {
+      content: ''; /* 添加伪元素内容 */
+      position: absolute; /* 绝对定位 */
+      bottom: 0; /* 底部对齐 */
+      left: 0; /* 左边对齐 */
+      width: 100%; /* 宽度为父元素的100% */
+      height: 8px; /* 高度为2px，即底部边线高度 */
+      background-color: $main-yellow ;/* 底线颜色 */
+      z-index: -1; /* 将底线置于文字的背后 */
+
+    }
+  }
+}
+
 h2 {
   font-size: map-get($font-size, l);
-
 }
 
 h3 {
-  font-size: map-get($font-size, m);
+  font-size: map-get($font-size, l);
   padding-top: $interval-s;
-
+  padding-bottom: $interval-s;
 }
 
 
@@ -69,22 +110,119 @@ img {
 a {
   display: block;
   text-decoration: none;
+  color: $main-blue;
   /* 取消預設的底線裝飾 */
 
 
-  .menu &,.search & {
+  .menu &,
+  .search & {
     display: flex;
     flex-direction: column;
-    margin:$interval-x-l;
+    margin: $interval-x-l;
     border-bottom: solid 2px transparent;
     transition: 1s;
-    color:  $main-blue;
+    color: $main-blue;
   }
 
   .menu &:hover {
     border-bottom: solid 2px $main-blue;
   }
 
+}
+
+.logo {
+  width: 150px;
+  /* 通常都是用寬度設定，上方有設定100%才不會溢出 */
+}
+
+footer {
+  width: 100%;
+  background-color: $main-blue;
+  border-radius: 200px 200px 0 0;
+  height: 340px;
+  display: flex;
+  justify-content: space-evenly;
+  color: $main-white;
+  padding: 100px;
+  //  晚點用js 寫淡入 animation: fadeInFromBottom 1s ease forwards;
+
+  .info {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+
+    >* {
+      margin: 5px;
+    }
+  }
+
+  .logo {
+    flex: 1
+  }
+
+  .sitemap {
+    flex: 4;
+    align-items: center;
+
+    .menu {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 150px;
+
+      li {
+        margin: 0;
+        display: block;
+      }
+
+      a {
+        color: $main-white;
+        writing-mode: vertical-rl;
+        /* 从右向左垂直书写 */
+        text-orientation: upright;
+        /* 文字方向正常显示 */
+        margin: 10px 5px;
+      }
+    }
+
+    .media {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 150px;
+
+      li {
+        margin: 3px;
+        display: block;
+      }
+    }
+
+  }
+
+}
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    // transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
 }
 
 
