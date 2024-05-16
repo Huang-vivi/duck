@@ -37,7 +37,7 @@
             <h1 class="logo">
                 <a href="index.html"><img src="/logo-w.ico" alt="三杯鴨logo"></a>
             </h1>
-            <ul class="menu noto-sans-tc-bold">
+            <ul class="menu bold">
                 <li><a href="#aboutus">關於我們</a></li>
                 <li><a href="#service">本週優惠</a></li>
                 <li><a href="#video">找杯趣</a></li>
@@ -57,11 +57,8 @@
         <!-- Banner區 -->
         <section id="banner">
             <div class="bn-cta">
-                <h2>
-                    陪伴所有<br>
-                    值得舉杯的時刻<br>
-                    <a href="#" class="cta">SHOP NOW</a>
-                </h2>
+                <h4>陪伴所有值得舉杯的時刻</h4>
+                <i class="fa-solid fa-play fa-rotate-90 fa-2xl" style="color: #FFFADD;"></i>
             </div>
             <div class="bn-img">
                 <img src="./images/bg2.jpeg" alt="">
@@ -69,218 +66,242 @@
         </section>
         <!-- 分類區 -->
         <section id="category">
-            <header class="subTitle noto-sans-tc-bold">
+            <header class="subTitle bold">
                 <img src="/images/header.png" alt="">
                 <h2>精選種類</h2>
+                <h3>ALL PRODUCT</h3>
             </header>
 
             <div class="textMenu">
-                <div class="texture">
-                    <a href="#" class="texture-glass">
-                        <div class="show">
-                            <img src="/images/texture-plestic.jpeg" alt="">
-                            <h2>玻璃</h2>
-                        </div>
-                        <div class="hover"><img src="/images/arrow.svg" alt=""></div>
-                    </a>
-                </div>
-                <div class="texture">
-                    <a href="#" class="texture-wood">
-                        <div class="show">
-                            <div class="show">
-                                <img src="/images/texture-woody.jpeg" alt="">
-                                <h2>竹製</h2>
-                            </div>
-                        </div>
-                        <div class="hover"><img src="/images/arrow.svg" alt=""></div>
-                    </a>
-                </div>
-                <!-- <div class="logo">
-                    <img src="/logo.ico" alt="">
-                </div> -->
-                <div class="texture">
-                    <a href="" class="texture-steel">
-                        <div class="show">
-                            <img src="/images/texture-weel.jpeg" alt="">
-                            <h2>不鏽鋼</h2>
-                        </div>
+                <ul class="texture">
+                    <li>
+                        <a class="texture-button active" data-tab="glass" href="#">
+                            <h3>玻璃</h3>
+                            <i class="fa-solid fa-mug-hot fa-lg" style="color: #FFFADD;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="texture-button" data-tab="woody" href="#">
+                            <h3>木質</h3>
+                            <i class="fa-solid fa-mug-hot fa-lg" style="color: #FFFADD;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="texture-button" data-tab="china" href="#">
+                            <h3>瓷器</h3>
+                            <i class="fa-solid fa-mug-hot fa-lg" style="color: #FFFADD;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="texture-button" data-tab="steel" href="#">
+                            <h3>不鏽鋼</h3>
+                            <i class="fa-solid fa-mug-hot fa-lg" style="color: #FFFADD;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-                        <div class="hover"><img src="/images/arrow.svg" alt=""></div>
-                    </a>
-                </div>
-                <div class="texture">
-                    <a href="#" class="texture-china">
-                        <div class="show">
-                            <img src="/images/texture-ceramic.jpeg" alt="">
-                            <h2>瓷器</h2>
+            <div class="textureList">
+                <div class="texture-content active" id="glass">
+                    <div class="texture-info">
+                        <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                        <a href="">立即逛逛</a>
+                    </div>
+                    <div class="product-list">
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
                         </div>
-                        <div class="hover"><img src="/images/arrow.svg" alt=""></div>
-                    </a>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="texture-content " id="woody">
+                    <div class="texture-info">
+                        <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                        <a href="">立即逛逛</a>
+                    </div>
+                    <div class="product-list">
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="texture-content " id="steel">
+                    <div class="texture-info">
+                        <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                        <a href="">立即逛逛</a>
+                    </div>
+                    <div class="product-list">
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="texture-content " id="china">
+                    <div class="texture-info">
+                        <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                        <a href="">立即逛逛</a>
+                    </div>
+                    <div class="product-list">
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                        <div class="product">
+                            <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
+                            <h3 class="productName">白磁鴨杯</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="textureList">
-                <div class="texture-info">
-                    <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
-                    <a href="">立即逛逛</a>
+        </section>
+        <!-- 隨機選擇區 -->
+        <section id="service">
+            <header class="subTitle bold">
+                <img src="/images/header.png" alt="">
+                <h2>找尋命定馬克杯</h2>
+                <h3>SURPRISE</h3>
+            </header>
+            <div class="surprise">
+                <div class="picker">
+                    <div class="filters">
+                        <select id="color">
+                            <option value="">顏色選擇</option>
+                            <option value="white">白色</option>
+                            <option value="black">黑色</option>
+                            <option value="transparent">透明</option>
+                            <option value="all">不拘</option>
+                        </select>
+                        <select id="material">
+                            <option value="">選擇材質</option>
+                            <option value="glass">玻璃</option>
+                            <option value="stainless">不鏽鋼</option>
+                            <option value="ceramic">陶瓷</option>
+                            <option value="woody">木質</option>
+                        </select>
+                        <select id="price">
+                            <option value="">選擇價格</option>
+                            <option value="all">不拘</option>
+                            <option value="low">低於 $100</option>
+                            <option value="medium">$101 - $300</option>
+                            <option value="high">高於 $300</option>
+                        </select>
+                    </div>
+                    <button onclick="filterProducts()">隨機馬克杯</button>
                 </div>
-                <div class="productList">
-                    <div class="product-s1">
-                        <ul class="texture">
-                            <li class="product1 ">
-                                <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
-                                <h3 class="productName">白磁鴨杯</h3>
-                            </li>
-                            <li class="product1 ">
-                                <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
-                                <h3 class="productName">白磁鴨杯</h3>
-                            </li>
-                            <li class="product1 ">
-                                <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
-                                <h3 class="productName">白磁鴨杯</h3>
-                            </li>
-                            <li class="product1 ">
-                                <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
-                                <h3 class="productName">白磁鴨杯</h3>
-                            </li>
-                        </ul>
+                <div class="product-w">
+                    <div class="icon">
+                        <i class="fa-regular fa-heart fa-lg" style="color: #355282;"></i>
+                        <i class="fa-solid fa-heart fa-lg" style="color: #355282;"></i>
+                    </div>
+                    <div class="product">
+                        <div class="image" <img src="" alt="">
+                        </div>
+
+                        <div class="product-text">
+                            <span class="product-label">職人手作</span>
+                            <span class="product-label">黑釉</span>
+                            <h4 class="product-name">Product Name</h4>
+                            <p class="product-price">$99.99</p>
+                            <p class="product-info">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div class="decorate">
-                <img src="/images/bg3.png" alt="">
+
             </div>
         </section>
         <!-- 最新消息區 -->
-        <section id="service">
-            <header class="subTitle noto-sans-tc-bold">
-                <img src="/images/header.png" alt="">
-                <h2>找尋命定馬克杯</h2>
-            </header>
-
-            <input type="color">
-            <input type="texture">
-            <button>換一個</button>
-
-
-            <div class="list-box">
-                <div class="item svc-1">
-                    <a href="#" class="content">
-                        <h1>隨機一個產品</h1>
-                    </a>
+        <section id="news-campaign">
+            <div id="news">
+                <header class="subTitle-half bold">
+                    <img src="/images/header.png" alt="">
+                    <h2 style="color:#FFFADD;">最新消息</h2>
+                    <h3>NEWS</h3>
+                </header>
+                <div class="news-box">
+                    <article class="news-content">
+                        <time>2022.05.25</time>
+                        <h4>端午節物流緊縮，運送時間加長</h4>
+                        <p>端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長
+                        </p>
+                        <a href="#"> 點我閱讀 </a>
+                    </article>
+                    <div class="next-button">
+                        <p>Previous</p>
+                        <p>Next</p>
+                    </div>
+                </div>
+            </div>
+            <div id="campaign">
+                <header class="subTitle-half bold">
+                    <img src="/images/header.png" alt="">
+                    <h2>本週特賣</h2>
+                    <h3 style="color:#22668D">SALE </h3>
+                </header>
+                <article class="sale">
+                    <div class="time">
+                        <time>2022.05.25</time>
+                        <time>2022.05.25</time>
+                    </div>
+                    <h4>端午節物流緊縮，運送時間加長</h4>
+                    <p>端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊運送時間加長端午節物流緊縮，運送時間加長
+                    </p>
+                    <a href="#"> 點我閱讀 </a>
+                </article>
+                <div class="product">
                 </div>
             </div>
         </section>
 
-        <!-- 最新消息區 -->
-        <section id="news">
-            <header class="subTitle noto-sans-tc-bold">
-                <img src="/images/header.png" alt="">
-                <h2>最新消息</h2>
-            </header>
-            </header>
-            <div class="list-box-2">
-                <article class="news">
-                    <a href="#">
-                        <div class="content-2">
-                            <p>2022.05.25</p>
-                            <p>最新優惠</p>
-                            <h4>新品上市</h4>
-                        </div>
-                    </a>
-                </article>
-                <article class="news">
-                    <a href="#">
-                        <div class="content-2">
-                            <p>2022.05.25</p>
-                            <p>最新優惠</p>
-                            <h4>新品上市</h4>
-                        </div>
-                    </a>
-                </article>
-                <article class="news">
-                    <a href="#">
-                        <div class="content-2">
-                            <p>2022.05.25</p>
-                            <p>最新優惠</p>
-                            <h4>新品上市</h4>
-                        </div>
-                    </a>
-                </article>
-
-            </div>
-        </section>
-
-
-
-
-        <section id="cagnpain">
-
-            <header class="subTitle noto-sans-tc-bold">
-                <img src="/images/header.png" alt="">
-                <h2>本週特賣</h2>
-
-            </header>
-
-            <div class="sale">
-                <h3>買2送1</h3>
-                <h3>2件8折</h3>
-                <h3>限時特賣</h3>
-            </div>
-
-            <div class="product">
-                <ul class="texture">
-                    <li class="product1 ">
-                        <img class="productImg mask mask-1" src="/images/texture-woody.jpeg" alt="">
-                        <div>
-                            <h3 class="productName">白磁鴨杯</h3>
-                            <!-- <p class="productCost">$
-                            <p class="productPrice">1,288</p> 元</p> -->
-                        </div>
-                        <div class="productInfo">
-                            <p>日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理</p>
-                        </div>
-                    </li>
-                    <li class="product1">
-                        <img class="productImg" src="/images/texture-woody.jpeg" alt="">
-                        <div>
-                            <p class="productName">白磁鴨杯</p>
-                            <p class="productCost">$
-                            <p class="productPrice">1,288</p> 元</p>
-                        </div>
-                        <div class="productInfo">
-                            <p>日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理</p>
-                        </div>
-                    </li>
-                    <li class="product1">
-                        <img class="productImg" src="/images/texture-woody.jpeg" alt="">
-                        <div>
-                            <p class="productName">白磁鴨杯</p>
-                            <p class="productCost">$
-                            <p class="productPrice">1,288</p> 元</p>
-                        </div>
-                        <div class="productInfo">
-                            <p>日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理</p>
-                        </div>
-                    </li>
-                    <li class="product1">
-                        <img class="productImg" src="/images/texture-woody.jpeg" alt="">
-                        <div>
-                            <p class="productName">白磁鴨杯</p>
-                            <p class="productCost">$
-                            <p class="productPrice">1,288</p> 元</p>
-                        </div>
-                        <div class="productInfo">
-                            <p>日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-
         <section id="about">
-            <header class="subTitle noto-sans-tc-bold">
+            <header class="subTitle bold">
                 <img src="/images/header.png" alt="">
                 <h2>關於三杯鴨</h2>
             </header>
@@ -302,7 +323,6 @@
             </div>
         </section>
 
-        </section>
         <section id="contact">
             <img src="" alt="">
         </section>
@@ -340,6 +360,6 @@
 <!-- jquery原生碼 -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <!-- 自己的JS放在最後 -->
-
+<script src="/js/script.js"></script>
 
 </html>
