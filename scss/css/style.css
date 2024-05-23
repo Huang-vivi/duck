@@ -201,6 +201,7 @@ h3 {
 h4 {
   font-size: 24px;
   color: #22668D;
+  margin: 8px;
 }
 
 .subTitle {
@@ -231,7 +232,7 @@ h4 {
   align-items: center;
   margin: 30px;
   padding-top: 50px;
-  height: 200px;
+  height: 300px;
 }
 .subTitle-half img {
   width: 120px;
@@ -371,6 +372,8 @@ button {
   box-shadow: 4px 4px 0px 0px #405983;
 }
 
+/*  多行省略 */
+/*  各種置中 */
 /* 頁首區 */
 .topbar {
   position: fixed;
@@ -493,16 +496,11 @@ button {
 
 .textureList {
   width: 90%;
-  height: 40vw;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  background-image: url(/images/bg2.svg);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .textureList .texture-content {
   display: none;
@@ -515,15 +513,15 @@ button {
   margin: auto;
 }
 .textureList .texture-info {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 10px;
+  border-radius: 20px;
   width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 25px;
-  border-left: 5px #22668D solid;
-  border-right: 5px #22668D solid;
+  background-color: #FFCC70;
   flex: 3;
 }
 .textureList .texture-info a {
@@ -542,41 +540,69 @@ button {
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .textureList .product-list .product {
-  padding: 20px;
+  padding: 30px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 4px 4px 0px 0px #405983;
+  border-radius: 20px;
 }
 .textureList .product-list .product .productImg {
   height: 200px;
   width: 200px;
+  border-radius: 20px;
 }
 .textureList .product-list .product .productInfo {
   width: 200px;
   text-align: justify;
-}
-.textureList .product-list .product .productInfo p {
   margin-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-
-.mask {
-  position: relative;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+.textureList .product-list .product .add-cart {
+  display: flex;
+  background-color: #22668D;
+  width: 150px;
+  padding: 8px;
+  border-radius: 20px;
+  color: antiquewhite;
+  justify-content: center;
 }
-
-.mask-1 {
-  -webkit-mask-image: url(/images/mask.svg);
-          mask-image: url(/images/mask.svg);
+@media (max-width: 820px) {
+  .textureList .product-rwd {
+    display: none;
+  }
 }
-
-.surprise {
+.textureList .duct-dec {
+  display: flex;
+  flex-direction: column;
+}
+.textureList .duct-dec img {
+  width: 80px;
+}
+.textureList .duct-dec :first-child {
+  margin-right: 40px;
+}
+.textureList .duct-dec :nth-child(2) {
+  margin-left: 40px;
+}
+.textureList .duct-dec :nth-child(3) {
+  margin-right: 40px;
+}
+.textureList #service {
+  justify-content: flex-end;
+}
+.textureList #service .surprise {
   display: flex;
   background-image: url(/images/bg3.svg);
   background-size: cover;
@@ -586,7 +612,7 @@ button {
   width: 100%;
   align-items: center;
 }
-.surprise .picker {
+.textureList #service .surprise .picker {
   margin: 20px auto;
   width: calc(50% - 120px);
   display: flex;
@@ -594,11 +620,11 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.surprise .picker .filters {
+.textureList #service .surprise .picker .filters {
   display: flex;
   justify-content: center;
 }
-.surprise .picker .filters select {
+.textureList #service .surprise .picker .filters select {
   background: #8FCDDD;
   color: #FFFADD;
   font-size: 16px;
@@ -616,12 +642,12 @@ button {
   background-size: 1rem;
   background-repeat: no-repeat, repeat;
 }
-.surprise .picker .filters option {
+.textureList #service .surprise .picker .filters option {
   display: flex;
   justify-content: center;
   text-align: center;
 }
-.surprise .product-w {
+.textureList #service .surprise .product-w {
   width: calc(50% - 120px);
   margin: 60px;
   padding: 30px;
@@ -630,23 +656,23 @@ button {
   box-shadow: 4px 4px 0px 0px #405983;
   border-radius: 30px;
 }
-.surprise .product-w .image {
+.textureList #service .surprise .product-w .image {
   height: 180px;
   width: 180px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.surprise .product-w .icon {
+.textureList #service .surprise .product-w .icon {
   display: flex;
   justify-content: end;
 }
-.surprise .product-w .fa-solid {
+.textureList #service .surprise .product-w .fa-solid {
   display: none;
 }
-.surprise .product-w .product {
+.textureList #service .surprise .product-w .product {
   display: flex;
 }
-.surprise .product-w .product .product-text {
+.textureList #service .surprise .product-w .product .product-text {
   margin: 10px;
   width: -moz-fit-content;
   width: fit-content;
@@ -666,13 +692,14 @@ button {
 #news-campaign #news .news-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  height: 60vh;
+  height: calc(100vh - 300px);
 }
 #news-campaign #news .news-content {
-  width: 500px;
-  height: 400px;
+  width: 70%;
+  height: 480px;
+  margin: 20px;
   border-radius: 20px;
   border-top: 40px solid #8FCDDD;
   background-color: #FFFADD;
@@ -696,25 +723,66 @@ button {
   background-color: #8FCDDD;
   color: #22668D;
 }
+#news-campaign #campaign .text {
+  gap: 10px;
+}
+#news-campaign #campaign .articleList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: calc(100vh - 300px);
+}
 #news-campaign #campaign .sale {
-  width: 500px;
+  width: 70%;
   height: 100px;
   border-radius: 20px;
   border-left: 40px solid #FFCC70;
   background-color: #FFFADD;
   color: #22668D;
-  padding: 63px 27px 25px 27px;
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
+  margin: 20px 20px 0;
 }
 
-/* 最新消息區 */
-.service {
-  height: 65vh;
+/* 關於我們專區 */
+#about {
+  height: 80vh;
 }
-
-.news {
-  height: 35vh;
+#about .about-us {
+  display: flex;
+  margin: 50px;
+}
+#about .about-us .subMenu {
+  border-left: solid #22668D 5px;
+  padding: 0px 20px;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 20px;
+}
+#about .about-us .subMenu li {
+  padding: 5px;
+}
+#about .about-us .about-info {
+  margin: 20px;
+  text-align: center;
+  align-items: center;
+  width: 55vw;
+  display: flex;
+}
+#about .about-us .about-info h4 {
+  margin-bottom: 30px;
+}
+#about .about-us .about-info img {
+  width: 80%;
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#about .about-us .about-info p {
+  margin: 30px;
 }/*# sourceMappingURL=style.css.map */

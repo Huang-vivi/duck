@@ -1,0 +1,32 @@
+ /*  多行省略 */
+ @mixin line-save($line) {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: $line;
+ }
+
+ /*  各種置中 */
+ @mixin center-all-r {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   justify-items: center;
+   align-items: center;
+ }
+
+ @mixin center-all-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+@mixin center-start-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
