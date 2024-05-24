@@ -1,10 +1,11 @@
 @import "varible";
 @import "function";
 
+
 /* 頁首區 */
 .topbar {
   position: fixed;
-  height: 90px;
+  height: 80px;
   width: 100%;
   justify-content: space-between;
   display: flex;
@@ -40,62 +41,163 @@
 /* Banner區 */
 
 #banner {
-  position: relative;
   height: 100vh;
+  justify-content: space-around;
+  // 輪播圖片
+
+  .carousel {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    /* 不換行 */
+    width: 100%;
+
+    .carousel-inner {
+      display: flex;
+      flex-wrap: nowrap;
+
+      /* 不換行 */
+      // overflow-x: hidden;
+      .carousel-item {
+        display: flex;
+        margin-top: 120px;
+        flex-wrap: nowrap;
+        /* 不換行 */
+        // flex: 0 0 calc(100% / 4 - 5px);
+        //每张图片占据四分之一的宽度，并减去间距
+        margin-right: 5px; // 图片之间的间距
+
+        img {
+          width: 400px;
+          height: 580px;
+          object-fit: cover;
+          margin: 10px;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+
+  .carousel-control-prev,
+  .carousel-control-next,
+  .carousel-item.active {
+    display: flex;
+    width: auto;
+    padding: 0;
+  }
+
+  .carousel-indicators {
+    display: none; // 隐藏指示器
+  }
+
 
   .bn-cta {
-    position: absolute;
-    top: 65%;
+    width: 100vw;
+    padding-top: 120px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // position: absolute;
-    // top: 75%;
-    // left: 12%;
-    // transform: translate(-50%, -50%);
-    // color: $main-blue;
-    z-index: 1;
-    // /* 确保 .cta-box 在 img 上面 */
-    // height: 300px;
-    // background-color: $main-yellow;
-    // border-radius: 60% 90% 70% 80% / 80% 90% 60% 80%;
-    // width: 22%;
-    // height: 28%;
-    // text-align: center;
-    // align-content: center;
-    // animation: fadeInFromButtom 2s ease forwards;
+    justify-content: space-around;
+
+    img {
+      width: 150px;
+      margin: 0 30px;
+      height: fit-content;
+    }
 
     h4 {
-      background-image: url(/images/solgan.svg);
-      background-size: cover;
+      position: relative;
+      font-size: map-get($font-size, title-l);
+      color: white;
+    }
+
+    h4::after {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -40px;
+      width: 120%;
+      height: 150%;
+      z-index: -1;
+      background-image: url(/images/slogan-bg.svg);
+      background-size: contain;
       background-repeat: no-repeat;
-      color: $main-white;
-      text-align: center;
-      font-family: "Gen Jyuu Gothic";
-      font-size: 48px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 120%;
-      /* 57.6px */
-      letter-spacing: 12px;
-      margin-bottom: 20px;
     }
 
-    i {
-      display: block;
+    .border-b {
+      display: flex;
+      align-items: center;
+      padding-left: 50px;
+      padding: 5px;
     }
 
+    button {
+      width: 12%;
+      height: 60px;
+      border-radius: 30px;
+      background-color: $main-lightblue;
+      margin: 0;
+      font-size: map-get($font-size, l);
+    }
   }
 
-  img {
-    width: 90vw;
-    height: 80vh;
-    object-fit: cover;
-    border-radius: 30px;
-    margin-top: 120px;
-    animation: fadeIn 2s ease forwards;
-  }
+  // #banner {
+  //   position: relative;
+  //   height: 100vh;
+
+  //   .bn-cta {
+  //     position: absolute;
+  //     top: 65%;
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+  //     // position: absolute;
+  //     // top: 75%;
+  //     // left: 12%;
+  //     // transform: translate(-50%, -50%);
+  //     // color: $main-blue;
+  //     z-index: 1;
+  //     // /* 确保 .cta-box 在 img 上面 */
+  //     // height: 300px;
+  //     // background-color: $main-yellow;
+  //     // border-radius: 60% 90% 70% 80% / 80% 90% 60% 80%;
+  //     // width: 22%;
+  //     // height: 28%;
+  //     // text-align: center;
+  //     // align-content: center;
+  //     // animation: fadeInFromButtom 2s ease forwards;
+
+  //     h4 {
+  //       background-image: url(/images/solgan.svg);
+  //       background-size: cover;
+  //       background-repeat: no-repeat;
+  //       color: $main-white;
+  //       text-align: center;
+  //       font-family: "Gen Jyuu Gothic";
+  //       font-size: 48px;
+  //       font-style: normal;
+  //       font-weight: 700;
+  //       line-height: 120%;
+  //       /* 57.6px */
+  //       letter-spacing: 12px;
+  //       margin-bottom: 20px;
+  //     }
+
+  //     i {
+  //       display: block;
+  //     }
+
+  //   }
+
+  //   img {
+  //     width: 90vw;
+  //     height: 80vh;
+  //     object-fit: cover;
+  //     border-radius: 30px;
+  //     margin-top: 120px;
+  //     animation: fadeIn 2s ease forwards;
+  //   }
+  // }
+
 }
 
 #category {
@@ -110,22 +212,22 @@
 
     .texture {
       display: flex;
-      padding: 15px;
+      // padding: 15px;
       margin: 0 10px;
       height: 100%;
       justify-content: space-evenly;
       /* 元素均匀分布 */
       align-items: center;
-      flex: 1.5;
+      flex: 1;
 
       .texture-button {
         display: flex;
         color: $main-white;
         background-color: $main-lightblue;
         border-radius: 30px;
-        margin: 20px;
+        // margin: 20px;
         margin-bottom: 15px;
-        padding: 20px 50px;
+        padding: 10px 30px;
         position: relative;
 
         i::before {
@@ -145,7 +247,7 @@
       .active {
         color: $main-white;
         background-color: $main-blue;
-        padding: 20px 60px 20px 40px;
+        padding: 10px 60px 10px 40px;
 
         i::before {
           display: inline;
@@ -157,20 +259,23 @@
 
 
 .textureList {
-  width: 90%;
+  width: 85%;
   // height: 40vw;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  background-color: $main-yellow;
+  border-radius: 30px;
+  margin: 20px;
+
   // background-image: url(/images/bg2.svg);
   // background-size: contain;
   // background-position: center;
   // background-repeat: no-repeat;
   // background-size: 100% 100%;
   // background-color: rgb(34, 102, 141,.2);
-  // border-radius: 30px;
 
   .texture-content {
     display: none;
@@ -186,9 +291,9 @@
 
   .texture-info {
     margin-top: 30px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     border-radius: 20px;
-    width: 600px;
+    width: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,6 +301,7 @@
     background-color: $main-yellow;
     // border-radius: 10px / 5px;
     flex: 3;
+    font-size: map-get($font-size, l);
 
     a {
       background-color: $main-blue;
@@ -203,9 +309,9 @@
       display: block;
       margin: 5px;
       color: $main-white;
-      width: 6rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
+      width: 8rem;
+      height: 2rem;
+      line-height: 2rem;
     }
 
   }
@@ -225,6 +331,9 @@
       background-color: white;
       box-shadow: 4px 4px 0px 0px #405983;
       border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       .productImg {
         height: 200px;
@@ -250,8 +359,10 @@
         width: 150px;
         padding: 8px;
         border-radius: 20px;
-        color: antiquewhite;
+        color: white;
         justify-content: center;
+        align-items: center;
+        margin: 10px;
       }
     }
 
@@ -263,135 +374,135 @@
       display: none;
     }
   }
+}
 
 
-  // .mask {
-  //   position: relative;
-  //   -webkit-mask-repeat: no-repeat;
-  //   mask-repeat: no-repeat;
-  //   -webkit-mask-size: 100% 100%;
-  //   mask-size: 100% 100%;
-  // }
+// .mask {
+//   position: relative;
+//   -webkit-mask-repeat: no-repeat;
+//   mask-repeat: no-repeat;
+//   -webkit-mask-size: 100% 100%;
+//   mask-size: 100% 100%;
+// }
 
-  // .mask-1 {
-  //   mask-image: url(/images/mask.svg);
-  // }
+// .mask-1 {
+//   mask-image: url(/images/mask.svg);
+// }
 
-  .duct-dec {
-    display: flex;
-    flex-direction: column;
+.duct-dec {
+  display: flex;
+  flex-direction: column;
 
-    img {
-      width: 80px;
-    }
+  img {
+    width: 80px;
+  }
 
-    :first-child {
-      margin-right: 40px;
-    }
+  :first-child {
+    margin-right: 40px;
+  }
 
-    :nth-child(2) {
-      margin-left: 40px;
-    }
+  :nth-child(2) {
+    margin-left: 40px;
+  }
 
-    :nth-child(3) {
-      margin-right: 40px;
-    }
-
-
+  :nth-child(3) {
+    margin-right: 40px;
   }
 
 
-  #service {
-    justify-content: flex-end;
+}
 
-    .surprise {
+#service {
+  justify-content: flex-end;
+
+
+
+  .surprise {
+    display: flex;
+    background-image: url(/images/bg3.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
+    align-items: center;
+
+    .picker {
+      margin: 20px auto;
+      width: calc(50% - 120px);
       display: flex;
-      background-image: url(/images/bg3.svg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 80vh;
-      width: 100%;
+      padding: 30px;
+      flex-direction: column;
       align-items: center;
 
-      .picker {
-        margin: 20px auto;
-        width: calc(50% - 120px);
+      .filters {
         display: flex;
-        padding: 30px;
-        flex-direction: column;
-        align-items: center;
+        // flex-direction: column;
+        justify-content: center;
 
-        .filters {
+        select {
+          // line-height: 30px;
+          // justify-content: center;
+          // align-items: center;
+          // text-align: center;
+          background: $main-lightblue;
+          color: $main-white;
+          font-size: map-get($font-size, m);
+          margin: 15px;
+          height: 3em;
+          width: 150px;
+          padding: 8px;
+          position: relative;
+          border-radius: 5px;
+          appearance: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          background-image: url(/images/arrow.svg);
+          background-position: right .5em top 50%, 0 0;
+          background-size: 1rem;
+          background-repeat: no-repeat, repeat;
+        }
+
+        option {
           display: flex;
-          // flex-direction: column;
           justify-content: center;
-
-          select {
-            // line-height: 30px;
-            // justify-content: center;
-            // align-items: center;
-            // text-align: center;
-            background: $main-lightblue;
-            color: $main-white;
-            font-size: map-get($font-size, m);
-            margin: 15px;
-            height: 3em;
-            width: 150px;
-            padding: 8px;
-            position: relative;
-            border-radius: 5px;
-            appearance: none;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            background-image: url(/images/arrow.svg);
-            background-position: right .5em top 50%, 0 0;
-            background-size: 1rem;
-            background-repeat: no-repeat, repeat;
-          }
-
-          option {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-          }
+          text-align: center;
         }
       }
+    }
 
-      .product-w {
-        width: calc(50% - 120px);
-        margin: 60px;
-        padding: 30px;
-        background-color: $main-white;
-        background-color: $main-blue 5px soild;
-        box-shadow: 4px 4px 0px 0px #405983;
-        border-radius: $radius-s;
+    .product-w {
+      width: calc(50% - 120px);
+      margin: 60px;
+      padding: 30px;
+      background-color: $main-white;
+      background-color: $main-blue 5px soild;
+      box-shadow: 4px 4px 0px 0px #405983;
+      border-radius: $radius-s;
 
-        .image {
-          height: 180px;
-          width: 180px;
-          object-fit: cover;
-        }
-
-        .icon {
-          display: flex;
-          justify-content: end;
-        }
-
-        .fa-solid {
-          display: none;
-        }
-
-        .product {
-          display: flex;
-
-          .product-text {
-            margin: 10px;
-            width: fit-content;
-          }
-        }
+      .image {
+        height: 180px;
+        width: 180px;
+        object-fit: cover;
       }
 
+      .icon {
+        display: flex;
+        justify-content: end;
+      }
+
+      .fa-solid {
+        display: none;
+      }
+
+      .product {
+        display: flex;
+
+        .product-text {
+          margin: 10px;
+          width: fit-content;
+        }
+      }
     }
   }
 }

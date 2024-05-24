@@ -1,20 +1,20 @@
 // 精選種類的active切換
-document.addEventListener("DOMContentLoaded",function () {
-  const textures = document.querySelectorAll(".texture-button");
-  const contents = document.querySelectorAll(".texture-content");
+document.addEventListener("DOMContentLoaded", function () {
+    const textures = document.querySelectorAll(".texture-button");
+    const contents = document.querySelectorAll(".texture-content");
 
-  textures.forEach(tab => {
-    tab.addEventListener("click",(event)=>{
-      event.preventDefault();
-      const target = tab.getAttribute('data-tab');
+    textures.forEach(tab => {
+        tab.addEventListener("click", (event) => {
+            event.preventDefault();
+            const target = tab.getAttribute('data-tab');
 
-      textures.forEach(t=> t.classList.remove("active"));
-      contents.forEach(c=>c.classList.remove("active"))
+            textures.forEach(t => t.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"))
 
-      tab.classList.add("active");
-      document.getElementById(target).classList.add("active");
+            tab.classList.add("active");
+            document.getElementById(target).classList.add("active");
+        })
     })
-  })
 })
 
 // 產品數據庫
@@ -52,4 +52,28 @@ function filterProducts() {
         document.getElementById('result').innerHTML = `<p>没有找到符合条件的产品</p>`;
     }
 }
+//輪播
+// document.addEventListener("DOMContentLoaded", function() {
+//     var myCarousel = document.getElementById('myCarousel');
+//     var carousel = new bootstrap.Carousel(myCarousel, {
+//       interval: 1000, // 每 2 秒換一張圖片
+//       wrap: true // 是否循環播放
+//     });
+
+//    var items = document.querySelectorAll('.carousel-inner');
+//     var minPerSlide = 4;
+
+//     items.forEach((el) => {
+//     let next = el.nextElementSibling;
+//      for (var i = 1; i < minPerSlide; i++) {
+//       if (!next) {
+//     // wrap carousel by using first child
+//        next = items[0];
+//     }
+//         let cloneChild = next.cloneNode(true);
+//         el.appendChild(cloneChild.children[0]);
+//        next = next.nextElementSibling;
+//       }
+//    });
+//   });
 

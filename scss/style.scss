@@ -16,6 +16,7 @@
 @import "reset";
 @import "varible";
 
+
 /* 共用CSS */
 
 * {
@@ -102,6 +103,19 @@ h4 {
     color: $main-lightblue;
     font-size: map-get($font-size, title-s);
   }
+}
+
+.my-button {
+  height: 50px;
+  padding: 5px 20px;
+  margin: 20px;
+  width: 60%;
+  /* line-height: 50px; */
+  text-align: center;
+  border-radius: $radius-s;
+  color: $main-white;
+  background-color: $main-blue;
+  box-shadow: 4px 4px 0px 0px #405983;
 }
 
 .subTitle-half{
@@ -264,18 +278,7 @@ select {
   border: 0;
 }
 
-button {
-  height: 50px;
-  padding: 5px 20px;
-  margin: 20px;
-  width: 60%;
-  /* line-height: 50px; */
-  text-align: center;
-  border-radius: $radius-s;
-  color: $main-white;
-  background-color: $main-blue;
-  box-shadow: 4px 4px 0px 0px #405983;
-}
+
 
 
 @import "index";
