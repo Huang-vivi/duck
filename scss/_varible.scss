@@ -6,7 +6,8 @@ $main-lightblue: #8FCDDD;
 $main-white: #FFFADD;
 $main-yellow: #FFCC70;
 
-//基本色
+//透明色
+$main-blue-trans: rgb(34, 102, 141,0.2);
 
 //字體規範
 $font-family-tc: "GenJyuuGothic-Regular", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei",  sans-serif;
@@ -22,12 +23,12 @@ $breakpoint-lg:"min-width:821px";
 $font-size:(
   xxs:10px,
   xs:12px,
-  x:14px,
+  s:14px,
   m:16px,
   l:24px,
-  title-s:32px,
-  title-m:40px,
-  title-l:56px,
+  title-s:20px,
+  title-m:32px,
+  title-l:46px,
 );
 
 //字體粗細規範

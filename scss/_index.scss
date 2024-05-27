@@ -5,7 +5,7 @@
 /* 頁首區 */
 .topbar {
   position: fixed;
-  height: 80px;
+  height: 60px;
   width: 100%;
   justify-content: space-between;
   display: flex;
@@ -41,7 +41,7 @@
 /* Banner區 */
 
 #banner {
-  height: 100vh;
+  // height: 100vh;
   justify-content: space-around;
   // 輪播圖片
 
@@ -59,7 +59,7 @@
       // overflow-x: hidden;
       .carousel-item {
         display: flex;
-        margin-top: 120px;
+        margin-top: 80px;
         flex-wrap: nowrap;
         /* 不換行 */
         // flex: 0 0 calc(100% / 4 - 5px);
@@ -67,10 +67,10 @@
         margin-right: 5px; // 图片之间的间距
 
         img {
-          width: 400px;
-          height: 580px;
+          width: 320px;
+          height: 480px;
           object-fit: cover;
-          margin: 10px;
+          margin: 20px 10px;
           border-radius: 20px;
         }
       }
@@ -93,7 +93,7 @@
 
   .bn-cta {
     width: 100vw;
-    padding-top: 120px;
+    padding-top: 80px;
     display: flex;
     justify-content: space-around;
 
@@ -105,17 +105,17 @@
 
     h4 {
       position: relative;
-      font-size: map-get($font-size, title-l);
+      font-size: map-get($font-size, title-m);
       color: white;
     }
 
     h4::after {
       content: "";
       position: absolute;
-      top: -20px;
-      left: -40px;
+      top: -13px;
+      left: -20px;
       width: 120%;
-      height: 150%;
+      height: 100%;
       z-index: -1;
       background-image: url(/images/slogan-bg.svg);
       background-size: contain;
@@ -131,7 +131,7 @@
 
     button {
       width: 12%;
-      height: 60px;
+      height: 50px;
       border-radius: 30px;
       background-color: $main-lightblue;
       margin: 0;
@@ -215,10 +215,14 @@
       // padding: 15px;
       margin: 0 10px;
       height: 100%;
-      justify-content: space-evenly;
+      justify-content: center;
       /* 元素均匀分布 */
       align-items: center;
       flex: 1;
+
+      li {
+        margin: 10px;
+      }
 
       .texture-button {
         display: flex;
@@ -227,13 +231,13 @@
         border-radius: 30px;
         // margin: 20px;
         margin-bottom: 15px;
-        padding: 10px 30px;
+        padding: 5px 20px;
         position: relative;
 
         i::before {
           display: none;
           position: absolute;
-          left: 75%;
+          left: 70%;
           top: 50%;
           transform: translateY(-50%);
         }
@@ -247,7 +251,7 @@
       .active {
         color: $main-white;
         background-color: $main-blue;
-        padding: 10px 60px 10px 40px;
+        padding: 5px 45px 5px 20px;
 
         i::before {
           display: inline;
@@ -293,15 +297,15 @@
     margin-top: 30px;
     // margin-bottom: 10px;
     border-radius: 20px;
-    width: 800px;
+    // width: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 25px;
-    background-color: $main-yellow;
+    padding: 0 25px;
+    // background-color: $main-yellow;
     // border-radius: 10px / 5px;
     flex: 3;
-    font-size: map-get($font-size, l);
+    font-size: map-get($font-size, m);
 
     a {
       background-color: $main-blue;
@@ -313,69 +317,80 @@
       height: 2rem;
       line-height: 2rem;
     }
-
-  }
-
-  .product-list {
-    flex: 7;
-    width: 80vw;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    .product {
-      padding: 30px;
-      margin: 20px;
-      background-color: white;
-      box-shadow: 4px 4px 0px 0px #405983;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .productImg {
-        height: 200px;
-        width: 200px;
-        border-radius: 20px;
-      }
-
-      .productInfo {
-        width: 200px;
-        text-align: justify;
-        margin-top: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        @include line-save(2)
-      }
-
-      .add-cart {
-        display: flex;
-        background-color: $main-blue;
-        width: 150px;
-        padding: 8px;
-        border-radius: 20px;
-        color: white;
-        justify-content: center;
-        align-items: center;
-        margin: 10px;
-      }
-    }
-
-  }
-
-
-  @media(max-width:820px) {
-    .product-rwd {
-      display: none;
-    }
   }
 }
 
+
+.product-list {
+  flex: 7;
+  width: 80vw;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .product {
+    padding: 15px ;
+    margin: 15px;
+    background-color: white;
+    box-shadow: 4px 4px 0px 0px #405983;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:nth-child(3) {
+      @media($breakpoint-md) {
+        display: none;
+      }
+    }
+
+    &:nth-child(2) {
+      @media($breakpoint-sm) {
+        display: none;
+      }
+    }
+
+    .productImg {
+      height: 160px;
+      width: 160px;
+      border-radius: 20px;
+    }
+
+    .productInfo {
+      width: 180px;
+      text-align: justify;
+      margin: 5px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      @include line-save(2);
+      font-size: map-get($font-size, xs);
+    }
+
+    .add-cart {
+      display: flex;
+      background-color: $main-blue;
+      width: 150px;
+      padding: 8px;
+      border-radius: 20px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+    }
+  }
+
+}
+
+
+@media(max-width:820px) {
+  .product-rwd {
+    display: none;
+  }
+}
 
 // .mask {
 //   position: relative;
@@ -421,9 +436,9 @@
     display: flex;
     background-image: url(/images/bg3.svg);
     background-size: cover;
-    background-position: center;
+    background-position:center ;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 75vh;
     width: 100%;
     align-items: center;
 
@@ -481,9 +496,23 @@
       border-radius: $radius-s;
 
       .image {
-        height: 180px;
-        width: 180px;
+        img {
+          height: 180px;
+          width: 180px;
+        }
+
         object-fit: cover;
+      }
+
+      .name-price {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+
+        h4 {
+          margin: 0;
+        }
       }
 
       .icon {
@@ -501,6 +530,11 @@
         .product-text {
           margin: 10px;
           width: fit-content;
+
+          >* {
+            margin: 10px;
+            line-height: 150%;
+          }
         }
       }
     }
@@ -601,17 +635,6 @@
     display: flex;
     margin: 50px;
 
-    .subMenu {
-      border-left: solid $main-blue 5px;
-      padding: 0px 20px;
-      height: fit-content;
-      margin: 20px;
-
-      li {
-        padding: 5px;
-      }
-    }
-
     .about-info {
       margin: 20px;
       text-align: center;
@@ -620,7 +643,6 @@
       display: flex;
 
       h4 {
-
         margin-bottom: 30px;
       }
 
@@ -637,3 +659,22 @@
 
   }
 }
+
+.subMenu {
+  border-left: solid $main-blue 5px;
+  padding: 0px 20px;
+  height: fit-content;
+  margin: 20px;
+
+  li {
+    padding: 5px;
+
+    ul{
+      padding-left: 20px;
+      list-style:square;
+      margin: 5px;
+    }
+  }
+}
+
+

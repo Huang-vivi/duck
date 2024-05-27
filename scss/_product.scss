@@ -1,0 +1,162 @@
+/* product */
+.filter ul {
+  display: flex;
+}
+
+.top-class {
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.all-product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  // padding-left: 50px;
+}
+
+
+.main-product {
+  display: flex;
+  width: 85%;
+
+}
+
+.first-header {
+  margin-top: 100px;
+}
+
+
+
+.product-s {
+  padding: 15px;
+  margin: 15px;
+  background-color: white;
+  box-shadow: 3px 3px 0px 0px #405983;
+  border: #405983 .3px solid;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:nth-child(3) {
+    @media($breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &:nth-child(2) {
+    @media($breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  .productImg {
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+  }
+
+  .productInfo {
+    width: 150px;
+    text-align: justify;
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    @include line-save(2);
+    font-size: map-get($font-size, xs);
+  }
+
+  .add-cart {
+    display: flex;
+    background-color: $main-blue;
+    width: 30px;
+    padding: 8px;
+    border-radius: 20px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+  }
+
+  .product-bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-label {
+    font-size: map-get($font-size, xs);
+    border-radius: 20px;
+    padding: 3px;
+    border: #405983 .8px solid;
+    height: fit-content;
+    margin: 3px;
+  }
+
+}
+
+
+.product-images {
+  border: #405983 .4px solid;
+  display: flex;
+
+  .img-main {
+    width: 350px;
+    height: 350px;
+    margin: 10px;
+    margin-right: 0;
+  }
+
+  .small {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+
+    .img-small {
+      width: 105px;
+      height: 105px;
+    }
+  }
+}
+
+.main-product {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+
+  .product-top {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.product-description {
+  margin-top: 50px;
+
+  ul {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+  }
+
+  .text {
+    padding: 50px;
+    background-color: $main-blue-trans;
+
+    p {
+      margin: 10px;
+    }
+
+    img {
+      width: 850px;
+      height: 450xp;
+    }
+  }
+}

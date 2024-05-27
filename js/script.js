@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 })
 
+
 // 產品數據庫
 const products = [
     { name: '红色玻璃杯', color: 'red', material: 'glass', price: 'low' },
@@ -52,6 +53,31 @@ function filterProducts() {
         document.getElementById('result').innerHTML = `<p>没有找到符合条件的产品</p>`;
     }
 }
+
+
+
+function showTabContent(tabId) {
+  var tabs = document.querySelectorAll('.tab');
+  var contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(function(tab) {
+      tab.classList.remove('active');
+  });
+
+  contents.forEach(function(content) {
+      content.classList.remove('active');
+  });
+
+  document.querySelector('.tab[onclick="showTabContent(\'' + tabId + '\')"]').classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+// 默认显示第一个标签页
+document.addEventListener('DOMContentLoaded', function() {
+  showTabContent('taichung');
+});
+
+
 //輪播
 // document.addEventListener("DOMContentLoaded", function() {
 //     var myCarousel = document.getElementById('myCarousel');
