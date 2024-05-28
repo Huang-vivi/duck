@@ -72,7 +72,7 @@ h2 {
 }
 
 h3 {
-  font-size: map-get($font-size,title-s);
+  font-size: map-get($font-size, title-s);
   padding-top: $interval-s;
   padding-bottom: $interval-s;
 }
@@ -120,7 +120,7 @@ h4 {
   box-shadow: 4px 4px 0px 0px #405983;
 }
 
-.subTitle-half{
+.subTitle-half {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,15 +159,15 @@ a {
 
 
   // .menu &,
-  // .search & {
-  //   display: flex;
-  //   flex-direction: column;
-  //   margin: $interval-x-l;
-  //   border-bottom: solid 2px transparent;
-  //   transition: 1s;
-  //   color: $main-blue;
-  //   font-size: map-get($font-size,m);
-  // }
+  .search & {
+    display: flex;
+    flex-direction: column;
+    margin: $interval-x-l;
+    border-bottom: solid 2px transparent;
+    transition: 1s;
+    color: $main-blue;
+    font-size: map-get($font-size, m);
+  }
 
   .menu &:hover {
     border-bottom: solid 2px $main-blue;
@@ -246,9 +246,10 @@ footer {
 
 }
 
-.breadcrumb a{
+.breadcrumb a {
   display: flex;
 }
+
 // .hamber {
 //   align-items: center;
 //   display: flex;
@@ -294,8 +295,5 @@ select {
 }
 
 
-
-
 @import "index";
 @import "product";
-

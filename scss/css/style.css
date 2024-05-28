@@ -3771,7 +3771,7 @@ textarea.form-control-lg {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: none;
 }
 .nav-tabs .nav-link {
   margin-bottom: -1px;
@@ -3810,6 +3810,13 @@ textarea.form-control-lg {
 .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #22668D;
+}
+.nav-pills ul .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #8FCDDD;
+  border-bottom: #FFCC70 3px solid;
+  border-radius: 0;
+  background-color: #FFFADD;
 }
 
 .nav-fill > .nav-link,
@@ -10049,6 +10056,15 @@ a {
   color: #22668D;
   /* 取消預設的底線裝飾 */
 }
+.search a {
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  border-bottom: solid 2px transparent;
+  transition: 1s;
+  color: #22668D;
+  font-size: 16px;
+}
 .menu a:hover {
   border-bottom: solid 2px #22668D;
 }
@@ -10151,60 +10167,54 @@ select {
 #banner {
   justify-content: space-around;
 }
-#banner .carousel {
-  overflow: hidden;
-  flex-wrap: nowrap;
-  /* 不換行 */
-  width: 100%;
-}
-#banner .carousel .carousel-inner {
-  display: flex;
-  flex-wrap: nowrap;
-  /* 不換行 */
-}
-#banner .carousel .carousel-inner .carousel-item {
-  display: flex;
+#banner .marquee {
   margin-top: 80px;
-  flex-wrap: nowrap;
-  /* 不換行 */
-  margin-right: 5px;
+  height: 500px;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
 }
-#banner .carousel .carousel-inner .carousel-item img {
-  width: 320px;
+#banner .marquee .a1 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+#banner .marquee .a1 img {
+  width: 350px;
   height: 480px;
   -o-object-fit: cover;
      object-fit: cover;
   margin: 20px 10px;
   border-radius: 20px;
 }
-#banner .carousel-control-prev,
-#banner .carousel-control-next,
-#banner .carousel-item.active {
-  display: flex;
-  width: auto;
-  padding: 0;
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-#banner .carousel-indicators {
-  display: none;
-}
-#banner .bn-cta {
+
+.bn-cta {
   width: 100vw;
   padding-top: 80px;
   display: flex;
   justify-content: space-around;
 }
-#banner .bn-cta img {
+.bn-cta img {
   width: 150px;
   margin: 0 30px;
   height: -moz-fit-content;
   height: fit-content;
 }
-#banner .bn-cta h4, #banner .bn-cta .h4 {
+.bn-cta h4, .bn-cta .h4 {
   position: relative;
   font-size: 32px;
   color: white;
 }
-#banner .bn-cta h4::after, #banner .bn-cta .h4::after {
+.bn-cta h4::after, .bn-cta .h4::after {
   content: "";
   position: absolute;
   top: -13px;
@@ -10216,13 +10226,13 @@ select {
   background-size: contain;
   background-repeat: no-repeat;
 }
-#banner .bn-cta .border-b {
+.bn-cta .border-b {
   display: flex;
   align-items: center;
   padding-left: 50px;
   padding: 5px;
 }
-#banner .bn-cta button {
+.bn-cta button {
   width: 12%;
   height: 50px;
   border-radius: 30px;
@@ -10570,9 +10580,6 @@ select {
 }
 
 /* 關於我們專區 */
-#about {
-  height: 80vh;
-}
 #about .about-us {
   display: flex;
   margin: 50px;
@@ -10587,29 +10594,35 @@ select {
 #about .about-us .about-info h4, #about .about-us .about-info .h4 {
   margin-bottom: 30px;
 }
+#about .about-us .about-info h5, #about .about-us .about-info .h5 {
+  font-size: 1.25rem;
+  margin: 1.2rem 0;
+  background-color: antiquewhite;
+  margin: 25px 40%;
+}
+#about .about-us .about-info li {
+  text-align: justify;
+  list-style: square;
+}
 #about .about-us .about-info img {
-  width: 80%;
+  width: 100%;
   height: 180px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 #about .about-us .about-info p {
-  margin: 30px;
+  margin: 10px;
+  text-align: justify;
 }
 
 .subMenu {
   border-left: solid #22668D 5px;
-  padding: 0px 20px;
   height: -moz-fit-content;
   height: fit-content;
   margin: 20px;
 }
-.subMenu li {
-  padding: 5px;
-}
-.subMenu li ul {
-  padding-left: 20px;
-  list-style: square;
+.subMenu ul {
+  padding-left: 15px;
   margin: 5px;
 }
 
@@ -10757,4 +10770,8 @@ select {
 .product-description .text img {
   width: 850px;
   height: 450xp;
+}
+
+.nav-pills-su.active {
+  border-bottom: #FFCC70 3px solid;
 }/*# sourceMappingURL=style.css.map */

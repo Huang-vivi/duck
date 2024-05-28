@@ -34,7 +34,8 @@
     <!-- 頁首 -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light bold">
         <div class="container-fluid flex-grow-1">
-            <a class="navbar-brand" href="./index.html"> <img src="./logo-w.ico" alt="三杯鴨LOGO" width="30" height="30"></a>
+            <a class="navbar-brand" href="./index.html"> <img src="./logo-w.ico" alt="三杯鴨LOGO" width="30"
+                    height="30"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -68,7 +69,7 @@
                 </ul>
             </div>
         </div>
-        <ul class="search d-flex">
+        <ul class="search navbar-nav d-flex">
             <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass fa-xl"
                         style="color: #22668D;"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping fa-xl"
@@ -77,33 +78,29 @@
                         style="color: #22668D;"></i></a></li>
         </ul>
     </nav>
-    <!-- <header class="topbar">
-        <div class="topbar-menu">
-            <h1 class="logo">
-                <a href="index.html"><img src="./logo-w.ico" alt="三杯鴨logo"></a>
-            </h1>
-            <ul class="menu bold">
-                <li><a href="#aboutus">關於我們</a></li>
-                <li><a href="#service">本週優惠</a></li>
-                <li><a href="./all-product.html">找杯趣</a></li>
-                <li><a href="#about">會員專區</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
-            </ul>
-        </div>
-        <ul class="search">
-            <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #22668D;"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #22668D;"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-user fa-xl" style="color: #22668D;"></i></a></li>
-        </ul>
-    </header> -->
 
     <!-- 主要內容區 -->
     <main>
         <!-- Banner區 -->
         <section id="banner">
-            <!-- Carousel -->
+            <div class="marquee">
+                <div class="a1">
+                    <img src="/images/bg.jpeg" alt="">
+                    <img src="/images/bg1.jpeg" alt="">
+                    <img src="/images/bg3.jpeg" alt="">
+                    <img src="/images/bg4.jpeg" alt="">
+                    <img src="/images/bg5.jpeg" alt="">
+                    <img src="/images/bg.jpeg" alt="">
+                    <img src="/images/bg1.jpeg" alt="">
+                    <img src="/images/bg3.jpeg" alt="">
+                    <img src="/images/bg4.jpeg" alt="">
+                    <img src="/images/bg5.jpeg" alt="">
+                </div>
+            </div>
+            <!-- Carousel
             <div id="myCarousel" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
+                    <div>
                     <div class="carousel-item active">
                         <img src="./images/bg2.jpeg" class="d-block" alt="Image 1">
                     </div>
@@ -119,17 +116,7 @@
                     <div class="carousel-item active">
                         <img src="./images/bg2.jpeg" class="d-block" alt="Image 5">
                     </div>
-                </div>
-
-                <!-- Button樣式 -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                </div> -->
             </div>
 
             <div class="bn-cta">
@@ -505,25 +492,79 @@
             </header>
             <div class="about-us">
                 <div class="subMenu">
-                    <ul>
+                    <ul class="nav nav-pills nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" aria-current="page"
+                                href="#about-duckup">關於我們</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#about-qa">常見QA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#about-delivery-fee">運費</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " data-bs-toggle="tab" href="#about-return">退貨規則</a>
+                        </li>
+                    </ul>
+
+                    <!-- <ul>
                         <li>關於我們</li>
                         <li>常見QA</li>
                         <li>運費</li>
                         <li>退貨規則</li>
-                    </ul>
+                    </ul> -->
                 </div>
-                <div class="about-info">
-                    <i class="fa-solid fa-square-caret-left fa-2xl" style="color: #22668D;"></i>
-                    <div>
-                        <div><img src="./images/bg1.jpeg" alt=""></div>
-                        <h4>關於三杯鴨</h4>
-                        <p>
-                            「三杯鴨」認為每個人都值得擁有好杯鴨，陪伴著所有值得舉杯的時刻，用一杯重啟儀式美好的生活時光。
-                        </p>
+                <div class="about-info  ">
+                        <!-- <i class="fa-solid fa-square-caret-left fa-2xl" style="color: #22668D;"></i> -->
+
+                    <div class="tab-content" id="tab-content">
+                        <div class="tab-pane container fade show active" id="about-duckup" role="tabpanel"
+                            aria-labelledby="about-duckup">
+                            <div><img src="./images/bg1.jpeg" alt=""></div>
+                            <h4>關於三杯鴨</h4>
+                            <p>"每個人都值得擁有好杯鴨，用一杯重啟儀式美好的生活時光。"</p>
+                            <p> 馬克杯是生活中容易被忽略之物，然而三杯鴨馬克杯期望能陪伴你的日常，溫暖陪伴寒冷的冬天、沁涼你的炎炎夏日，還是埋首時的精神陪伴，或者親友相聚的歡樂時光，能讓你在繁忙的日子中找到片刻的溫馨。！ </p>
+                            <p>三杯鴨專注於挑選、設計獨特的鴨子造型馬克杯，不僅堅持無毒安全材質，更以職人精神，打造有故事的馬克杯。陪伴你度過人生的起伏，無論是歡笑還是挑戰，我們堅持提供最好的品項，讓每一個值得舉杯的時刻更美好。
+                            </p>
+
+                        </div>
+                        <div class="tab-pane container fade" id="about-qa" role="tabpanel" aria-labelledby="about-qa">
+                            <div><img src="./images/bg1.jpeg" alt=""></div>
+                            <h4>付款方式</h4>
+                            <ul>
+                                <li>信用卡：即時線上一次刷卡付款方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。</li>
+                                <li>LINE Pay：付款不需輸入信用卡資訊及3D驗證，僅需輸入專屬密碼即可使用信用卡進行付款，節省您的付款時間。</li>
+                                <li>Apple Pay：請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。</li>
+                            </ul>
+                            </p>
+                        </div>
+                        <div class="tab-pane container fade" id="about-delivery-fee" role="tabpanel"
+                            aria-labelledby="about-delivery-fee">
+                            <div><img src="./images/bg1.jpeg" alt=""></div>
+                            <h4>運費政策</h4>
+                            <p>三杯鴨以宅急便寄送本店商品，運費120元，商品滿2000享免運費優惠。</p>
+                            <p>配送範圍限台灣本島各縣市(不含郵政信箱)，因商品為易碎物品，為了保障雙方權益，請您在拆封開箱過程中務必全程錄影。</p>
+                        </div>
+                        <div class="tab-pane container fade" id="about-return" role="tabpanel"
+                            aria-labelledby="about-return">
+                            <div><img src="./images/bg1.jpeg" alt=""></div>
+                            <h4>退貨原則</h4>
+                            <h5>商品鑑賞期</h5>
+                            <p>依照消費者保護法規定，從商品抵達開始即擁有７天商品鑑賞期，猶豫期非試用期。</p>
+                            <h5>退換貨須知</h5>
+                            <p>如有退貨需求，請於收到商品７天內聯絡客服人員，並提供「姓名」、「訂單編號」、「連絡電話」、「退換貨商品名稱」、「退換貨原因及照片」等資料，客服收到後將協助進行退換貨。</p>
+                            <p>退貨商品須為未經拆封使用，或非人為瑕疵所造成的污損、故障，並保留完整的原始包裝（含外包裝紙盒、贈品、其他附件）。</p>
+                            <p><strong>退貨客服專線：02-2200-0123。</strong></p>
+                            <h5>退換貨流程</h5>
+                            <p>聯絡客服人員 → 確認可換貨 → 準備完整商品及發票 → 提供收件時間及聯絡資訊、地址 → 由我端委託之物流進行回收。</p>
+
+                        </div>
+                        </di>
                     </div>
-                    <i class="fa-solid fa-square-caret-right fa-2xl" style="color: #22668D;"></i>
+                    <!-- <i class="fa-solid fa-square-caret-right fa-2xl" style="color: #22668D;"></i> -->
+
                 </div>
-            </div>
         </section>
     </main>
 
@@ -539,10 +580,10 @@
         </div>
         <div class="sitemap">
             <ul class="menu">
-                <li><a href="#aboutus">品牌故事</a></li>
-                <li><a href="#service">最新消息</a></li>
-                <li><a href="#about">會員中心</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
+                <li><a href="./about-us.html">品牌故事</a></li>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./member.html">會員專區</a></li>
+                <li><a href="./contact-us.html">聯絡我們</a></li>
             </ul>
             <ul class="media">
                 <li><a href="#"><i class="fa-brands fa-square-facebook fa-2xl" style="color: #FFFADD;"></i></a></li>

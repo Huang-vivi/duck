@@ -40,7 +40,8 @@
 //
 
 .nav-tabs {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  border-bottom: none;
+  // border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
   .nav-link {
     margin-bottom: -$nav-tabs-border-width;
@@ -94,6 +95,17 @@
     color: $nav-pills-link-active-color;
     @include gradient-bg($nav-pills-link-active-bg);
   }
+
+  //新加的次目錄
+  ul .nav-link.active,
+  .show > .nav-link {
+    color: $main-lightblue;
+    // @include gradient-bg($nav-pills-link-active-bg);
+    border-bottom: $main-yellow 3px solid;
+    border-radius: 0;
+    background-color: $main-white;
+  }
+
 }
 
 

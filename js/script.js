@@ -54,28 +54,57 @@ function filterProducts() {
     }
 }
 
+// 跑馬燈
+document.addEventListener("DOMContentLoaded", function () {
+    const marqueeInner = document.querySelector('.marquee-inner');
+    const images = marqueeInner.querySelectorAll('img');
+    const totalWidth = Array.from(images).reduce((acc, img) => acc + img.offsetWidth, 0);
 
-
-function showTabContent(tabId) {
-  var tabs = document.querySelectorAll('.tab');
-  var contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(function(tab) {
-      tab.classList.remove('active');
-  });
-
-  contents.forEach(function(content) {
-      content.classList.remove('active');
-  });
-
-  document.querySelector('.tab[onclick="showTabContent(\'' + tabId + '\')"]').classList.add('active');
-  document.getElementById(tabId).classList.add('active');
-}
-
-// 默认显示第一个标签页
-document.addEventListener('DOMContentLoaded', function() {
-  showTabContent('taichung');
+    marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
 });
+
+$(document).ready(function () {
+    $('.nav-link').on('click', function () {
+        // 移除所有菜单项的 active 类
+        $('.nav-link').removeClass('active');
+        // 给当前点击的菜单项添加 active 类
+        $(this).addClass('active');
+
+        // 隐藏所有折叠内容
+        $('.collapse').collapse('hide');
+        // 显示当前点击菜单项对应的折叠内容
+        var target = $(this).attr('href');
+        $(target).collapse('show');
+    });
+
+    // 检查页面加载时是否有 active 的菜单项
+    var activeItem = $('.nav-link.active');
+    if (activeItem.length) {
+        var target = activeItem.attr('href');
+        $(target).collapse('show');
+    }
+});
+
+// function showTabContent(tabId) {
+//   var tabs = document.querySelectorAll('.tab');
+//   var contents = document.querySelectorAll('.tab-content');
+
+//   tabs.forEach(function(tab) {
+//       tab.classList.remove('active');
+//   });
+
+//   contents.forEach(function(content) {
+//       content.classList.remove('active');
+//   });
+
+//   document.querySelector('.tab[onclick="showTabContent(\'' + tabId + '\')"]').classList.add('active');
+//   document.getElementById(tabId).classList.add('active');
+// }
+
+// // 默认显示第一个标签页
+// document.addEventListener('DOMContentLoaded', function() {
+//   showTabContent('taichung');
+// });
 
 
 //輪播

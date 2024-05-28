@@ -3614,7 +3614,7 @@ textarea.form-control-lg {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: none;
 }
 .nav-tabs .nav-link {
   margin-bottom: -1px;
@@ -3653,6 +3653,13 @@ textarea.form-control-lg {
 .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #22668D;
+}
+.nav-pills ul .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #8FCDDD;
+  border-bottom: #FFCC70 3px solid;
+  border-radius: 0;
+  background-color: #FFFADD;
 }
 
 .nav-fill > .nav-link,
