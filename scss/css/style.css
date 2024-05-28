@@ -10248,7 +10248,7 @@ select {
   width: 120%;
   height: 100%;
   z-index: -1;
-  background-image: url(/images/slogan-bg.svg);
+  background-image: url(../../images/slogan-bg.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -10445,7 +10445,7 @@ select {
 }
 #service .surprise {
   display: flex;
-  background-image: url(/images/bg3.svg);
+  background-image: url(../../images/bg3.svg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
