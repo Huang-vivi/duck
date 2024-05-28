@@ -158,16 +158,16 @@ a {
   /* 取消預設的底線裝飾 */
 
 
-  .menu &,
-  .search & {
-    display: flex;
-    flex-direction: column;
-    margin: $interval-x-l;
-    border-bottom: solid 2px transparent;
-    transition: 1s;
-    color: $main-blue;
-    font-size: map-get($font-size,m);
-  }
+  // .menu &,
+  // .search & {
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: $interval-x-l;
+  //   border-bottom: solid 2px transparent;
+  //   transition: 1s;
+  //   color: $main-blue;
+  //   font-size: map-get($font-size,m);
+  // }
 
   .menu &:hover {
     border-bottom: solid 2px $main-blue;
@@ -199,7 +199,7 @@ footer {
     margin: 10px 20px;
 
     >* {
-      margin: 5px;
+      margin: 0px;
     }
   }
 

@@ -3,40 +3,39 @@
 
 
 /* 頁首區 */
-.topbar {
-  position: fixed;
-  height: 60px;
-  width: 100%;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 5px 120px;
-  background-color: $main-white;
-  color: $main-blue;
-  z-index: 999;
-  text-align: center;
-  /* 確保他在最上面*/
+// .topbar {
+//   position: fixed;
+//   height: 60px;
+//   width: 100vw;
+//   justify-content: space-between;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   padding: 5px 120px;
+//   background-color: $main-white;
+//   color: $main-blue;
+//   z-index: 999;
+//   text-align: center;
+//   /* 確保他在最上面*/
 
-  .topbar-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+//   .topbar-menu {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
 
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+//   ul {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//   }
 
-  .logo {
-    margin-bottom: 0;
-  }
+//   .logo {
+//     margin-bottom: 0;
+//   }
 
-
-}
+// }
 
 /* Banner區 */
 

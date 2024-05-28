@@ -74,7 +74,8 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
+$light:         $main-white !default;
+// $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 // $primary:       $blue !default;
 // $secondary:     $gray-600 !default;
@@ -943,8 +944,10 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 // Navbar
 
 // scss-docs-start navbar-variables
-$navbar-padding-y:                  $spacer / 2 !default;
-$navbar-padding-x:                  null !default;
+$navbar-padding-y:                  0 !default;
+$navbar-padding-x:                  50px !default;
+// $navbar-padding-y:                  $spacer / 2 !default;
+// $navbar-padding-x:                  null !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
 
@@ -971,12 +974,16 @@ $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
-$navbar-light-color:                rgba($black, .55) !default;
-$navbar-light-hover-color:          rgba($black, .7) !default;
-$navbar-light-active-color:         rgba($black, .9) !default;
+// $navbar-light-color:                rgba($black, .55) !default;
+$navbar-light-color:                $main-blue !default;
+// $navbar-light-hover-color:          rgba($black, .7) !default;
+$navbar-light-hover-color:           $main-yellow !default;
+$navbar-light-active-color:         $main-lightblue !default;
+// $navbar-light-active-color:         rgba($black, .9) !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: rgba($black, .1) !default;
+$navbar-light-toggler-border-color: $main-lightblue !default;
+// $navbar-light-toggler-border-color: rgba($black, .1) !default;
 
 $navbar-light-brand-color:                $navbar-light-active-color !default;
 $navbar-light-brand-hover-color:          $navbar-light-active-color !default;
@@ -995,8 +1002,10 @@ $dropdown-padding-x:                0 !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-font-size:                $font-size-base !default;
-$dropdown-color:                    $body-color !default;
-$dropdown-bg:                       $white !default;
+$dropdown-color:                    $main-white  !default;
+$dropdown-bg:                      $main-lightblue  !default;
+// $dropdown-color:                    $body-color !default;
+// $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
@@ -1005,9 +1014,13 @@ $dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
-$dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
-$dropdown-link-hover-bg:            $gray-200 !default;
+$dropdown-link-color:                $main-white   !default;
+// $dropdown-link-color:               $gray-900 !default;
+$dropdown-link-hover-color:         $main-yellow !default;
+$dropdown-link-hover-bg:            $main-blue!default;
+// $dropdown-link-hover-color:         shade-color($gray-900, 10%) !default;
+// $dropdown-link-hover-bg:            $gray-200 !default;
+
 
 $dropdown-link-active-color:        $component-active-color !default;
 $dropdown-link-active-bg:           $component-active-bg !default;
