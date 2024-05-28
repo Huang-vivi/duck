@@ -246,13 +246,16 @@ footer {
 
 }
 
-.hamber {
-  align-items: center;
+.breadcrumb a{
   display: flex;
-  >* {
-    margin: 5px;
-  }
 }
+// .hamber {
+//   align-items: center;
+//   display: flex;
+//   >* {
+//     margin: 5px;
+//   }
+// }
 
 
 @keyframes fadeInFromBottom {

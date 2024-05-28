@@ -227,7 +227,6 @@ hr:not([size]) {
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -294,11 +293,6 @@ address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
-}
-
-ol,
-ul {
-  padding-left: 2rem;
 }
 
 ol,
@@ -10124,12 +10118,8 @@ footer .sitemap .media li {
   display: block;
 }
 
-.hamber {
-  align-items: center;
+.breadcrumb a {
   display: flex;
-}
-.hamber > * {
-  margin: 5px;
 }
 
 @keyframes fadeInFromBottom {
@@ -10677,7 +10667,7 @@ select {
   justify-content: start;
 }
 
-.main-product {
+.all-product-main {
   display: flex;
   width: 85%;
 }
