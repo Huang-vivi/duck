@@ -10598,7 +10598,7 @@ select {
 #about .about-us .about-info h5, #about .about-us .about-info .h5 {
   font-size: 1.25rem;
   margin: 1.2rem 0;
-  background-color: antiquewhite;
+  background-color: rgba(143, 205, 221, 0.5);
   margin: 25px 40%;
 }
 #about .about-us .about-info li {
