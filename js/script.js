@@ -63,27 +63,27 @@ document.addEventListener("DOMContentLoaded", function () {
     marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
 });
 
-$(document).ready(function () {
-    $('.nav-link').on('click', function () {
-        // 移除所有菜单项的 active 类
-        $('.nav-link').removeClass('active');
-        // 给当前点击的菜单项添加 active 类
-        $(this).addClass('active');
+// $(document).ready(function () {
+//     $('.nav-link').on('click', function () {
+//         // 移除所有菜单项的 active 类
+//         $('.nav-link').removeClass('active');
+//         // 给当前点击的菜单项添加 active 类
+//         $(this).addClass('active');
 
-        // 隐藏所有折叠内容
-        $('.collapse').collapse('hide');
-        // 显示当前点击菜单项对应的折叠内容
-        var target = $(this).attr('href');
-        $(target).collapse('show');
-    });
+//         // 隐藏所有折叠内容
+//         $('.collapse').collapse('hide');
+//         // 显示当前点击菜单项对应的折叠内容
+//         var target = $(this).attr('href');
+//         $(target).collapse('show');
+//     });
 
-    // 检查页面加载时是否有 active 的菜单项
-    var activeItem = $('.nav-link.active');
-    if (activeItem.length) {
-        var target = activeItem.attr('href');
-        $(target).collapse('show');
-    }
-});
+//     // 检查页面加载时是否有 active 的菜单项
+//     var activeItem = $('.nav-link.active');
+//     if (activeItem.length) {
+//         var target = activeItem.attr('href');
+//         $(target).collapse('show');
+//     }
+// });
 
 // function showTabContent(tabId) {
 //   var tabs = document.querySelectorAll('.tab');

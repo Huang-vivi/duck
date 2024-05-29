@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="三杯鴨-馬克杯選品店。">
+    <meta name="keywords" content="不銹鋼杯,鴨子造型禮物,玻璃杯,馬克杯">
+    <meta name="copyright" content="&copy; 2024 duckup.">
+    <meta name="author" content="rita design.">
+    <meta name="generator" content="vscode">
+    <meta name="Distribution" content="Taiwan">
+    <meta name="creation-date" content="01-jan-2024 20:40:01">
+
+    <meta property="og:locale" content="zh-hant-tw" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="三杯鴨-馬克杯選品店">
+    <meta property="og:description" content="探索三杯鴨-馬克杯選品店。">
+    <meta property="og:site_name" content="三杯鴨">
+    <meta property="og:url" content="http://www.duckup.com/tw/">
+    <meta property="og:image" content="yourCover.jpg">
+    <meta property="og:image" content="yourImage.png">
+
+    <title>三杯鴨-馬克杯選品店</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 手動設定favicon -->
+    <link rel="icon" href="./images/favicon.png"">
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel=" stylesheet" href="./scss/css/style.css">
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- icon -->
+    <script src=" https://kit.fontawesome.com/9662c9009d.js" crossorigin="anonymous"></script>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        (async () => {
+            const { useState, useEffect } = React;
+            function MyApp() {
+                const [productData, setProductData] = useState([]);
+                const [selectedMaterial, setSelectedMaterial] = useState('');
+
+                //讀取json資料
+                useEffect(() => {
+                    const fetchData = async () => {
+                        try {
+                            const data = await axios.get('./json/product.json');
+                            const { productData } = data.data;
+                            setProductData(productData);
+                        } catch (error) {
+                            console.error("Error fetching product data:", error);
+                        }
+                    };
+
+                    fetchData();
+                }, []);
+
+                //渲染json資料 函式
+                const renderProducts = (products) => {
+                    return (<>
+                        <div className="product-list">
+                            <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                            {products.map((product) => (
+                                <Product key={product.name} name={product.name} info={product.info} url={product.url} />
+                            ))}
+                            <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                        </div >
+                    </>)
+                };
+
+                //建立product元件
+                const Product = ({ name, info, url }) => {
+                    return (
+                        <div className="product">
+                            <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+                            <h3 className="productName">{name}</h3>
+                            <p className="productInfo">
+                                {info}
+                            </p>
+                            <div className="add-cart">
+                                <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
+                            </div>
+                        </div>
+                    );
+                }
+
+                const [color, setColor] = useState('');
+                const [texture, setTexture] = useState('');
+                const [price, setPrice] = useState('');
+                const [tag1, setTag1] = useState('');
+                const [tag2, setTag2] = useState('');
+                const [info, setInfo] = useState('');
+                const [url, setUrl] = useState('');
+                const [result, setResult] = useState(null);
+
+
+                const filterProducts = () => {
+                    console.log('Selected color:', color);
+                    console.log('Selected texture:', texture);
+                    console.log('Selected price:', price);
+
+                    const filteredProducts = productData.filter(product => {
+                        return (color === "" || color === "all" || product.color === color) &&
+                            (texture === "" || texture === "all" || product.texture === texture) &&
+                            (price === "" || price === "all" || product.price === price);
+                    });
+
+                    if (filteredProducts.length > 0) {
+                        const randomProduct = filteredProducts[Math.floor(Math.random() * filteredProducts.length)];
+                        setResult(randomProduct);
+                    } else {
+                        setResult(null);
+                    }
+                };
+
+                // 跑馬燈無限巡迴
+                document.addEventListener("DOMContentLoaded", function () {
+                    const marqueeInner = document.querySelector('.marquee-inner');
+                    const images = marqueeInner.querySelectorAll('img');
+                    const totalWidth = Array.from(images).reduce((acc, img) => acc + img.offsetWidth, 0);
+
+                    marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
+                });
+
+                //材質切換按鈕
+                const TextureTabs = ({ textureData }) => {
+                    const [activeTab, setActiveTab] = useState('glass');
+                    const handleTabClick = (tab) => {
+                        setActiveTab(tab);
+                    };
+
+                    // 根据选项卡按钮显示不同的介绍文本
+                    const getTabContent = () => {
+                        const filteredProducts = productData.filter(product => product.texture === activeTab);
+
+                        if (filteredProducts.length === 0) {
+                            return <p>No products available for this material.</p>;
+                        }
+                        switch (activeTab) {
+                            case 'glass':
+                                return (
+                                    <>
+                                        <div className="texture-content active" id="glass">
+                                            <div className="texture-info">
+                                                <p>玻璃可以看到飲料。</p>
+                                                <a href="">立即逛逛</a>
+                                            </div>
+                                            {renderProducts(filteredProducts)}
+                                        </div >
+                                    </>);
+                            case 'stainless':
+                                return (<>
+                                    <div className="texture-content active " id="stainless">
+                                        <div className="texture-info">
+                                            <p>不鏽鋼保溫</p>
+                                            <a href="">立即逛逛</a>
+                                        </div>
+                                        {renderProducts(filteredProducts)}
+                                    </div>
+                                </>);
+                            case 'ceramic':
+                                return (<>
+                                    <div className="texture-content active" id="ceramic">
+                                        <div className="texture-info">
+                                            <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                                            <a href="">立即逛逛</a>
+                                        </div>
+                                        {renderProducts(filteredProducts)}
+                                    </div>
+                                </>);
+                            case 'woody':
+                                return (<>
+                                    <div className="texture-content active" id="woody">
+                                        <div className="texture-info">
+                                            <p>木頭有質感</p>
+                                            <a href="">立即逛逛</a>
+                                        </div>
+                                        {renderProducts(filteredProducts)}</div >
+                                </>);
+                        }
+                    };
+
+                    return (
+                        <>
+                            <div className="textMenu">
+                                <ul className="texture">
+                                    <li>
+                                        <a
+                                            className={`texture-button ${activeTab === 'glass' ? 'active' : ''}`}
+                                            onClick={() => {
+                                                event.preventDefault();
+                                                handleTabClick('glass')
+                                            }}
+                                            href="#"
+                                        >
+                                            <h3>玻璃</h3>
+                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: '#FFFADD' }}></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className={`texture-button ${activeTab === 'woody' ? 'active' : ''}`}
+                                            onClick={() => {
+                                                event.preventDefault(); handleTabClick('woody')
+                                            }}
+                                            href="#"
+                                        >
+                                            <h3>木質</h3>
+                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className={`texture-button ${activeTab === 'ceramic' ? 'active' : ''}`}
+                                            onClick={() => {
+                                                event.preventDefault(); handleTabClick('ceramic')
+                                            }}
+                                            href="#"
+                                        >
+                                            <h3>瓷器</h3>
+                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            className={`texture-button ${activeTab === 'stainless' ? 'active' : ''}`}
+                                            onClick={() => {
+                                                event.preventDefault(); handleTabClick('stainless')
+                                            }}
+                                            href="#"
+                                        >
+                                            <h3>不鏽鋼</h3>
+                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                        </a>
+                                    </li>
+                                </ul >
+                            </div>
+                            <div className="textureList">
+                                {getTabContent(activeTab)}
+                            </div>
+                        </>
+                    )
+                }
+                return (
+                    <>
+                        <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light bold">
+                            <div className="container-fluid flex-grow-1">
+                                <a className="navbar-brand" href="./index.html"> <img src="./logo-w.ico" alt="三杯鴨LOGO" width="30"
+                                    height="30" /></a>
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                                <div className="collapse navbar-collapse " id="navbarNavDropdown">
+                                    <ul className="navbar-nav">
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="./about-us.html">關於我們</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="./news.html">最新消息</a>
+                                        </li>
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                找杯趣
+                                            </a>
+                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <li><a className="dropdown-item" href="./all-product.html">ALL</a></li>
+                                                <li><a className="dropdown-item" href="#glass-class">玻璃</a></li>
+                                                <li><a className="dropdown-item" href="#steel-class">不鏽鋼</a></li>
+                                                <li><a className="dropdown-item" href="#woody-class">木質</a></li>
+                                            </ul>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="./member.html">會員專區</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="./contact-us.html">聯絡我們</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul className="search navbar-nav d-flex">
+                                <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
+                                    style={{ color: "#22668D" }}></i></a></li>
+                                <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
+                                    style={{ color: "#22668D" }}></i></a></li>
+                                <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
+                                    style={{ color: "#22668D" }}></i></a></li>
+                            </ul>
+                        </nav>
+
+                        <main>
+                            <section id="banner">
+                                <div className="slogan">
+                                    <div className="slogan-left"><img src="./images/solgan2.svg" alt="" /></div>
+                                    <div className="slogan-right"><img className="img1" src="./images/rotate2.svg" alt="" /></div>
+                                </div>
+                                <div className="marquee">
+                                    <div className="a1">
+                                        <img src="./images/bg.jpeg" alt="" />
+                                        <img src="./images/bg1.jpeg" alt="" />
+                                        <img src="./images/bg3.jpeg" alt="" />
+                                        <img src="./images/bg4.jpeg" alt="" />
+                                        <img src="./images/bg5.jpeg" alt="" />
+                                        <img src="./images/bg.jpeg" alt="" />
+                                        <img src="./images/bg1.jpeg" alt="" />
+                                        <img src="./images/bg3.jpeg" alt="" />
+                                        <img src="./images/bg4.jpeg" alt="" />
+                                        <img src="./images/bg5.jpeg" alt="" />
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="category">
+                                <header className="subTitle bold">
+                                    <img src="./images/header.png" alt="" />
+                                    <h2>精選種類</h2>
+                                    <h3>ALL PRODUCT</h3>
+                                </header>
+                                <TextureTabs textureData={productData} />
+                            </section>
+
+
+                            <section id="service">
+                                <header className="subTitle bold">
+                                    <img src="./images/header.png" alt="" />
+                                    <h2>找尋命定馬克杯</h2>
+                                    <h3>SURPRISE</h3>
+                                </header>
+                                <div className="surprise">
+                                    <div className="picker">
+                                        <div className="filters">
+                                            <select id="color" value={color} onChange={(e) => setColor(e.target.value)}>
+                                                <option value="">顏色選擇</option>
+                                                <option value="all">不拘</option>
+                                                <option value="red">紅色</option>
+                                                <option value="blue">藍色</option>
+                                                <option value="green">綠色</option>
+                                                <option value="white">白色</option>
+
+                                            </select>
+                                            <select id="texture" value={texture} onChange={(e) => setTexture(e.target.value)}>
+                                                <option value="">選擇材質</option>
+                                                <option value="all">不拘</option>
+                                                <option value="glass">玻璃</option>
+                                                <option value="stainless">不鏽鋼</option>
+                                                <option value="ceramic">陶瓷</option>
+                                                <option value="woody">木質</option>
+                                            </select>
+                                            <select id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
+                                                <option value="">選擇價格</option>
+                                                <option value="all">不拘</option>
+                                                <option value="low">低於 $100</option>
+                                                <option value="medium">$101 - $300</option>
+                                                <option value="high">高於 $300</option>
+                                            </select>
+                                        </div>
+                                        <button className="my-button" onClick={filterProducts}>隨機馬克杯</button>
+                                    </div>
+
+                                    <div className="product-w">
+                                        <div className="icon">
+                                            <i className="fa-regular fa-heart fa-lg" style={{ color: "#355282" }}></i>
+                                            <i className="fa-solid fa-heart fa-lg" style={{ color: "#355282" }}></i>
+                                        </div>
+                                        {result ? (
+                                                <div className="product">
+                                            <div className="image"> <img src={`./images/${result.url}.jpeg`} alt="" />
+                                            </div>
+                                            <div className="product-text">
+                                                <span className="product-label">{result.tag1}</span>
+                                                <span className="product-label">{result.tag2}</span>
+                                                <div className="name-price">
+                                                    <h4 className="product-name">{result.name}</h4>
+                                                    <p className="product-price">${result.price}</p>
+                                                </div>
+                                                <p className="product-info">{result.info}</p>
+                                            </div>
+                                        </div> )
+                                        : (
+                                                <p>没有找到符合条件的产品</p>
+                                            )}
+                                    </div>
+                                </div>
+                            </section >
+
+                            <section id="news-campaign">
+                                <div id="news">
+                                    <header className="subTitle-half bold">
+                                        <img src="./images/header.png" alt="" />
+                                        <h2 style={{ color: "#FFFADD" }}>最新消息</h2>
+                                        <h3>NEWS</h3>
+                                    </header>
+                                    <div className="news-box">
+                                        <article className="news-content">
+                                            <time>2022.05.25</time>
+                                            <h4>端午節物流緊縮，運送時間加長</h4>
+                                            <p>端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長
+                                            </p>
+                                            <a href="#"> 點我閱讀 </a>
+                                        </article>
+                                        <div className="next-button">
+                                            <p>Previous</p>
+                                            <p>Next</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="campaign">
+                                    <header className="subTitle-half bold">
+                                        <img src="./images/header.png" alt="" />
+                                        <h2>本週特賣</h2>
+                                        <h3 style={{ color: "#22668D" }}>SALE </h3>
+                                    </header>
+                                    <div className="articleList">
+                                        <article className="sale">
+                                            <div className="text">
+                                                <div className="time">
+                                                    <time>2022.05.25</time>
+                                                    <time>2022.05.25</time>
+                                                </div>
+                                                <h4>端午節物流緊縮，運送時間加長</h4>
+                                            </div>
+                                            <a href="#"> 點我閱讀 </a>
+                                        </article>
+                                        <article className="sale">
+                                            <div className="text">
+                                                <div className="time">
+                                                    <time>2022.05.25</time>
+                                                    <time>2022.05.25</time>
+                                                </div>
+                                                <h4>端午節物流緊縮，運送時間加長</h4>
+                                            </div>
+                                            <a href="#"> 點我閱讀 </a>
+                                        </article>
+                                        <article className="sale">
+                                            <div className="text">
+                                                <div className="time">
+                                                    <time>2022.05.25</time>
+                                                    <time>2022.05.25</time>
+                                                </div>
+                                                <h4>端午節物流緊縮，運送時間加長</h4>
+                                            </div>
+                                            <a href="#"> 點我閱讀 </a>
+                                        </article>
+                                        <article className="sale">
+                                            <div className="text">
+                                                <div className="time">
+                                                    <time>2022.05.25</time>
+                                                    <time>2022.05.25</time>
+                                                </div>
+                                                <h4>端午節物流緊縮，運送時間加長</h4>
+                                            </div>
+                                            <a href="#"> 點我閱讀 </a>
+                                        </article>
+                                    </div>
+                                    <div className="product">
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="about">
+                                <header className="subTitle bold" style={{ marginTop: "150px" }}>
+                                    <img src="./images/header.png" alt="" />
+                                    <h2>關於三杯鴨</h2>
+                                    <h3>ABOUT US</h3>
+                                </header>
+                                <div className="about-us">
+                                    <div className="subMenu">
+                                        <ul className="nav nav-pills nav-tabs flex-column">
+                                            <li className="nav-item">
+                                                <a className="nav-link active" data-bs-toggle="tab" aria-current="page"
+                                                    href="#about-duckup">關於我們</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link" data-bs-toggle="tab" href="#about-qa">付款方式</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link" data-bs-toggle="tab" href="#about-delivery-fee">運費政策</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link " data-bs-toggle="tab" href="#about-return">退貨規則</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div className="about-info  ">
+
+                                        <div className="tab-content" id="tab-content">
+                                            <div className="tab-pane container fade show active" id="about-duckup" role="tabpanel"
+                                                aria-labelledby="about-duckup">
+                                                <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                                <h4>關於三杯鴨</h4>
+                                                <p>"每個人都值得擁有好杯鴨，用一杯重啟儀式美好的生活時光。"</p>
+                                                <p> 馬克杯是生活中容易被忽略之物，然而三杯鴨馬克杯期望能陪伴你的日常，溫暖陪伴寒冷的冬天、沁涼你的炎炎夏日，還是埋首時的精神陪伴，或者親友相聚的歡樂時光，能讓你在繁忙的日子中找到片刻的溫馨。！ </p>
+                                                <p>三杯鴨專注於挑選、設計獨特的鴨子造型馬克杯，不僅堅持無毒安全材質，更以職人精神，打造有故事的馬克杯。陪伴你度過人生的起伏，無論是歡笑還是挑戰，我們堅持提供最好的品項，讓每一個值得舉杯的時刻更美好。
+                                                </p>
+
+                                            </div>
+                                            <div className="tab-pane container fade" id="about-qa" role="tabpanel" aria-labelledby="about-qa">
+                                                <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                                <h4>付款方式</h4>
+                                                <ul>
+                                                    <li>信用卡：即時線上一次刷卡付款方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。</li>
+                                                    <li>LINE Pay：付款不需輸入信用卡資訊及3D驗證，僅需輸入專屬密碼即可使用信用卡進行付款，節省您的付款時間。</li>
+                                                    <li>Apple Pay：請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div className="tab-pane container fade" id="about-delivery-fee" role="tabpanel"
+                                            aria-labelledby="about-delivery-fee">
+                                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                            <h4>運費政策</h4>
+                                            <p>三杯鴨以宅急便寄送本店商品，運費120元，商品滿2000享免運費優惠。</p>
+                                            <p>配送範圍限台灣本島各縣市(不含郵政信箱)，因商品為易碎物品，為了保障雙方權益，請您在拆封開箱過程中務必全程錄影。</p>
+                                        </div>
+                                        <div className="tab-pane container fade" id="about-return" role="tabpanel"
+                                            aria-labelledby="about-return">
+                                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                            <h4>退貨原則</h4>
+                                            <h5>商品鑑賞期</h5>
+                                            <p>依照消費者保護法規定，從商品抵達開始即擁有７天商品鑑賞期，猶豫期非試用期。</p>
+                                            <h5>退換貨須知</h5>
+                                            <p>如有退貨需求，請於收到商品７天內聯絡客服人員，並提供「姓名」、「訂單編號」、「連絡電話」、「退換貨商品名稱」、「退換貨原因及照片」等資料，客服收到後將協助進行退換貨。</p>
+                                            <p>退貨商品須為未經拆封使用，或非人為瑕疵所造成的污損、故障，並保留完整的原始包裝（含外包裝紙盒、贈品、其他附件）。</p>
+                                            <p><strong>退貨客服專線：02-2200-0123。</strong></p>
+                                            <h5>退換貨流程</h5>
+                                            <p>聯絡客服人員 → 確認可換貨 → 準備完整商品及發票 → 提供收件時間及聯絡資訊、地址 → 由我端委託之物流進行回收。</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section >
+                        </main >
+
+                        <footer>
+                            <a className="logo" href="index.html"><img src="./logo.ico" alt="三杯鴨logo" className="logo" /></a>
+                            <div className="info">
+                                <address>ADD.壓箱市鴨香區鴨鳴路181巷12樓</address>
+                                <p>TEL. 02-2200-0124</p>
+                                <p>EMAIL. pig20071219@gmail.com</p>
+                                <p>OPENING HOURS. 10:00-19:00</p>
+                                <small>© 2024 Duckup Inc.</small>
+                            </div>
+                            <div className="sitemap">
+                                <ul className="menu">
+                                    <li><a href="./about-us.html">品牌故事</a></li>
+                                    <li><a href="./news.html">最新消息</a></li>
+                                    <li><a href="./member.html">會員專區</a></li>
+                                    <li><a href="./contact-us.html">聯絡我們</a></li>
+                                </ul>
+                                <ul className="media">
+                                    <li><a href="#"><i className="fa-brands fa-square-facebook fa-2xl" style={{ color: "#FFFADD" }}></i></a></li>
+                                    <li><a href="#service"><i className="fa-brands fa-square-instagram fa-2xl" style={{ color: "#FFFADD" }}></i></a>
+                                    </li>
+                                    <li><a href="#about"><i className="fa-brands fa-square-x-twitter fa-2xl" style={{ color: "#FFFADD" }}></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </footer>
+                    </>)
+
+            }
+            const container = document.getElementById('root');
+            const root = ReactDOM.createRoot(container);
+            root.render(<MyApp />);
+        })();
+    </script>
+</body>
+
+</html>
