@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "GenJyuuGothic-Regular";
-  src: url("/webfonts/GenJyuuGothic-Regular.ttf");
+  src: url("../../webfonts/GenJyuuGothic-Regular.ttf");
 }
 @font-face {
   font-family: "GenJyuuGothic-Bold";

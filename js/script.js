@@ -54,7 +54,7 @@ function filterProducts() {
     }
 }
 
-// 跑馬燈
+// 跑馬燈無限巡迴
 document.addEventListener("DOMContentLoaded", function () {
     const marqueeInner = document.querySelector('.marquee-inner');
     const images = marqueeInner.querySelectorAll('img');
