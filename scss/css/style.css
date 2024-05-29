@@ -5,11 +5,11 @@
 }
 @font-face {
   font-family: "GenJyuuGothic-Bold";
-  src: url("/webfonts/GenJyuuGothic-Bold.ttf");
+  src: url("../../webfonts/GenJyuuGothic-Bold.ttf");
 }
 @font-face {
   font-family: "GenJyuuGothic-Light";
-  src: url("/webfonts/GenJyuuGothic-Light.ttf");
+  src: url("../../webfonts/GenJyuuGothic-Light.ttf");
 }
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -10453,7 +10453,7 @@ select {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  background-image: url(/images/arrow.svg);
+  background-image: url(../../images/arrow.svg);
   background-position: right 0.5em top 50%, 0 0;
   background-size: 1rem;
   background-repeat: no-repeat, repeat;
