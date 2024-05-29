@@ -10168,12 +10168,13 @@ select {
   justify-content: space-around;
 }
 #banner .marquee {
-  margin-top: 80px;
+  margin-top: 30px;
   height: 500px;
   width: 100vw;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
+  margin-bottom: 30px;
 }
 #banner .marquee .a1 {
   display: inline-block;
@@ -10429,7 +10430,7 @@ select {
 }
 #service .surprise .picker {
   margin: 20px auto;
-  width: calc(50% - 120px);
+  width: calc(40% - 120px);
   display: flex;
   padding: 30px;
   flex-direction: column;
@@ -10463,7 +10464,7 @@ select {
   text-align: center;
 }
 #service .surprise .product-w {
-  width: calc(50% - 120px);
+  width: calc(60% - 120px);
   margin: 60px;
   padding: 30px;
   background-color: #FFFADD;
@@ -10626,6 +10627,36 @@ select {
   margin: 5px;
 }
 
+.slogan {
+  display: flex;
+  margin-top: 100px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+  align-items: center;
+}
+.slogan .slogan-left {
+  width: 85%;
+}
+.slogan .slogan-right {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+.slogan .slogan-right img {
+  width: 120px;
+  height: 120px;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
 /* product */
 .filter ul {
   display: flex;

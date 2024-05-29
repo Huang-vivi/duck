@@ -45,12 +45,13 @@
   // 輪播圖片
 
   .marquee {
-    margin-top: 80px;
+    margin-top: 30px;
     height: 500px;
     width: 100vw;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
+    margin-bottom: 30px;
 
     .a1 {
       display: inline-block;
@@ -371,7 +372,7 @@
 
     .picker {
       margin: 20px auto;
-      width: calc(50% - 120px);
+      width: calc(40% - 120px);
       display: flex;
       padding: 30px;
       flex-direction: column;
@@ -414,7 +415,7 @@
     }
 
     .product-w {
-      width: calc(50% - 120px);
+      width: calc(60% - 120px);
       margin: 60px;
       padding: 30px;
       background-color: $main-white;
@@ -615,4 +616,35 @@
     margin: 5px;
   }
 
+}
+
+
+.slogan {
+display: flex;
+margin-top: 100px;
+justify-content: space-between;
+width: 100%;
+padding: 0 30px;
+align-items: center;
+
+.slogan-left{
+width: 85%;
+}
+
+.slogan-right{
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  img{
+    width: 120px;
+    height: 120px;
+    animation: rotate 10s linear infinite;
+  }
+}
+
+}
+
+@keyframes rotate {
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(720deg);}
 }
