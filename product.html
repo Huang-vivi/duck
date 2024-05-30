@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="三杯鴨-馬克杯選品店。">
   <meta name="keywords" content="不銹鋼杯,鴨子造型禮物,玻璃杯,馬克杯">
-  <meta name="copyright" content="&copy; 2024 duckup.">
+  <meta name="copyright" content="&copy; 2024 quackmug.">
   <meta name="author" content="rita design.">
   <meta name="generator" content="vscode">
   <meta name="Distribution" content="Taiwan">
@@ -18,233 +18,131 @@
   <meta property="og:title" content="三杯鴨-馬克杯選品店">
   <meta property="og:description" content="探索三杯鴨-馬克杯選品店。">
   <meta property="og:site_name" content="三杯鴨">
-  <meta property="og:url" content="http://www.duckup.com/tw/">
+  <meta property="og:url" content="http://www.quackmug.com/tw/">
   <meta property="og:image" content="yourCover.jpg">
   <meta property="og:image" content="yourImage.png">
 
-  <title>三杯鴨-馬克杯選品店</title>
+  <title>三杯鴨-所有商品</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
   <!-- 手動設定favicon -->
   <link rel="icon" href="./images/favicon.png"">
   <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel=" stylesheet" href="./scss/css/style.css">
 
-</head>
 
-<body>
-  <!-- 頁首 -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light bold">
-    <div class="container-fluid flex-grow-1">
-        <a class="navbar-brand" href="./index.html"> <img src="./logo-w.ico" alt="三杯鴨LOGO" width="30" height="30"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="./about-us.html">關於我們</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./news.html">最新消息</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" aria-current="page" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        找杯趣
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="./all-product.html">ALL</a></li>
-                        <li><a class="dropdown-item" href="#glass-class">玻璃</a></li>
-                        <li><a class="dropdown-item" href="#steel-class">不鏽鋼</a></li>
-                        <li><a class="dropdown-item" href="#woody-class">木質</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./member.html">會員專區</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contact-us.html">聯絡我們</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <ul class="search d-flex">
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass fa-xl"
-                    style="color: #22668D;"></i></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping fa-xl"
-                    style="color: #22668D;"></i></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-user fa-xl"
-                    style="color: #22668D;"></i></a></li>
-    </ul>
-</nav>
-  <!-- 主要內容區 -->
-  <main>
-    <section class="all-product">
-      <div class="top-class first-header">
-        <nav
-          style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
-          aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="/all-product.html">Product</a></li>
-            <li class="breadcrumb-item"><a href="#">Glass</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="main-product">
-        <div class="product-top">
-          <div class="product-images">
-            <div class="big">
-              <img class="img-main" src="" alt="">
-            </div>
-            <div class="small">
-              <img class="img-small" src="" alt="">
-              <img class="img-small" src="" alt="">
-              <img class="img-small" src="" alt="">
-            </div>
-          </div>
-          <div class="product-infomation">
-            <h1></h1>
-            <p></p>
-            <div> promotion-tag</div>
-            <div>price</div>
-            <div>select</div>
-            <input type="text">
-            <button>立即購買</button>
-            <button>加入購物車</button>
-          </div>
-        </div>
-        <div class="product-description">
-
-          <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">商品介紹</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">銷售說明</button>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active text" id="pills-home" role="tabpanel"
-              aria-labelledby="pills-home-tab">
-              <h2>商品介紹</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi ea quae quisquam nihil
-                eveniet amet odio fugiat possimus ad similique, culpa reiciendis temporibus, harum impedit, voluptates
-                perspiciatis vitae voluptas?</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, ad omnis iste illum alias, odio
-                voluptatibus eaque, ipsa dolores eligendi ipsam maxime itaque architecto exercitationem ab ea. Quod,
-                quasi officia!</p>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste odit quis nihil, fuga ex cupiditate
-                itaque ipsum, maxime, expedita eius omnis ducimus? Similique laborum provident iure, dolores quisquam
-                porro at.</p>
-              <img src="" alt="">
-
-            </div>
-
-            <div class="tab-pane fade text" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-              <h2>銷售說明</h2>
-
-              <p>運費100
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="product-recommand">
-            <h4>類似商品</h4>
-            <div class="product-list">
-              <i class="fa-solid fa-square-caret-left fa-2xl" style="color: #22668D;"></i>
-              <div class="product">
-                  <img class="productImg" src="./images/texture-woody.jpeg" alt="">
-                  <h3 class="productName">白磁鴨杯</h3>
-                  <p class="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
-                  </p>
-                  <div class="add-cart"> 加入購物車 <i class="fa-solid fa-cart-shopping fa-xl"
-                          style="color: #FFFADD;"></i></a>
-                      </li>
-                  </div>
-              </div>
-              <div class="product product-rwd ">
-                  <img class="productImg" src="./images/texture-woody.jpeg" alt="">
-                  <h3 class="productName">白磁鴨杯</h3>
-                  <p class="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
-                  </p>
-                  <div class="add-cart"> 加入購物車 <i class="fa-solid fa-cart-shopping fa-xl"
-                          style="color: #FFFADD;"></i></a>
-                      </li>
-                  </div>
-              </div>
-
-              <div class="product product-rwd">
-                  <img class="productImg" src="./images/texture-woody.jpeg" alt="">
-                  <h3 class="productName">白磁鴨杯</h3>
-                  <p class="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
-                  </p>
-                  <div class="add-cart"> 加入購物車 <i class="fa-solid fa-cart-shopping fa-xl"
-                          style="color: #FFFADD;"></i></a>
-                      </li>
-                  </div>
-              </div>
-              <div class="product product-rwd">
-                  <img class="productImg" src="./images/texture-woody.jpeg" alt="">
-                  <h3 class="productName">白磁鴨杯</h3>
-                  <p class="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
-                  </p>
-                  <div class="add-cart"> 加入購物車 <i class="fa-solid fa-cart-shopping fa-xl"
-                          style="color: #FFFADD;"></i></a>
-                      </li>
-                  </div>
-              </div>
-              <i class="fa-solid fa-square-caret-right fa-2xl" style="color: #22668D;"></i>
-          </div>
-          </div>
-
-
-        </div>
-      </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Footer區 -->
-  <footer>
-    <a class="logo" href="index.html"><img src="./logo.ico" alt="三杯鴨logo" class="logo"></a>
-    <div class="info">
-      <address>ADD.台北市中山區民族路181巷</address>
-      <p>TEL. 02-2200-0124</p>
-      <p>EMAIL. pig20071219@gmail.com</p>
-      <p>OPENING HOURS. 10:00-19:00</p>
-      <small>© 2024 Duckup Inc.</small>
-    </div>
-    <div class="sitemap">
-      <ul class="menu">
-        <li><a href="#aboutus">品牌故事</a></li>
-        <li><a href="#service">最新消息</a></li>
-        <li><a href="#about">會員中心</a></li>
-        <li><a href="#contact">聯絡我們</a></li>
-      </ul>
-      <ul class="media">
-        <li><a href="#"><i class="fa-brands fa-square-facebook fa-2xl" style="color: #FFFADD;"></i></a></li>
-        <li><a href="#service"><i class="fa-brands fa-square-instagram fa-2xl" style="color: #FFFADD;"></i></a>
-        </li>
-        <li><a href="#about"><i class="fa-brands fa-square-x-twitter fa-2xl" style="color: #FFFADD;"></i></a>
-        </li>
-      </ul>
-    </div>
-  </footer>
   <!-- Bootstrap 5 JS and Popper.js -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- icon -->
   <script src=" https://kit.fontawesome.com/9662c9009d.js" crossorigin="anonymous"></script>
-  <!-- 自己的JS放在最後 -->
-  <script src="/js/script.js"></script>
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- 引入 component.js 文件 -->
+  <script src="./js/component.js" type="text/babel"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    (async () => {
+      const { useState, useEffect } = React;
+      function MyApp() {
+
+
+        const ProductCardS = ({ product }) => {
+          return (
+            <div className="product-s">
+              <img className="productImg" src="./images/texture-woody.jpeg" alt="" />
+              <h3 className="productName">白磁鴨杯</h3>
+              <p className="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
+              </p>
+              <div className="product-bottom">
+                <span className="product-label">職人手作</span>
+                <span className="product-label">黑釉</span>
+                <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD;" }} > </i>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+
+        return (
+          <>
+            <Header active="all-product" />
+            <main>
+              <section className="all-product">
+                <header className="subTitle bold first-header">
+                  <img src="./images/header.png" alt="" />
+                  <h2>所有產品</h2>
+                  <h3>ALL PRODUCT</h3>
+                </header>
+                <div className="top-className">
+                  <na style={{
+                    "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                  }}
+                    aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
+                      <li className="breadcrumb-item active" aria-current="page">全部商品</li>
+                    </ol>
+                  </na>
+
+                  <div className="filter">
+                    <ul>
+                      <li>每頁展示數量 v </li>
+                      <li>商品排序 v </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="all-product-main">
+                  <Navtable />
+
+                  <div className="product-list all-product">
+                    <div className="product-s">
+                      <img className="productImg" src="./images/texture-woody.jpeg" alt="" />
+                      <h3 className="productName">白磁鴨杯</h3>
+                      <p className="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
+                      </p>
+                      <div className="product-bottom">
+                        <span className="product-label">職人手作</span>
+                        <span className="product-label">黑釉</span>
+                        <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD;" }} > </i>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="product-s">
+                      <img className="productImg" src="./images/texture-woody.jpeg" alt="" />
+                      <h3 className="productName">白磁鴨杯</h3>
+                      <p className="productInfo">日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理。日本職人手作，人氣鴨品，每日限量50組成品，每一組含有獨特文理
+                      </p>
+                      <div className="product-bottom">
+                        <span className="product-label">職人手作</span>
+                        <span className="product-label">黑釉</span>
+                        <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD;" }} ></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section >
+            </main >
+            <Footer />
+          </>)
+
+      }
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+    })();
+  </script>
 </body>
 
 </html>

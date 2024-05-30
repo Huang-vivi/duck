@@ -59,12 +59,9 @@
                 //讀取json資料
                 useEffect(() => {
                     const fetchData = async () => {
-                        try {
-                            const data = await axios.get('./json/product.json');
-                            const { productData } = data.data;
-                            setProductData(productData);
-                        } catch (error) {
-                            console.error("Error fetching product data:", error);
+                        const data = await fetchProductData();
+                        if (data) {
+                            setProductData(data);
                         }
                     };
 
@@ -107,8 +104,19 @@
                 const [tag2, setTag2] = useState('');
                 const [info, setInfo] = useState('');
                 const [url, setUrl] = useState('');
-                const [result, setResult] = useState(null);
+                const [result, setResult] = useState({
 
+                    "id": "1",
+                    "texture": "glass",
+                    "priceshow": "99",
+                    "price": "low",
+                    "color": "white",
+                    "tag1": "職人手作",
+                    "tag2": "限量",
+                    "name": "鴨趣造型馬克杯",
+                    "info": "這款鴨趣造型馬克杯就像一隻可愛的小鴨，擁有迷人的外觀和獨特的造型！",
+                    "url": "product1"
+                });
 
                 const filterProducts = () => {
                     // console.log('Selected color:', color);
@@ -123,7 +131,8 @@
 
                     if (filteredProducts.length > 0) {
                         const randomProduct = filteredProducts[Math.floor(Math.random() * filteredProducts.length)];
-                        setResult(randomProduct);
+                        setResult(randomProduct)
+                        console.log(randomProduct);
                     } else {
                         setResult(null);
                     }
@@ -158,7 +167,7 @@
                                     <>
                                         <div className="texture-content active" id="glass">
                                             <div className="texture-info">
-                                                <p>玻璃可以看到飲料。</p>
+                                                <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
                                                 <a href="">立即逛逛</a>
                                             </div>
                                             {renderProducts(filteredProducts)}
@@ -168,7 +177,7 @@
                                 return (<>
                                     <div className="texture-content active " id="stainless">
                                         <div className="texture-info">
-                                            <p>不鏽鋼保溫</p>
+                                            <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
                                             <a href="">立即逛逛</a>
                                         </div>
                                         {renderProducts(filteredProducts)}
@@ -188,7 +197,7 @@
                                 return (<>
                                     <div className="texture-content active" id="woody">
                                         <div className="texture-info">
-                                            <p>木頭有質感</p>
+                                            <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
                                             <a href="">立即逛逛</a>
                                         </div>
                                         {renderProducts(filteredProducts)}</div >
@@ -433,13 +442,14 @@
                                                     <span className="product-label">{result.tag2}</span>
                                                     <div className="name-price">
                                                         <h4 className="product-name">{result.name}</h4>
-                                                        <p className="product-price">${result.price}</p>
+                                                        <p className="product-price">${result.priceshow}</p>
                                                     </div>
                                                     <p className="product-info">{result.info}</p>
                                                 </div>
                                             </div>)
                                             : (
-                                                <p>没有找到符合条件的产品</p>
+                                                <p>由你來挑天選之杯～<br/> 再試試其他條件吧！ </p>
+
                                             )}
                                     </div>
                                 </div>

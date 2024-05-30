@@ -10331,6 +10331,9 @@ select {
   height: 2rem;
   line-height: 2rem;
 }
+.textureList .texture-info p {
+  margin: 0;
+}
 
 .product-list {
   flex: 7;
