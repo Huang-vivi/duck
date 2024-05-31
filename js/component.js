@@ -55,7 +55,7 @@ const Header = ({ active }) => {
                 找杯趣
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item" href="./product.html">ALL</a></li>
+                <li><a className="dropdown-item" href="./all-product.html">ALL</a></li>
                 <li><a className="dropdown-item" href="./product-glass.html">玻璃</a></li>
                 <li><a className="dropdown-item" href="./product-stainless.html">不鏽鋼</a></li>
                 <li><a className="dropdown-item" href="./product-woody.html">木質</a></li>
@@ -82,8 +82,6 @@ const Header = ({ active }) => {
   )
 }
 
-
-// 次目錄active設計
 const Navtable = ({ active }) => {
   return (
     <>
@@ -131,3 +129,24 @@ async function fetchProductData() {
   }
 }
 
+
+                //建立product元件
+                const Product = ({ name, info, url ,id}) => {
+                  return (
+                      <>
+                          <div className="product">
+                              <a href={`product.html?q=${id}`}>
+                                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+                                  <h3 className="productName">{name}</h3>
+                                  <p className="productInfo">
+                                      {info}
+                                  </p>
+                                  <div className="add-cart">
+                                      <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
+                                  </div>
+                              </a>
+                          </div>
+
+                      </>
+                  );
+              }

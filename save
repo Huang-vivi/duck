@@ -1,149 +1,98 @@
- <div className="about-us">
-                                        <div className="subMenu">
-                                            <ul className="nav nav-pills nav-tabs flex-column">
-                                                <li className="nav-item">
-                                                    <a className="nav-link active" data-bs-toggle="tab" aria-current="page"
-                                                        href="#about-duckup">關於我們</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a className="nav-link" data-bs-toggle="tab" href="#about-qa">付款方式</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a className="nav-link" data-bs-toggle="tab" href="#about-delivery-fee">運費政策</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a className="nav-link " data-bs-toggle="tab" href="#about-return">退貨規則</a>
-                                                </li>
-                                            </ul>
+   return (
+                        <>
+                            <div className="main-product">
+                                <div className="product-top">
+                                    <div className="product-images">
+                                        <div className="big">
+                                            <img className="img-main" src="" alt="" />
                                         </div>
-                                        <div className="about-info  ">
-                                            <div className="tab-content" id="tab-content">
-                                                <div className="tab-pane container fade show active" id="about-duckup" role="tabpanel"
-                                                    aria-labelledby="about-duckup">
-                                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                                    <h4>關於三杯鴨</h4>
-                                                    <p>"每個人都值得擁有好杯鴨，用一杯重啟儀式美好的生活時光。"</p>
-                                                    <p> 馬克杯是生活中容易被忽略之物，然而三杯鴨馬克杯期望能陪伴你的日常，溫暖陪伴寒冷的冬天、沁涼你的炎炎夏日，還是埋首時的精神陪伴，或者親友相聚的歡樂時光，能讓你在繁忙的日子中找到片刻的溫馨。！ </p>
-                                                    <p>三杯鴨專注於挑選、設計獨特的鴨子造型馬克杯，不僅堅持無毒安全材質，更以職人精神，打造有故事的馬克杯。陪伴你度過人生的起伏，無論是歡笑還是挑戰，我們堅持提供最好的品項，讓每一個值得舉杯的時刻更美好。
-                                                    </p>
-                                                </div>
-                                                <div className="tab-pane container fade" id="about-qa" role="tabpanel" aria-labelledby="about-qa">
-                                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                                    <h4>付款方式</h4>
-                                                    <ul>
-                                                        <li>信用卡：即時線上一次刷卡付款方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。</li>
-                                                        <li>LINE Pay：付款不需輸入信用卡資訊及3D驗證，僅需輸入專屬密碼即可使用信用卡進行付款，節省您的付款時間。</li>
-                                                        <li>Apple Pay：請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div className="tab-pane container fade" id="about-delivery-fee" role="tabpanel"
-                                                aria-labelledby="about-delivery-fee">
-                                                <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                                <h4>運費政策</h4>
-                                                <p>三杯鴨以宅急便寄送本店商品，運費120元，商品滿2000享免運費優惠。</p>
-                                                <p>配送範圍限台灣本島各縣市(不含郵政信箱)，因商品為易碎物品，為了保障雙方權益，請您在拆封開箱過程中務必全程錄影。</p>
-                                            </div>
-                                            <div className="tab-pane container fade" id="about-return" role="tabpanel"
-                                                aria-labelledby="about-return">
-                                                <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                                <h4>退貨原則</h4>
-                                                <h5>商品鑑賞期</h5>
-                                                <p>依照消費者保護法規定，從商品抵達開始即擁有７天商品鑑賞期，猶豫期非試用期。</p>
-                                                <h5>退換貨須知</h5>
-                                                <p>如有退貨需求，請於收到商品７天內聯絡客服人員，並提供「姓名」、「訂單編號」、「連絡電話」、「退換貨商品名稱」、「退換貨原因及照片」等資料，客服收到後將協助進行退換貨。</p>
-                                                <p>退貨商品須為未經拆封使用，或非人為瑕疵所造成的污損、故障，並保留完整的原始包裝（含外包裝紙盒、贈品、其他附件）。</p>
-                                                <p><strong>退貨客服專線：02-2200-0123。</strong></p>
-                                                <h5>退換貨流程</h5>
-                                                <p>聯絡客服人員 → 確認可換貨 → 準備完整商品及發票 → 提供收件時間及聯絡資訊、地址 → 由我端委託之物流進行回收。</p>
+                                        <div className="small">
+                                            <img className="img-small" src="" alt="" />
+                                            <img className="img-small" src="" alt="" />
+                                            <img className="img-small" src="" alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="product-infomation">
+                                        <h1>{name}</h1>
+                                        <p></p>
+                                        <div>{tag1}</div>
+                                        <div>{tag2}</div>
+                                        <div>$NT{priceshow}</div>
+                                        <div>select</div>
+                                        <input type="text" />
+                                        <button>立即購買</button>
+                                        <button>加入購物車</button>
+                                    </div>
+                                </div>
+                                <div className="product-description">
 
-                                            </div>
+                                    <ul className="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+                                        <li className="nav-item" role="presentation">
+                                            <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                                aria-selected="true">商品介紹</button>
+                                        </li>
+                                        <li className="nav-item" role="presentation">
+                                            <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                                data-bs-target="#pills-profile" type="button" role="tab"
+                                                aria-controls="pills-profile" aria-selected="false">{info}</button>
+                                        </li>
+                                    </ul>
+                                    <div className="tab-content" id="pills-tabContent">
+                                        <div className="tab-pane fade show active text" id="pills-home" role="tabpanel"
+                                            aria-labelledby="pills-home-tab">
+                                            <h2>商品介紹</h2>
+                                            <p>{content}</p>
+                                            <img src="" alt="" />
+
+                                        </div>
+
+                                        <div className="tab-pane fade text" id="pills-profile" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <h2>銷售說明</h2>
+
+                                            <p>運費100
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div className="product-recommand">
+                                        <h4>類似商品</h4>
+                                        <div className="product-list">
+                                            <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
+                                            <i className="fa-solid fa-square-caret-right fa-2xl" style={{
+                                                "color": "#22668D"
+                                            }}></i>
                                         </div>
                                     </div>
 
-
-<footer>
-                            <a className="logo" href="index.html"><img src="./logo.ico" alt="三杯鴨logo" className="logo" /></a>
-                            <div className="info">
-                                <address>ADD.壓箱市鴨香區鴨鳴路181巷12樓</address>
-                                <p>TEL. 02-2200-0124</p>
-                                <p>EMAIL. pig20071219@gmail.com</p>
-                                <p>OPENING HOURS. 10:00-19:00</p>
-                                <small>© 2024 Duckup Inc.</small>
+                                </div>
                             </div>
-                            <div className="sitemap">
-                                <ul className="menu">
-                                    <li><a href="./about-us.html">品牌故事</a></li>
-                                    <li><a href="./news.html">最新消息</a></li>
-                                    <li><a href="./member.html">會員專區</a></li>
-                                    <li><a href="./contact-us.html">聯絡我們</a></li>
-                                </ul>
-                                <ul className="media">
-                                    <li><a href="#"><i className="fa-brands fa-square-facebook fa-2xl" style={{ color: "#FFFADD" }}></i></a></li>
-                                    <li><a href="#service"><i className="fa-brands fa-square-instagram fa-2xl" style={{ color: "#FFFADD" }}></i></a>
-                                    </li>
-                                    <li><a href="#about"><i className="fa-brands fa-square-x-twitter fa-2xl" style={{ color: "#FFFADD" }}></i></a>
-                                    </li>
-                                </ul>
+                            <div className="product-s">
+                                <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+                                <h3 className="productName">{name}</h3>
+                                <div className="product-middle">
+                                    <span className="product-label">{tag1}</span>
+                                    <span className="product-label">{tag2}</span>
+                                </div>
+                                <div className="product-bottom">
+
+                                    <div className="product-price-show">NT${priceshow}</div>
+                                    <div className="product-icon">
+                                        <div className="add-list">
+                                            <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{
+                                                color: "#22668D", "fontSize": "2em"
+                                            }} onClick={handleFavoriteClick}> </i>
+                                        </div>
+                                        <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{
+                                            "color"
+                                                : "#FFFADD"
+                                        }}> </i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </footer>
-
-
-<div className="subMenu">
-                    <ul className="nav nav-pills flex-column">
-                      <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">玻璃</a>
-                        <ul className="nav  flex-column">
-                          <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">買一送一</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link" href="#">最新商品</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <p>
-                        <li className="nav-item">
-                          <a className="btn btn-primary active nav-link" data-bs-toggle="collapse" href="#collapseExample"
-                            role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Link with href
-                          </a>
-                        </li >
-                      </p>
-                      <div className="collapse" id="collapseExample">
-                        <ul className="nav  flex-column">
-                          <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">買一送一</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link" href="#">最新商品</a>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <li className="nav-item">
-                        <a className="nav-link" href="#">不鏽鋼</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link" href="#">竹製</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link " href="#">塑膠</a>
-                      </li>
-                    </ul>
-                  </div>
-
-
-<div id="productcarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./images/product17" class="d-block" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./images/product16" class="d-block" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./images/product15" class="d-block" alt="...">
-    </div>
-  </div>
-</div>
+                        </>)
+                }

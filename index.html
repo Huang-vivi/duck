@@ -74,28 +74,12 @@
                         <div className="product-list">
                             <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
                             {products.map((product) => (
-                                <Product key={product.name} name={product.name} info={product.info} url={product.url} />
+                                <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
                             ))}
                             <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
                         </div >
                     </>)
                 };
-
-                //建立product元件
-                const Product = ({ name, info, url }) => {
-                    return (
-                        <div className="product">
-                            <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-                            <h3 className="productName">{name}</h3>
-                            <p className="productInfo">
-                                {info}
-                            </p>
-                            <div className="add-cart">
-                                <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
-                            </div>
-                        </div>
-                    );
-                }
 
                 const [color, setColor] = useState('');
                 const [texture, setTexture] = useState('');
@@ -448,7 +432,7 @@
                                                 </div>
                                             </div>)
                                             : (
-                                                <p>由你來挑天選之杯～<br/> 再試試其他條件吧！ </p>
+                                                <p>由你來挑天選之杯～<br /> 再試試其他條件吧！ </p>
 
                                             )}
                                     </div>
