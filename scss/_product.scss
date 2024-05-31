@@ -13,20 +13,23 @@
 .all-product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  // justify-content: start;
   // padding-left: 50px;
 }
 
 
 .all-product-main {
   display: flex;
-  width: 85%;
+  // width: 85%;
 }
 
 .first-header {
   margin-top: 100px;
 }
 
+.all-product-main product-list {
+  flex-wrap: wrap;
+}
 
 
 .product-s {
@@ -39,6 +42,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
+  &:hover {
+    box-shadow: 5px 5px 0px 0px $main-yellow;
+    border: $main-yellow 1px solid;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 
   &:nth-child(3) {
     @media($breakpoint-md) {
@@ -53,13 +64,13 @@
   }
 
   .productImg {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     border-radius: 20px;
   }
 
   .productInfo {
-    width: 150px;
+    width: 180px;
     text-align: justify;
     margin: 5px 0;
     overflow: hidden;
@@ -68,7 +79,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     @include line-save(2);
-    font-size: map-get($font-size, xs);
+    font-size: map-get($font-size, s);
   }
 
   .add-cart {
@@ -77,7 +88,21 @@
     width: 30px;
     padding: 8px;
     border-radius: 20px;
-    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 8px 8px 0px;
+    box-shadow: 2px 2px 0px 0px #405983;
+
+
+    &:hover {
+      transition: 1s linear;
+    }
+  }
+
+  .add-list {
+    display: flex;
+    width: 30px;
+    padding: 8px;
     justify-content: center;
     align-items: center;
     margin: 8px;
@@ -86,12 +111,23 @@
   .product-bottom {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .product-icon {
+      display: flex;
+    }
+
+    .product-price-show {
+      color: #E39529;
+      font-size: map-get($font-size, l);
+    }
   }
 
   .product-label {
     font-size: map-get($font-size, xs);
     border-radius: 20px;
-    padding: 3px;
+    padding: 5px;
     border: #405983 .8px solid;
     height: fit-content;
     margin: 3px;
@@ -160,6 +196,6 @@
   }
 }
 
-.nav-pills-su.active{
-border-bottom: $main-yellow 3px solid;
+.nav-pills-su.active {
+  border-bottom: $main-yellow 3px solid;
 }

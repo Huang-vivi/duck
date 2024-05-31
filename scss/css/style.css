@@ -10336,7 +10336,6 @@ select {
 }
 
 .product-list {
-  flex: 7;
   width: 80vw;
   margin-bottom: 50px;
   display: flex;
@@ -10352,6 +10351,12 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.product-list .product:hover {
+  box-shadow: 5px 5px 0px 0px #8FCDDD;
+  border: #8FCDDD 1px solid;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 @media (max-width:820px) {
   .product-list .product:nth-child(3) {
@@ -10675,16 +10680,18 @@ select {
 .all-product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
 }
 
 .all-product-main {
   display: flex;
-  width: 85%;
 }
 
 .first-header {
   margin-top: 100px;
+}
+
+.all-product-main product-list {
+  flex-wrap: wrap;
 }
 
 .product-s {
@@ -10698,6 +10705,12 @@ select {
   flex-direction: column;
   align-items: center;
 }
+.product-s:hover {
+  box-shadow: 5px 5px 0px 0px #FFCC70;
+  border: #FFCC70 1px solid;
+  transform: scale(1.05);
+  cursor: pointer;
+}
 @media (max-width:820px) {
   .product-s:nth-child(3) {
     display: none;
@@ -10709,12 +10722,12 @@ select {
   }
 }
 .product-s .productImg {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 20px;
 }
 .product-s .productInfo {
-  width: 150px;
+  width: 180px;
   text-align: justify;
   margin: 5px 0;
   overflow: hidden;
@@ -10727,7 +10740,7 @@ select {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  font-size: 12px;
+  font-size: 14px;
 }
 .product-s .add-cart {
   display: flex;
@@ -10735,7 +10748,18 @@ select {
   width: 30px;
   padding: 8px;
   border-radius: 20px;
-  color: white;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 8px 8px 0px;
+  box-shadow: 2px 2px 0px 0px #405983;
+}
+.product-s .add-cart:hover {
+  transition: 1s linear;
+}
+.product-s .add-list {
+  display: flex;
+  width: 30px;
+  padding: 8px;
   justify-content: center;
   align-items: center;
   margin: 8px;
@@ -10743,11 +10767,20 @@ select {
 .product-s .product-bottom {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.product-s .product-bottom .product-icon {
+  display: flex;
+}
+.product-s .product-bottom .product-price-show {
+  color: #E39529;
+  font-size: 24px;
 }
 .product-s .product-label {
   font-size: 12px;
   border-radius: 20px;
-  padding: 3px;
+  padding: 5px;
   border: #405983 0.8px solid;
   height: -moz-fit-content;
   height: fit-content;

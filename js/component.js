@@ -56,9 +56,9 @@ const Header = ({ active }) => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><a className="dropdown-item" href="./product.html">ALL</a></li>
-                <li><a className="dropdown-item" href="#glass-class">玻璃</a></li>
-                <li><a className="dropdown-item" href="#steel-class">不鏽鋼</a></li>
-                <li><a className="dropdown-item" href="#woody-class">木質</a></li>
+                <li><a className="dropdown-item" href="./product-glass.html">玻璃</a></li>
+                <li><a className="dropdown-item" href="./product-stainless.html">不鏽鋼</a></li>
+                <li><a className="dropdown-item" href="./product-woody.html">木質</a></li>
               </ul>
             </li>
             <li className="nav-item">
@@ -84,45 +84,33 @@ const Header = ({ active }) => {
 
 
 // 次目錄active設計
-const Navtable = () => {
-  const [activeItem, setActiveItem] = useState('./product/glass.html');
-
-  useEffect(() => {
-    // 檢查在組件加載時是否有 active 的菜單項
-    const activeElement = document.querySelector('.nav-link.active');
-    if (activeElement) {
-      const target = activeElement.getAttribute('href');
-      setActiveItem(target);
-    }
-  }, []);
-
-  const handleClick = (event, href) => {
-    event.stopPropagation();
-    // 更新新的 active 狀態
-    setActiveItem(href);
-
-  };
+const Navtable = ({ active }) => {
   return (
     <>
       <div className="about-us">
         <div className="subMenu">
           <ul className="nav nav-pills nav-tabs flex-column">
             <li className="nav-item">
-              <a className={`nav-link ${activeItem === './product/glass.html' ? 'active' : ''}`}
-                onClick={(e) => handleClick(e, './product/glass.html')} href="./product/glass.html"
+              <a className={`nav-link  ${active === 'allproduct' ? 'active' : ''}`}
+                href="./product.html"
+              >全部商品</a>
+            </li>
+            <li className="nav-item">
+              <a className={`nav-link  ${active === 'glass' ? 'active' : ''}`}
+                href="./product-glass.html"
               >玻璃</a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${activeItem === './product/stainless.html' ? 'active' : ''}`}
-                onClick={(e) => handleClick(e, './product/stainless.html')} href="./product/stainless.html" >不鏽鋼</a>
+              <a className={`nav-link ${active === 'stainless' ? 'active' : ''}`}
+                href="./product-stainless.html" >不鏽鋼</a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${activeItem === './product/woody.html' ? 'active' : ''}`}
-                onClick={(e) => handleClick(e, './product/woody.html')} href="./product/woody.html" >木製</a>
+              <a className={`nav-link ${active === 'woody' ? 'active' : ''}`}
+                href="./product-woody.html" >木製</a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${activeItem === './product/ceramic.html' ? 'active' : ''}`}
-                onClick={(e) => handleClick(e, './product/ceramic.html')} href="./product/ceramic.html" >瓷器</a>
+              <a className={`nav-link ${active === 'ceramic' ? 'active' : ''}`}
+                href="./product-ceramic.html" >瓷器</a>
             </li>
           </ul>
         </div>

@@ -132,3 +132,18 @@
                       </li>
                     </ul>
                   </div>
+
+
+<div id="productcarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./images/product17" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/product16" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/product15" class="d-block" alt="...">
+    </div>
+  </div>
+</div>
