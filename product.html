@@ -137,7 +137,7 @@
                 }
 
                 //網頁元件
-                const ProductPage = ({ id, info, content, name, priceregular, priceshow, url,url2, tag1, tag2, url3, url4 }) => {
+                const ProductPage = ({ id, info, content, name, priceregular, priceshow, url, url2, tag1, tag2, url3, url4 }) => {
 
                     const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
                     const handleFavoriteClick = () => {
@@ -160,11 +160,15 @@
                                     </div>
                                     <div className="product-infomation">
                                         <h1>{name}</h1>
-                                        <p></p>
-                                        <div>{tag1}</div>
-                                        <div>{tag2}</div>
-                                        <div>$NT{priceshow}</div>
+                                        <div className="tag-line">
+                                            <div>{tag1}</div>
+                                            <div>{tag2}</div>
+                                        </div>
                                         <div>{info}</div>
+                                        <div className="price-line">
+                                            <div className="priceregular" >$NT{priceregular}</div>
+                                            <div className="priceshow" >$NT{priceshow}</div></div>
+
                                         <input type="text" />
                                         <button>立即購買</button>
                                         <button>加入購物車</button>
@@ -232,7 +236,12 @@
                                 {renderProducts()}
 
                                 <div className="product-recommand">
-                                    <h4>類似商品</h4>
+                                    <header className="subTitle bold first-header">
+                                        <img src="./images/header.png" alt="" />
+                                        <h2>類似商品</h2>
+                                        <h3>RECOMMAND PRODUCT</h3>
+                                    </header>
+                                    <h4></h4>
                                     <div className="product-list">
                                         <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
 

@@ -163,16 +163,38 @@
 .main-product {
   display: flex;
   flex-direction: column;
-  width: 85%;
+  align-items: center;
 
   .product-top {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    >* {
+      margin: 20px;
+    }
+
+
+    .product-infomation {
+      text-align: left;
+
+
+       >* {
+         text-align: left;
+        width: 85%;
+        padding: 0 10px;
+      }
+
+
+      .tag-line,
+      .price-line {
+        display: flex;
+      }
+    }
   }
 }
 
 .product-description {
   margin-top: 50px;
+  width: 85%;
 
   ul {
     justify-content: center;
@@ -198,4 +220,15 @@
 
 .nav-pills-su.active {
   border-bottom: $main-yellow 3px solid;
+}
+
+.priceregular {
+  text-decoration: line-through;
+  color: $main-blue;
+  padding-right: 10px;
+}
+
+.priceshow {
+  color: #E39529;
+  padding-right: 10px;
 }

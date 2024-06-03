@@ -10276,6 +10276,7 @@ select {
   left: 70%;
   top: 50%;
   transform: translateY(-50%);
+  content: "";
 }
 #category .textMenu .texture .texture-button li:hover {
   background-color: rgba(34, 102, 141, 0.2);
@@ -10811,15 +10812,31 @@ select {
 .main-product {
   display: flex;
   flex-direction: column;
-  width: 85%;
+  align-items: center;
 }
 .main-product .product-top {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+.main-product .product-top > * {
+  margin: 20px;
+}
+.main-product .product-top .product-infomation {
+  text-align: left;
+}
+.main-product .product-top .product-infomation > * {
+  text-align: left;
+  width: 85%;
+  padding: 0 10px;
+}
+.main-product .product-top .product-infomation .tag-line,
+.main-product .product-top .product-infomation .price-line {
+  display: flex;
 }
 
 .product-description {
   margin-top: 50px;
+  width: 85%;
 }
 .product-description ul {
   justify-content: center;
@@ -10841,4 +10858,96 @@ select {
 
 .nav-pills-su.active {
   border-bottom: #FFCC70 3px solid;
+}
+
+.priceregular {
+  text-decoration: line-through;
+  color: #22668D;
+  padding-right: 10px;
+}
+
+.priceshow {
+  color: #E39529;
+  padding-right: 10px;
+}
+
+.newsContent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.newsContent .newsTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.newsContent .newsTab .news-button {
+  background-color: #FFFADD;
+  border: 3px #22668D solid;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 5px 10px;
+}
+.newsContent .newsTab .active {
+  background-color: #22668D;
+  color: #FFFADD;
+}
+.newsContent .post-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  row-gap: 40px;
+}
+.newsContent .post-list .post {
+  width: 33.333%;
+  padding: 0 20px;
+  justify-content: center;
+}
+.newsContent .post-list .post .postImg {
+  height: 250px;
+  width: 460px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 30px;
+  transform: scale(1);
+  transition: all 0.3s linear;
+}
+.newsContent .post-list .post .postImg:hover {
+  transform: scale(1.15);
+  background-image: rgba(0, 0, 0, 0.5);
+}
+.newsContent .post-list .post .labelImg {
+  position: relative;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.newsContent .post-list .post .postType {
+  background-color: #FFCC70;
+  border: 3px #FFCC70 solid;
+  border-radius: 20px;
+  color: #22668D;
+  margin: 10px;
+  padding: 5px 10px;
+  width: 90px;
+  position: absolute;
+  left: 65%;
+  top: 5%;
+}
+.newsContent .post-list .post .titleTime {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 10px;
+}
+.newsContent .post-list .post .postInfo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  padding: 0 20px;
 }/*# sourceMappingURL=style.css.map */

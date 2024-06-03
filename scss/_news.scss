@@ -1,0 +1,94 @@
+.newsContent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  // max-width: 1360px;
+
+  .newsTab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .news-button {
+      background-color: $main-white;
+      border: 3px $main-blue solid;
+      border-radius: 20px;
+      margin: 20px;
+      padding: 5px 10px;
+    }
+
+    .active {
+      background-color: $main-blue;
+      color: $main-white;
+    }
+  }
+
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+    row-gap: 40px;
+
+    .post {
+      width: 33.333%;
+      padding: 0 20px;
+      // margin: 30px;
+      justify-content: center;
+
+
+      .postImg {
+        height: 250px;
+        width: 460px;
+        object-fit: cover;
+        border-radius: 30px;
+        transform: scale(1);
+        transition: all 0.3s linear;
+
+
+        &:hover {
+          transform: scale(1.15);
+          background-image: rgba(0,0,0,0.5);
+        }
+      }
+
+      .labelImg {
+        position: relative;
+        justify-content: center;
+        display: flex;
+        overflow: hidden;
+        border-radius: 30px;
+      }
+
+      .postType {
+        background-color: $main-yellow;
+        border: 3px $main-yellow solid;
+        border-radius: 20px;
+        color: $main-blue;
+        margin: 10px;
+        padding: 5px 10px;
+        width: 90px;
+        position: absolute;
+        left: 65%;
+        top: 5%;
+
+        // transform: translateY(-50%);
+        // z-index: 2;
+      }
+
+      .titleTime {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 10px;
+      }
+
+      .postInfo {
+        @include line-save(2);
+        padding: 0 20px;
+      }
+
+    }
+  }
+}

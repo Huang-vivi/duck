@@ -117,7 +117,7 @@ const Navtable = ({ active }) => {
 }
 
 
-//取得 json資料
+//取得 json-product資料
 
 async function fetchProductData() {
   try {
@@ -129,24 +129,36 @@ async function fetchProductData() {
   }
 }
 
+//取得 json-post資料
 
-                //建立product元件
-                const Product = ({ name, info, url ,id}) => {
-                  return (
-                      <>
-                          <div className="product">
-                              <a href={`product.html?q=${id}`}>
-                                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-                                  <h3 className="productName">{name}</h3>
-                                  <p className="productInfo">
-                                      {info}
-                                  </p>
-                                  <div className="add-cart">
-                                      <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
-                                  </div>
-                              </a>
-                          </div>
+async function fetchPostData() {
+  try {
+    const response = await axios.get('./json/post.json');
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    return null;
+  }
+}
 
-                      </>
-                  );
-              }
+
+//建立product元件
+const Product = ({ name, info, url, id }) => {
+  return (
+    <>
+      <div className="product">
+        <a href={`product.html?q=${id}`}>
+          <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+          <h3 className="productName">{name}</h3>
+          <p className="productInfo">
+            {info}
+          </p>
+          <div className="add-cart">
+            <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
+          </div>
+        </a>
+      </div>
+
+    </>
+  );
+}
