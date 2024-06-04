@@ -53,28 +53,100 @@
     (async () => {
       const { useState, useEffect } = React;
       function MyApp() {
-      return (
-        <>
-          <Header active="member" />
-          <form>
-            <div>
-              <label for="username">使用者名稱</label>
-              <input id="username" type="text" className="form-control" name="username" />
-            </div>
-            <div>
-              <label for="password">密碼</label>
-              <input id="password" type="password" className="form-control" name="password" />
-            </div>
-            <div>
-              <label for="isCheck">確認狀態</label>
-              <input id="isCheck" type="checkbox" name="isCheck" />
-            </div>
-            <button type="submit" className="btn btn-primary">送出</button>
-          </form>
-          <Footer />
-        </ >)
+        return (
+          <>
+            <Header active="member" />
+            <main>
+              <header className="subTitle bold subTitle-half ">
+                <img src="./images/header.png" alt="" />
+                <h2>會員登入</h2>
+                <h3>MEMBER</h3>
+              </header>
+              <section className="member">
+                <div className="member-info">
+                  <table className="table text-center align-middle ">
+                    <thead >
+                      <tr className="bold">
+                        <th scope="col"></th>
+                        <th scope="col"><i class="fa-solid fa-hat-cowboy fa-2xl"></i><br />勇者鴨</th>
+                        <th scope="col"><i class="fa-brands fa-pied-piper-hat fa-2xl"></i><br />劍士鴨</th>
+                        <th scope="col"><i class="fa-solid fa-hat-wizard fa-2xl"></i><br /> 王者鴨</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">入會資格</th>
+                        <td>免費註冊</td>
+                        <td>1年內消費滿2千</td>
+                        <td>2年內消費滿5千</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">會員好康</th>
+                        <td>註冊禮-50元購物金 <br /> 神秘生日禮 <br />購物金回饋：1%</td>
+                        <td>升等禮-100元購物金 <br />神秘生日禮 <br />購物金回饋：3%</td>
+                        <td>升等禮-300元購物金 <br />神秘生日禮 <br />購物金回饋：5%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">續會門檻</th>
+                        <td >-</td>
+                        <td >年度累積滿1千元</td>
+                        <td>年度累積滿2千元</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
-        }
+                <div className="member-login">
+                  <ul class="login-tab">
+                    <li class="tab active"><a href="#signup">註冊</a></li>
+                    <li class="tab"><a href="#login">登入</a></li>
+                  </ul>
+                  <div class="form-content">
+                    <div id="signup">
+                      <h2>快速註冊領折扣！</h2>
+
+                      <form>
+                        <div >
+                          <label htmlFor="username">請輸入信箱</label>
+                          <input id="username" type="text" className="form-control" name="username" />
+                        </div>
+                        <div>
+                          <label htmlFor="password">請輸入新密碼</label>
+                          <input id="password" type="password" className="form-control" name="password" />
+                        </div>
+                        <div>
+                          <label htmlFor="password">請再次輸入密碼</label>
+                          <input id="password" type="password" className="form-control" name="password" />
+                        </div>
+
+                        <p class="forgot"><a href="#">Forgot Password?</a></p>
+                        <button type="submit" className="btn btn-primary">送出</button>
+                      </form>
+                    </div>
+                    <div id="login">
+                      <h1>Welcome Back!</h1>
+                      <form action="/" method="post">
+                        <div id="signup">
+                          <label htmlFor="username">使用者名稱</label>
+                          <input id="username" type="text" className="form-control" name="username" />
+                        </div>
+                        <div>
+                          <label htmlFor="password">密碼</label>
+                          <input id="password" type="password" className="form-control" name="password" />
+                        </div>
+                        <button type="submit" className="btn btn-primary">送出</button>
+                      </form>
+
+
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main >
+            <Footer />
+          </ >)
+
+      }
       const container = document.getElementById('root');
       const root = ReactDOM.createRoot(container);
       root.render(<MyApp />);

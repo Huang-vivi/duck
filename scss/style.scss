@@ -23,6 +23,7 @@
 
 * {
   box-sizing: border-box;
+
   /* 不累加邊框與內距的寬度 */
 }
 
@@ -30,6 +31,7 @@ html,
 body {
   /* 捲動效果:預設時間速度無法改，要改用js */
   scroll-behavior: smooth;
+  overflow-x:hidden ;
 }
 
 
@@ -258,6 +260,15 @@ footer {
 //   }
 // }
 
+.navbar-collapse{
+justify-content: space-between;
+
+.search{
+  display: flex;
+  flex-direction: row;
+}
+}
+
 
 @keyframes fadeInFromBottom {
   from {
@@ -298,3 +309,78 @@ select {
 @import "index";
 @import "product";
 @import "news";
+
+
+.member {
+  display: flex;
+  flex-direction: row;
+
+
+  .member-info {
+    width: 50%;
+    background-color: $main-yellow-trans;
+    padding: 30px;
+    margin: 0px 30px;
+    border-radius: 30px;
+  }
+
+  .member-login {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    .login-tab {
+      display: flex;
+      justify-content: center;
+
+      .tab {
+        background-color: $main-blue-trans;
+        padding: 5px 10px;
+
+      }
+
+      .active {
+        background-color: $main-blue;
+
+        a {
+          color: $main-white;
+        }
+      }
+    }
+
+    input {
+      width: 350px;
+    }
+
+    .form-content {
+      padding: 40px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 5px;
+      // box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+
+      >div:last-child {
+        display: none;
+      }
+    }
+
+    .forgot {
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
+
+.table {
+
+  thead th>* {
+    margin: 20px 0;
+  }
+
+  img {
+    height: 50%;
+  }
+}

@@ -145,7 +145,18 @@
                     };
 
                     return (
-                        <>
+                        <>  <div className="top-class">
+                                    <nav style={{
+                                        "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                                    }}
+                                        aria-label="breadcrumb">
+                                        <ol className="breadcrumb">
+                                            <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
+                                            <li className="breadcrumb-item"><a href="/all-product.html">全部商品</a></li>
+                                            <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                                        </ol>
+                                    </nav>
+                                </div>
                             <div className="main-product">
                                 <div className="product-top">
                                     <div className="product-images">
@@ -221,17 +232,7 @@
                         <Header active="all-product" />
                         <main>
                             <section className="all-product first-header">
-                                <div className="top-class">
-                                    <nav style={{
-                                        "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
-                                    }}
-                                        aria-label="breadcrumb">
-                                        <ol className="breadcrumb">
-                                            <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                                            <li className="breadcrumb-item active" aria-current="page">全部商品</li>
-                                        </ol>
-                                    </nav>
-                                </div>
+
 
                                 {renderProducts()}
 

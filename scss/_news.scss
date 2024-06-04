@@ -92,3 +92,51 @@
     }
   }
 }
+
+.post-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+    margin-top: 50px;
+    border-bottom: 5px solid $main-blue;
+
+
+  div{
+    font-size: map-get($font-size, title-s);
+    margin-bottom: 10px;
+  }
+}
+
+.post-content{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $main-lightblue-trans;
+  width: 85%;
+  border-radius: 50px;
+}
+
+.post-main{
+  display: flex;
+  flex-direction: column;
+
+  img{
+    width: 900px;
+    height: 600px;
+    margin: 40px;
+    object-fit: cover;
+  }
+
+  div{
+    margin: 20px auto;
+    justify-content: center;
+    display: flex;
+  }
+
+  p{
+    margin: 0 80px 80px 80px;
+    width: 80%;
+  }
+}

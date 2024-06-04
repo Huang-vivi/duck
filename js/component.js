@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="sitemap">
         <ul className="menu">
           <li><a href="./about-us.html">品牌故事</a></li>
-          <li><a href="./news.html">最新消息</a></li>
+          <li><a href="./all-news.html">最新消息</a></li>
           <li><a href="./member.html">會員專區</a></li>
           <li><a href="./contact-us.html">聯絡我們</a></li>
         </ul>
@@ -47,7 +47,7 @@ const Header = ({ active }) => {
               <a className={` nav-link ${active === 'about-us' ? 'active' : ''}`} href="./about-us.html">關於我們</a>
             </li>
             <li className="nav-item">
-              <a className={` nav-link ${active === 'news' ? 'active' : ''}`} href="./news.html">最新消息</a>
+              <a className={` nav-link ${active === 'all-news' ? 'active' : ''}`} href="./all-news.html">最新消息</a>
             </li>
             <li className="nav-item dropdown">
               <a className={` nav-link dropdown-toggle ${active === 'all-product' ? 'active' : ''}`} href="#" id="navbarDropdownMenuLink" role="button"
@@ -68,16 +68,18 @@ const Header = ({ active }) => {
               <a className={` nav-link ${active === 'contact-us' ? 'active' : ''}`} href="./contact-us.html">聯絡我們</a>
             </li>
           </ul>
+          <ul className="search navbar-nav d-flex">
+          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
+            style={{ color: "#22668D" }}></i></a></li>
+          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
+            style={{ color: "#22668D" }}></i></a></li>
+          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
+            style={{ color: "#22668D" }}></i></a></li>
+        </ul>
         </div>
+
       </div>
-      <ul className="search navbar-nav d-flex">
-        <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
-          style={{ color: "#22668D" }}></i></a></li>
-        <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
-          style={{ color: "#22668D" }}></i></a></li>
-        <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
-          style={{ color: "#22668D" }}></i></a></li>
-      </ul>
+
     </nav>
   )
 }

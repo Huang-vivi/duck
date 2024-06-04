@@ -55,6 +55,11 @@
             function MyApp() {
                 const [postData, setPostData] = useState([]);
 
+                // 獲取 URL 中的 id 參數
+                const searchParams = new URLSearchParams(window.location.search);
+                const urlId = searchParams.get('q');
+
+
                 //讀取json資料
                 useEffect(() => {
                     const fetchData = async () => {
@@ -68,115 +73,64 @@
                     fetchData();
                 }, []);
 
+                const post = postData.find(item => item.postId === urlId);
+
+
                 //渲染json資料 函式
                 const renderPosts = (posts) => {
+
+                    if (!post) {
+                        return <div>Loading...</div>; // 在資料還未讀取完成時顯示 loading 訊息
+                    }
                     return (<>
-                        {posts.map((post) => (
-                            < News
-                                key={post.postId}
-                                postId={post.postId}
-                                url={post.url}
-                                title={post.title}
-                                date={post.date}
-                                type={post.type}
-                                content={post.content}
-                            />
-                        ))}
+                        < News
+                            key={post.postId}
+                            postId={post.postId}
+                            url={post.url}
+                            title={post.title}
+                            date={post.date}
+                            type={post.type}
+                            content={post.content}
+                        />
                     </>)
                 };
 
-                //建立news元件
+                //建立news網頁元件
                 const News = ({ postId, url, title, date, type, content }) => {
                     return (
                         <>
-                            <div className="post">
-                                <a href={`post.html?q=${postId}`}>
-                                    <div className="labelImg">
-                                        <img className="postImg" src={`./images/bg${url}.jpeg`}
-                                            alt="" />
-                                        <p className="postType"> {type} </p>
-                                    </div>
-                                </a>
-                                <div className="titleTime">
-                                    <a href={`post.html?q=${postId}`}>
-                                        <h3 className="postTitle">{title}</h3>
-                                    </a>
-                                    <p className="postDate"> {date} </p>
-                                </div>
-                                <p className="postInfo"> {content} </p>
+                            <div className="top-class">
+                                <nav style={{
+                                    "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                                }}
+                                    aria-label="breadcrumb">
+                                    <ol className="breadcrumb">
+                                        <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
+                                        <li className="breadcrumb-item"><a href="/all-news.html">所有消息</a></li>
+                                        <li className="breadcrumb-item active" aria-current="page">{title}</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            <div className="post-content">
+                                <div className="post-top">
+                                    <h1>{title}</h1>
+                                     <div>{date}</div>
 
+                                </div>
+                                <div className="post-main">
+                                    <div>
+                                        <img className="postImg" src={`./images/bg${url}.jpeg`} alt="" />
+                                    </div>
+                                    <p className="postInfo"> {content} </p>
+                                </div>
                             </div>
                         </>
                     );
                 }
 
-                //新聞切換按鈕
-                const NewsTabs = ({ NewsData }) => {
-                    const [activeTab, setActiveTab] = useState('最新公告');
-                    const handleTabClick = (tab) => {
-                        setActiveTab(tab);
-                    };
-
-                    // 根據選項按钮显示不同的介绍文本
-                    const getTabContent = () => {
-                        const filteredPosts = postData.filter(post => post.type === activeTab);
-
-                        if (filteredPosts.length === 0) {
-                            return <p>目前尚未有公告！</p>;
-                        }
-                        switch (activeTab) {
-                            case '最新公告':
-                                return (
-                                    <>
-                                        <div className="post-list active" id="最新公告">
-                                            {renderPosts(filteredPosts)}
-                                        </div >
-                                    </>);
-                            case '最新優惠':
-                                return (<>
-                                    <div className="post-list active " id="最新優惠">
-                                        {renderPosts(filteredPosts)}
-                                    </div>
-                                </>);
-                        }
-                    };
-
-                    return (
-                        <>
-                            <div className="newsContent">
-                                <div className="newsMenu">
-                                    <ul className="newsTab">
-                                        <li>
-                                            <a
-                                                className={`news-button ${activeTab === '最新公告' ? 'active' : ''}`}
-                                                onClick={() => {
-                                                    event.preventDefault();
-                                                    handleTabClick('最新公告')
-                                                }}
-                                                href="#"
-                                            >
-                                                <h3>最新公告</h3> </a> </li>
-                                        <li>
-                                            <a
-                                                className={`news-button ${activeTab === '最新優惠' ? 'active' : ''}`}
-                                                onClick={() => {
-                                                    event.preventDefault(); handleTabClick('最新優惠')
-                                                }}
-                                                href="#"
-                                            >
-                                                <h3>最新優惠</h3> </a> </li>
-                                    </ul >
-                                </div>
-                                {getTabContent(activeTab)}
-                            </div>
-                        </>
-                    )
-                }
-
-
                 return (
                     <>
-                        <Header active="home" />
+                        <Header active="all-news" />
                         <main>
                             <section>
                                 <header className="subTitle bold first-header">
@@ -184,18 +138,7 @@
                                     <h2>最新消息</h2>
                                     <h3>NEWS</h3>
                                 </header>
-                                <div className="top-class">
-                                    <nav style={{
-                                        "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
-                                    }}
-                                        aria-label="breadcrumb">
-                                        <ol className="breadcrumb">
-                                            <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                                            <li className="breadcrumb-item active" aria-current="page">最新消息</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                                <NewsTabs NewsData={postData} />
+                                {renderPosts()}
                             </section>
                         </main >
 
