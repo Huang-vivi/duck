@@ -31,7 +31,7 @@ html,
 body {
   /* 捲動效果:預設時間速度無法改，要改用js */
   scroll-behavior: smooth;
-  overflow-x:hidden ;
+  overflow-x: hidden;
 }
 
 
@@ -260,13 +260,13 @@ footer {
 //   }
 // }
 
-.navbar-collapse{
-justify-content: space-between;
+.navbar-collapse {
+  justify-content: space-between;
 
-.search{
-  display: flex;
-  flex-direction: row;
-}
+  .search {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 
@@ -315,13 +315,48 @@ select {
   display: flex;
   flex-direction: row;
 
+  @media($breakpoint-md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+  }
 
   .member-info {
     width: 50%;
     background-color: $main-yellow-trans;
-    padding: 30px;
-    margin: 0px 30px;
+    margin: 0px 50px;
     border-radius: 30px;
+    padding: 100px 40px;
+
+    @media($breakpoint-md) {
+      width: 100%;
+      padding: 0px;
+      background-color: transparent;
+    }
+
+    .member-info-mobile {
+      display: none;
+
+      @media($breakpoint-md) {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+      }
+
+
+    }
+  }
+
+
+  .member-info-web {
+    @media($breakpoint-md) {
+      display: none;
+    }
   }
 
   .member-login {
@@ -338,7 +373,7 @@ select {
 
       .tab {
         background-color: $main-blue-trans;
-        padding: 5px 10px;
+        padding: 10px 30px;
 
       }
 
@@ -351,27 +386,91 @@ select {
       }
     }
 
-    input {
-      width: 350px;
-    }
+  }
+}
 
-    .form-content {
-      padding: 40px;
-      max-width: 600px;
-      margin: 40px auto;
-      border-radius: 5px;
-      // box-shadow:0 4px 10px 4px rgba($form-bg,.3);
 
-      >div:last-child {
-        display: none;
-      }
-    }
 
-    .forgot {
-      display: flex;
-      justify-content: end;
+.form-content {
+  padding: 0 40px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 5px;
+
+
+  h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    justify-content: center;
+  }
+
+  @media($breakpoint-md) {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
+
+  // box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+
+}
+
+//公用
+form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  input {
+    margin-bottom: 10px;
+    border-radius: 30px;
+  }
+
+  >div:last-child {
+    display: none;
+  }
+
+
+  .forgot {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+textarea {
+  border: 2px solid $main-blue-trans;
+  resize: vertical;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.top-row {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  >div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+
+    &:last-child {
+      margin: 0;
     }
   }
+}
+
+
+.button-block {
+  display: block;
+  width: 100%;
 }
 
 .table {
@@ -382,5 +481,37 @@ select {
 
   img {
     height: 50%;
+  }
+}
+
+
+
+.contact-main {
+  width: 100%;
+  display: flex;
+
+  .contact-img {
+    width: 50%;
+    padding: 0 30px;
+    margin: 0 20px;
+  }
+
+  .contact-form {
+    padding:0 30px;
+    width: 50%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form{
+      align-items:start;
+    }
+
+    .smoove {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

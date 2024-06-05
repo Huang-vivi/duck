@@ -92,7 +92,7 @@ const Navtable = ({ active }) => {
           <ul className="nav nav-pills nav-tabs flex-column">
             <li className="nav-item">
               <a className={`nav-link  ${active === 'allproduct' ? 'active' : ''}`}
-                href="./product.html"
+                href="./all-product.html"
               >全部商品</a>
             </li>
             <li className="nav-item">
@@ -162,5 +162,19 @@ const Product = ({ name, info, url, id }) => {
       </div>
 
     </>
+  );
+}
+
+
+const MyButton = ({ history }) => {
+  const handleClick = () => {
+    alert('此表單沒有搜集資訊功能');
+    history.push('#'); // 重定向到指定链接
+  };
+
+  return (
+    <button className="btn-form my-button" onClick={handleClick}>
+      <span>送出</span>
+    </button>
   );
 }

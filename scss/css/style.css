@@ -2077,19 +2077,19 @@ progress {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 450px;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: #FFFADD;
+  background-color: #FFCC70;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border-radius: 0.25rem;
+  border-radius: 20px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2108,7 +2108,7 @@ progress {
 }
 .form-control:focus {
   color: #212529;
-  background-color: #fff;
+  background-color: rgba(143, 205, 221, 0.3);
   border-color: #91b3c6;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(34, 102, 141, 0.25);
@@ -10633,7 +10633,7 @@ select {
 #about .about-us .about-info h5, #about .about-us .about-info .h5 {
   font-size: 1.25rem;
   margin: 1.2rem 0;
-  background-color: rgba(143, 205, 221, 0.5);
+  background-color: rgba(143, 205, 221, 0.3);
   margin: 25px 40%;
 }
 #about .about-us .about-info li {
@@ -11007,7 +11007,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(143, 205, 221, 0.5);
+  background-color: rgba(143, 205, 221, 0.3);
   width: 85%;
   border-radius: 50px;
 }
@@ -11037,12 +11037,45 @@ select {
   display: flex;
   flex-direction: row;
 }
+@media (max-width:820px) {
+  .member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+  }
+}
 .member .member-info {
   width: 50%;
   background-color: rgba(255, 204, 112, 0.4);
-  padding: 30px;
-  margin: 0px 30px;
+  margin: 0px 50px;
   border-radius: 30px;
+  padding: 100px 40px;
+}
+@media (max-width:820px) {
+  .member .member-info {
+    width: 100%;
+    padding: 0px;
+    background-color: transparent;
+  }
+}
+.member .member-info .member-info-mobile {
+  display: none;
+}
+@media (max-width:820px) {
+  .member .member-info .member-info-mobile {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width:820px) {
+  .member .member-info-web {
+    display: none;
+  }
 }
 .member .member-login {
   width: 50%;
@@ -11057,7 +11090,7 @@ select {
 }
 .member .member-login .login-tab .tab {
   background-color: rgba(34, 102, 141, 0.2);
-  padding: 5px 10px;
+  padding: 10px 30px;
 }
 .member .member-login .login-tab .active {
   background-color: #22668D;
@@ -11065,21 +11098,72 @@ select {
 .member .member-login .login-tab .active a {
   color: #FFFADD;
 }
-.member .member-login input {
-  width: 350px;
-}
-.member .member-login .form-content {
-  padding: 40px;
+
+.form-content {
+  padding: 0 40px;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 20px auto;
   border-radius: 5px;
 }
-.member .member-login .form-content > div:last-child {
+.form-content h2, .form-content .h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  justify-content: center;
+}
+@media (max-width:820px) {
+  .form-content {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
+}
+
+form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form input {
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+form > div:last-child {
   display: none;
 }
-.member .member-login .forgot {
+form .forgot {
   display: flex;
   justify-content: end;
+}
+
+textarea {
+  border: 2px solid rgba(34, 102, 141, 0.2);
+  resize: vertical;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
 }
 
 .table thead th > * {
@@ -11087,4 +11171,30 @@ select {
 }
 .table img {
   height: 50%;
+}
+
+.contact-main {
+  width: 100%;
+  display: flex;
+}
+.contact-main .contact-img {
+  width: 50%;
+  padding: 0 30px;
+  margin: 0 20px;
+}
+.contact-main .contact-form {
+  padding: 0 30px;
+  width: 50%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contact-main .contact-form form {
+  align-items: start;
+}
+.contact-main .contact-form .smoove {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */
