@@ -416,7 +416,7 @@ select {
 
 //公用
 form {
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -484,14 +484,14 @@ textarea {
   }
 }
 
-
-
 .contact-main {
   width: 100%;
   display: flex;
 
+
   .contact-img {
     width: 50%;
+    border-radius: 30px;
     padding: 0 30px;
     margin: 0 20px;
   }
@@ -504,10 +504,6 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    form{
-      align-items:start;
-    }
 
     .smoove {
       display: flex;

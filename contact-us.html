@@ -147,7 +147,7 @@
                   }}
                     aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
+                      <li className="breadcrumb-item"><a href="./index.html">Home</a></li>
                       <li className="breadcrumb-item active" aria-current="page">聯絡我們</li>
                     </ol>
                   </nav>
@@ -161,19 +161,27 @@
                     <p>歡迎來到三杯鴨殿！<br />如果您對我們鴨子馬克杯有任何疑問、建議或訂購需求，請隨時與我們聯繫。<br />請填寫下方的聯絡表單三杯鴨將盡快回覆！</p>
                     <form class="smoove form" action="" name="form-contact" id="form-contact" title="聯絡我們表單" method="post">
 
+                      <div>
                       <label htmlFor="username">*姓名</label>
                       <input type="text" className="form-control" name="username" id="username" title="請輸入姓名" placeholder="(必填)請輸入姓名" required />
-
+                    </div>
+                    <div>
                       <label htmlFor="usertel">電話</label>
                       <input type="tel" className="form-control" name="usertel" id="usertel" title="請輸入電話" placeholder="請輸入電話" />
+                    </div>
 
+                    <div>
                       <label htmlFor="email">*信箱</label>
                       <input type="email" className="form-control" name="email" id="email" title="請輸入信箱" placeholder="(必填)請輸入信箱" required />
+                    </div>
 
+                    <div>
                       <label htmlFor="message">*留言</label>
                       <textarea name="message" className="form-control" id="message" placeholder="(必填)請留下訊息，我們將盡快回覆" cols="" rows="3"></textarea>
                       <small>此表單為練習作品，不具有商業行為及搜集資料的功能</small>
-                      <button type="reset" class="btn-form my-button submitBtn">
+                    </div>
+
+                      <button type="submit" class="btn-form my-button submitBtn">
                         <span>送出</span>
                       </button>
                     </form>

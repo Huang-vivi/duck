@@ -91,12 +91,13 @@
                             date={post.date}
                             type={post.type}
                             content={post.content}
+                            content2={post.content2}
                         />
                     </>)
                 };
 
                 //建立news網頁元件
-                const News = ({ postId, url, title, date, type, content }) => {
+                const News = ({ postId, url, title, date, type, content,content2}) => {
                     return (
                         <>
                             <div className="top-class">
@@ -122,6 +123,7 @@
                                         <img className="postImg" src={`./images/bg${url}.jpeg`} alt="" />
                                     </div>
                                     <p className="postInfo"> {content} </p>
+                                    <p className="postInfo"> {content2} </p>
                                 </div>
                             </div>
                         </>

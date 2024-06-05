@@ -69,13 +69,13 @@ const Header = ({ active }) => {
             </li>
           </ul>
           <ul className="search navbar-nav d-flex">
-          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
-            style={{ color: "#22668D" }}></i></a></li>
-          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
-            style={{ color: "#22668D" }}></i></a></li>
-          <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
-            style={{ color: "#22668D" }}></i></a></li>
-        </ul>
+            <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
+              style={{ color: "#22668D" }}></i></a></li>
+            <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
+              style={{ color: "#22668D" }}></i></a></li>
+            <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
+              style={{ color: "#22668D" }}></i></a></li>
+          </ul>
         </div>
 
       </div>
@@ -144,21 +144,21 @@ async function fetchPostData() {
 }
 
 
-//建立product元件
+//Product-首頁小卡-product元件
 const Product = ({ name, info, url, id }) => {
   return (
     <>
       <div className="product">
-        <a href={`product.html?q=${id}`}>
+
           <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
           <h3 className="productName">{name}</h3>
           <p className="productInfo">
             {info}
           </p>
-          <div className="add-cart">
-            <a>加入購物車 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
+          <div className="cta">
+            <a href={`product.html?q=${id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
           </div>
-        </a>
+
       </div>
 
     </>
@@ -166,15 +166,56 @@ const Product = ({ name, info, url, id }) => {
 }
 
 
-const MyButton = ({ history }) => {
-  const handleClick = () => {
-    alert('此表單沒有搜集資訊功能');
-    history.push('#'); // 重定向到指定链接
+//Product-商品頁小卡-渲染json資料 函式
+const renderProducts = (products) => {
+  return (<>
+    <div className="product-list all-product">
+
+      {products.map((product) => (
+        <ProductCardS
+          key={product.id}
+          id={product.id}
+          name={product.name}
+          info={product.info}
+          url={product.url}
+          tag1={product.tag1}
+          tag2={product.tag2}
+          priceregular={product.priceregular}
+          priceshow={product.priceshow} />
+      ))}
+    </div >
+  </>)
+};
+
+//Product-商品頁小卡-ProductCardS 卡片元件
+const ProductCardS = ({ id, name, priceregular, priceshow, url, tag1, tag2 }) => {
+  const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite); // 切換狀態
   };
 
   return (
-    <button className="btn-form my-button" onClick={handleClick}>
-      <span>送出</span>
-    </button>
-  );
+    <div className="product-s">
+      <a href={`product.html?q=${id}`}>
+        <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+        <h3 className="productName">{name}</h3>
+        <div className="product-middle">
+          <span className="product-label">{tag1}</span>
+          <span className="product-label">{tag2}</span>
+        </div>
+        <div className="product-bottom">
+
+          <div className="product-price-show">NT${priceshow}</div>
+          <div className="product-icon">
+            <div className="add-list">
+              <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#22668D", "font-size": "2em" }} onClick={handleFavoriteClick}> </i>
+            </div>
+            <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD" }} > </i>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  )
 }
+

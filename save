@@ -96,3 +96,55 @@
                             </div>
                         </>)
                 }
+
+
+
+                <div className="news-box">
+                    <article className="news-content">
+                        <time>2022.05.25</time>
+                        <h4>端午節物流緊縮，運送時間加長</h4>
+                        <p>端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長
+                        </p>
+                        <a href="#"> 點我閱讀 </a>
+                    </article>
+                    <div className="next-button">
+                        <p>Previous</p>
+                        <p>Next</p>
+                    </div>
+                </div>
+
+
+ const filteredPosts = postData.filter(post => post.type === "最新公告");
+                //上一頁 下一頁 設計
+                const NextPost = () => {
+
+                    const handlePrevClick = () => {
+                        if (currentStartIndex > 0) {
+                            setCurrentStartIndex(currentStartIndex - 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
+
+                    const handleNextClick = () => {
+                        if (currentStartIndex < filteredProducts.length - 4) {
+                            setCurrentStartIndex(currentStartIndex + 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
+                    return (<>
+                        <div className="pre-next">
+                            <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
+                                <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                            <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProducts.length - 4}>
+                                <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                        </div >
+                    </>
+                    );
+                }
+

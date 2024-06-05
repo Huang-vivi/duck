@@ -52,9 +52,14 @@
 
         (async () => {
             const { useState, useEffect } = React;
+
             function MyApp() {
                 const [productData, setProductData] = useState([]);
                 const [selectedMaterial, setSelectedMaterial] = useState('');
+                const [currentStartIndex, setCurrentStartIndex] = useState(0);
+                const [currentStartIndex1, setCurrentStartIndex1] = useState(0);
+                const [currentStartIndex2, setCurrentStartIndex2] = useState(0);
+                const [postData, setPostData] = useState([]);
 
                 //讀取json資料
                 useEffect(() => {
@@ -71,15 +76,14 @@
                 //渲染json資料 函式
                 const renderProducts = (products) => {
                     return (<>
-                        <div className="pre-next">
-                            <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
-                            <div className="product-list">
-                                {products.map((product) => (
-                                    <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
-                                ))}
-                            </div >
-                            <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
-                        </div>
+
+                        <div className="product-list">
+
+                            {products.slice(currentStartIndex, currentStartIndex + 5).map((product) => (
+                                <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
+                            ))}
+                        </div >
+
                     </>)
                 };
 
@@ -109,14 +113,14 @@
                     // console.log('Selected texture:', texture);
                     // console.log('Selected price:', price);
 
-                    const filteredProducts = productData.filter(product => {
+                    const filteredRandomProducts = productData.filter(product => {
                         return (color === "" || color === "all" || product.color === color) &&
                             (texture === "" || texture === "all" || product.texture === texture) &&
                             (price === "" || price === "all" || product.price === price);
                     });
 
-                    if (filteredProducts.length > 0) {
-                        const randomProduct = filteredProducts[Math.floor(Math.random() * filteredProducts.length)];
+                    if (filteredRandomProducts.length > 0) {
+                        const randomProduct = filteredRandomProducts[Math.floor(Math.random() * filteredRandomProducts.length)];
                         setResult(randomProduct)
                         console.log(randomProduct);
                     } else {
@@ -136,6 +140,7 @@
                 //材質切換按鈕
                 const TextureTabs = ({ textureData }) => {
                     const [activeTab, setActiveTab] = useState('glass');
+
                     const handleTabClick = (tab) => {
                         setActiveTab(tab);
                     };
@@ -143,6 +148,42 @@
                     // 根据选项卡按钮显示不同的介绍文本
                     const getTabContent = () => {
                         const filteredProducts = productData.filter(product => product.texture === activeTab);
+
+                        //上一頁 下一頁 設計
+                        const NextProduct = () => {
+
+
+                            const handlePrevClick = () => {
+                                if (currentStartIndex > 0) {
+                                    setCurrentStartIndex(currentStartIndex - 1);
+                                    // const productWidth = 210;
+                                    // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                    // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                                }
+                            };
+
+                            const handleNextClick = () => {
+                                if (currentStartIndex < filteredProducts.length - 4) {
+                                    setCurrentStartIndex(currentStartIndex + 1);
+                                    // const productWidth = 210;
+                                    // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                    // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                                }
+                            };
+
+                            return (
+                                <div className="pre-next">
+                                    <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
+                                        <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                                    </button>
+                                    {renderProducts(filteredProducts)}
+                                    <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProducts.length - 4}>
+                                        <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                                    </button>
+                                </div >
+                            );
+                        };
+
 
                         if (filteredProducts.length === 0) {
                             return <p>No products available for this material.</p>;
@@ -156,7 +197,7 @@
                                                 <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
                                                 <a href="">立即逛逛</a>
                                             </div>
-                                            {renderProducts(filteredProducts)}
+                                            <NextProduct />
                                         </div >
                                     </>);
                             case 'stainless':
@@ -166,7 +207,7 @@
                                             <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
                                             <a href="">立即逛逛</a>
                                         </div>
-                                        {renderProducts(filteredProducts)}
+                                        <NextProduct />
                                     </div>
                                 </>);
                             case 'ceramic':
@@ -176,7 +217,7 @@
                                             <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
                                             <a href="">立即逛逛</a>
                                         </div>
-                                        {renderProducts(filteredProducts)}
+                                        <NextProduct />
                                     </div>
                                 </>);
                             case 'woody':
@@ -186,7 +227,8 @@
                                             <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
                                             <a href="">立即逛逛</a>
                                         </div>
-                                        {renderProducts(filteredProducts)}</div >
+                                        <NextProduct />
+                                    </div >
                                 </>);
                         }
                     };
@@ -342,6 +384,176 @@
                             </div >
                         </>)
                 }
+
+
+                //讀取新聞的 json資料
+                useEffect(() => {
+                    const fetchData = async () => {
+                        const data = await fetchPostData();
+                        if (data) {
+                            const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                            setPostData(data);
+                        }
+                    };
+                    fetchData();
+                }, []);
+
+                const filteredNewsPosts = postData.filter(post => post.type === "最新公告");
+                const filteredSalesPosts = postData.filter(post => post.type === "最新優惠");
+
+                //渲染json資料 最新優惠 函式
+                const renderSalesPosts = (posts) => {
+                    //上一頁 下一頁 設計
+                    const NextSalesPost = () => {
+
+                        const handlePrevClick = () => {
+                            if (currentStartIndex1 > 0) {
+                                setCurrentStartIndex1(currentStartIndex1 - 1);
+                                // const productWidth = 210;
+                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                            }
+                        };
+
+                        const handleNextClick = () => {
+                            if (currentStartIndex1 < filteredNewsPosts.length - 4) {
+                                setCurrentStartIndex1(currentStartIndex1 + 1);
+                                // const productWidth = 210;
+                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                            }
+                        };
+                        return (<>
+                            <div className="pre-next">
+                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex1 === 0}>
+                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                                </button>
+                                <a href="./all-news.html">查看全部</a>
+                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex1 >= filteredNewsPosts.length - 4}>
+                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                                </button>
+                            </div >
+                        </>
+                        );
+                    }
+
+                    return (<>
+                    <div className="sales-box">
+                        <div className="articleList">
+                            {posts.slice(currentStartIndex1, currentStartIndex1 + 4).map((post) => (
+                                < SalesBox
+                                    key={post.postId}
+                                    postId={post.postId}
+                                    url={post.url}
+                                    title={post.title}
+                                    date={post.date}
+                                    type={post.type}
+                                    content={post.content}
+                                    content2={post.content2}
+                                />
+                            ))}
+                        </div>
+                        < NextSalesPost />
+                    </div>
+                    </>)
+                };
+
+                //優惠公告物件
+                const SalesBox = ({ postId, url, title, date, type, content, content2 }) => {
+
+
+                    return (
+                        <>
+
+                            <article className="sale">
+                                <div className="text">
+                                    <div className="time">
+                                        <time>{date}</time>
+                                    </div>
+                                    <h4>{title}</h4>
+                                </div>
+                                <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
+                            </article>
+
+                        </>
+                    )
+                }
+
+                //渲染json資料 最新公告 函式
+                const renderNewsPosts = (posts) => {
+
+                    return (<>
+                        {posts.slice(currentStartIndex2, currentStartIndex2 + 1).map((post) => (
+                            < NewsBox
+                                key={post.postId}
+                                postId={post.postId}
+                                url={post.url}
+                                title={post.title}
+                                date={post.date}
+                                type={post.type}
+                                content={post.content}
+                                content2={post.content2}
+                            />
+                        ))}
+                    </>)
+                };
+
+                //最新公告物件
+                const NewsBox = ({ postId, url, title, date, type, content, content2 }) => {
+
+                    //上一頁 下一頁 設計
+                    const NextNewsPost = () => {
+
+                        const handlePrevClick = () => {
+                            if (currentStartIndex2 > 0) {
+                                setCurrentStartIndex2(currentStartIndex2 - 1);
+                                // const productWidth = 210;
+                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                            }
+                        };
+
+                        const handleNextClick = () => {
+                            if (currentStartIndex2 < filteredNewsPosts.length - 1) {
+                                setCurrentStartIndex2(currentStartIndex2 + 1);
+                                // const productWidth = 210;
+                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                            }
+                        };
+                        return (<>
+                            <div className="pre-next">
+                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex2 === 0}>
+                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                                </button>
+                                <a href="./all-news.html">查看全部</a>
+
+                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex2 >= filteredNewsPosts.length - 1}>
+                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                                </button>
+                            </div >
+                        </>
+                        );
+                    }
+
+                    return (
+                        <>
+                            <div className="news-box">
+                                <div className="articleList">
+                                    <article className="news-content">
+                                        <time>{date}</time>
+                                        <h4>{title}</h4>
+                                        <p>{content}</p>
+                                        <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
+                                    </article>
+                                </div>
+                                < NextNewsPost />
+                            </div >
+
+                        </>
+                    )
+                }
+
                 return (
                     <>
                         <Header active="home" />
@@ -431,6 +643,9 @@
                                                         <p className="product-price">${result.priceshow}</p>
                                                     </div>
                                                     <p className="product-info">{result.info}</p>
+                                                    <div className="cta">
+                                                        <a href={`product.html?q=${result.id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
+                                                    </div>
                                                 </div>
                                             </div>)
                                             : (
@@ -445,22 +660,10 @@
                                 <div id="news">
                                     <header className="subTitle-half bold">
                                         <img src="./images/header.png" alt="" />
-                                        <h2 style={{ color: "#FFFADD" }}>最新消息</h2>
+                                        <h2 style={{ color: "#FFFADD" }}>最新公告</h2>
                                         <h3>NEWS</h3>
                                     </header>
-                                    <div className="news-box">
-                                        <article className="news-content">
-                                            <time>2022.05.25</time>
-                                            <h4>端午節物流緊縮，運送時間加長</h4>
-                                            <p>端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長端午節物流緊縮，運送時間加長
-                                            </p>
-                                            <a href="#"> 點我閱讀 </a>
-                                        </article>
-                                        <div className="next-button">
-                                            <p>Previous</p>
-                                            <p>Next</p>
-                                        </div>
-                                    </div>
+                                    {renderNewsPosts(filteredNewsPosts)}
                                 </div>
                                 <div id="campaign">
                                     <header className="subTitle-half bold">
@@ -468,50 +671,11 @@
                                         <h2>本週特賣</h2>
                                         <h3 style={{ color: "#22668D" }}>SALE </h3>
                                     </header>
-                                    <div className="articleList">
-                                        <article className="sale">
-                                            <div className="text">
-                                                <div className="time">
-                                                    <time>2022.05.25</time>
-                                                    <time>2022.05.25</time>
-                                                </div>
-                                                <h4>端午節物流緊縮，運送時間加長</h4>
-                                            </div>
-                                            <a href="#"> 點我閱讀 </a>
-                                        </article>
-                                        <article className="sale">
-                                            <div className="text">
-                                                <div className="time">
-                                                    <time>2022.05.25</time>
-                                                    <time>2022.05.25</time>
-                                                </div>
-                                                <h4>端午節物流緊縮，運送時間加長</h4>
-                                            </div>
-                                            <a href="#"> 點我閱讀 </a>
-                                        </article>
-                                        <article className="sale">
-                                            <div className="text">
-                                                <div className="time">
-                                                    <time>2022.05.25</time>
-                                                    <time>2022.05.25</time>
-                                                </div>
-                                                <h4>端午節物流緊縮，運送時間加長</h4>
-                                            </div>
-                                            <a href="#"> 點我閱讀 </a>
-                                        </article>
-                                        <article className="sale">
-                                            <div className="text">
-                                                <div className="time">
-                                                    <time>2022.05.25</time>
-                                                    <time>2022.05.25</time>
-                                                </div>
-                                                <h4>端午節物流緊縮，運送時間加長</h4>
-                                            </div>
-                                            <a href="#"> 點我閱讀 </a>
-                                        </article>
-                                    </div>
-                                    <div className="product">
-                                    </div>
+
+                                    {renderSalesPosts(filteredSalesPosts)}
+
+
+
                                 </div>
                             </section>
 
