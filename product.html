@@ -237,7 +237,7 @@
                                 aria-label="breadcrumb">
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                                    <li className="breadcrumb-item"><a href="/all-product.html">全部商品</a></li>
+                                    <li className="breadcrumb-item"><a href="/product-allproduct.html">全部商品</a></li>
                                     <li className="breadcrumb-item active" aria-current="page">{name}</li>
                                 </ol>
                             </nav>
@@ -258,7 +258,7 @@
                                         <h1>{name}</h1>
                                         <div className="tag-line">
                                             <div className="product-label">{tag1}</div >
-                                            <div className="product-label">{tag2}</div>
+                                            <div className="product-label ">{tag2}</div>
                                         </div>
                                         <div className="info-line" >{info}</div>
                                         <div className="price-line">
@@ -284,7 +284,7 @@
                     <>
                         <Header active="all-product" />
                         <main>
-                            <section className="all-product first-header">
+                            <section className="all-product-page first-header">
                                 {renderProducts()}
                                 <div className="product-recommand">
                                     <header className="subTitle bold first-header">
@@ -292,13 +292,12 @@
                                         <h2>類似商品</h2>
                                         <h3>RECOMMAND PRODUCT</h3>
                                     </header>
-                                    <h4></h4>
+                                    <div className="recommand-list">
+                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
                                     <div className="product-list">
-                                        <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
-
                                         {renderProductsClass(filteredProducts)}
-
-                                        <i className="fa-solid fa-square-caret-right fa-2xl" style={{
+                                    </div>
+                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{
                                             "color": "#22668D"
                                         }}></i>
                                     </div>

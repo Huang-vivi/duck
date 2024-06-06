@@ -9,17 +9,21 @@
   width: 100%;
   padding: $accordion-button-padding-y $accordion-button-padding-x;
   @include font-size($font-size-base);
-  color: $accordion-button-color;
+  // color: $accordion-button-color;
+  color: $main-blue;
   text-align: left; // Reset button style
-  background-color: $accordion-button-bg;
+  // background-color: $accordion-button-bg;
+  background-color: $main-yellow-trans;
   border: 0;
   @include border-radius(0);
   overflow-anchor: none;
   @include transition($accordion-transition);
 
   &:not(.collapsed) {
-    color: $accordion-button-active-color;
-    background-color: $accordion-button-active-bg;
+    // color: $accordion-button-active-color;
+    // background-color: $accordion-button-active-bg;
+    color: $main-blue;
+    background-color:  $main-yellow;
     box-shadow: inset 0 ($accordion-border-width * -1) 0 $accordion-border-color;
 
     &::after {
@@ -91,6 +95,7 @@
 
 .accordion-body {
   padding: $accordion-body-padding-y $accordion-body-padding-x;
+  text-align: justify;
 }
 
 

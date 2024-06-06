@@ -130,6 +130,9 @@
 
 #category {
 
+  display: flex;
+  align-items: center;
+
   .textMenu {
     margin: 0px auto;
 
@@ -730,14 +733,9 @@
 
       h4 {
         margin-bottom: 30px;
+        margin-top: 30px;
       }
 
-      h5 {
-        font-size: 1.25rem;
-        margin: 1.2rem 0;
-        background-color: $main-lightblue-trans;
-        margin: 25px 40%;
-      }
 
       li {
         text-align: justify;

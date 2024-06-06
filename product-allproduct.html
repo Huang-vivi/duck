@@ -22,7 +22,7 @@
   <meta property="og:image" content="yourCover.jpg">
   <meta property="og:image" content="yourImage.png">
 
-  <title>三杯鴨-所有商品</title>
+  <title>三杯鴨殿-所有馬克杯商品</title>
 
   <!-- 引入 React -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -81,7 +81,7 @@
         const renderProducts = (products) => {
           return (<>
             <div className=" all-product">
-            {/* <div className=" product-list all-product"> */}
+              {/* <div className=" product-list all-product"> */}
               {products.map((product) => (
                 <ProductCardS
                   key={product.id}
@@ -89,6 +89,7 @@
                   name={product.name}
                   info={product.info}
                   url={product.url}
+                  url2={product.url2}
                   tag1={product.tag1}
                   tag2={product.tag2}
                   priceregular={product.priceregular}
@@ -98,7 +99,7 @@
           </>)
         };
 
-        const ProductCardS = ({ id,name, priceregular, priceshow, url, tag1, tag2 }) => {
+        const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag1, tag2 }) => {
           const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
           const handleFavoriteClick = () => {
             setIsFavorite(!isFavorite); // 切換狀態
@@ -107,25 +108,30 @@
           return (
             <div className="product-s">
               <a href={`product.html?q=${id}`}>
-                <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-                <h3 className="productName">{name}</h3>
-                <div className="product-middle">
-                  <span className="product-label">{tag1}</span>
-                  <span className="product-label">{tag2}</span>
+                <div className="change-img">
+                  <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
+                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+                </div>
+                <div className="name-tag">
+                  <h3 className="productName">{name}</h3>
+                  <div className="product-middle">
+                    <span className="product-label">{tag1}</span>
+                    <span className="product-label product-label2">{tag2}</span>
+                  </div>
                 </div>
                 <div className="product-bottom">
 
                   <div className="product-price-show">NT${priceshow}</div>
                   <div className="product-icon">
                     <div className="add-list">
-                      <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#22668D", "font-size": "2em" }} onClick={handleFavoriteClick}> </i>
+                      <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#22668D", "fontSize": "2em" }} onClick={handleFavoriteClick}> </i>
                     </div>
                     <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD" }} > </i>
                     </div>
                   </div>
                 </div>
-              </a>
-            </div>
+              </a >
+            </div >
           )
         }
 
@@ -160,7 +166,7 @@
                   </div>
                 </div>
                 <div className="all-product-main">
-                  <Navtable active="allproduct"  tab1="allproduct"  tab2="glass" tab3="stainless" tab4="woody" tab5="ceramic" topic="product" tabname="全部商品" tab2name="玻璃" tab3name="不鏽鋼" tab4name="木製" tab5name="瓷器"  />
+                  <Navtable active="allproduct" tab1="allproduct" tab2="glass" tab3="stainless" tab4="woody" tab5="ceramic" topic="product" tabname="全部商品" tab2name="玻璃" tab3name="不鏽鋼" tab4name="木製" tab5name="瓷器" />
                   {renderProducts(productData)}
                 </div>
               </section >
