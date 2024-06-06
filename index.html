@@ -49,8 +49,6 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-
-        (async () => {
             const { useState, useEffect } = React;
 
             function MyApp() {
@@ -79,7 +77,7 @@
 
                         <div className="product-list">
 
-                            {products.slice(currentStartIndex, currentStartIndex + 5).map((product) => (
+                            {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
                                 <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
                             ))}
                         </div >
@@ -195,7 +193,7 @@
                                         <div className="texture-content active" id="glass">
                                             <div className="texture-info">
                                                 <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
-                                                <a href="">立即逛逛</a>
+                                                <a href="./product-glass.html">立即逛逛</a>
                                             </div>
                                             <NextProduct />
                                         </div >
@@ -205,7 +203,7 @@
                                     <div className="texture-content active " id="stainless">
                                         <div className="texture-info">
                                             <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
-                                            <a href="">立即逛逛</a>
+                                            <a href="./product-stainless.html">立即逛逛</a>
                                         </div>
                                         <NextProduct />
                                     </div>
@@ -215,7 +213,7 @@
                                     <div className="texture-content active" id="ceramic">
                                         <div className="texture-info">
                                             <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
-                                            <a href="">立即逛逛</a>
+                                            <a href="./product-ceramic.html">立即逛逛</a>
                                         </div>
                                         <NextProduct />
                                     </div>
@@ -225,7 +223,7 @@
                                     <div className="texture-content active" id="woody">
                                         <div className="texture-info">
                                             <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
-                                            <a href="">立即逛逛</a>
+                                            <a href="./product-woody.html">立即逛逛</a>
                                         </div>
                                         <NextProduct />
                                     </div >
@@ -247,7 +245,7 @@
                                             href="#"
                                         >
                                             <h3>玻璃</h3>
-                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: '#FFFADD' }}></i>
+                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'glass' ? 'show' : 'collapse'}`} style={{ color: '#FFFADD' }}></i>
                                         </a>
                                     </li>
                                     <li>
@@ -259,7 +257,7 @@
                                             href="#"
                                         >
                                             <h3>木質</h3>
-                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'woody' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
                                         </a>
                                     </li>
                                     <li>
@@ -271,7 +269,7 @@
                                             href="#"
                                         >
                                             <h3>瓷器</h3>
-                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'ceramic' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
                                         </a>
                                     </li>
                                     <li>
@@ -283,7 +281,7 @@
                                             href="#"
                                         >
                                             <h3>不鏽鋼</h3>
-                                            <i className="fa-solid fa-mug-hot fa-lg" style={{ color: "#FFFADD" }}></i>
+                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'stainless' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
                                         </a>
                                     </li>
                                 </ul >
@@ -524,12 +522,12 @@
                         return (<>
                             <div className="pre-next">
                                 <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex2 === 0}>
-                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#FFCC70" }}></i>
                                 </button>
                                 <a href="./all-news.html">查看全部</a>
 
                                 <button className="next" onClick={handleNextClick} disabled={currentStartIndex2 >= filteredNewsPosts.length - 1}>
-                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#FFCC70" }}></i>
                                 </button>
                             </div >
                         </>
@@ -599,7 +597,7 @@
                                     <div className="picker">
                                         <div className="filters">
                                             <select id="color" value={color} onChange={(e) => setColor(e.target.value)}>
-                                                <option value="">顏色選擇</option>
+                                                <option value="">顏色</option>
                                                 <option value="all">不拘</option>
                                                 <option value="red">紅色</option>
                                                 <option value="blue">藍色</option>
@@ -608,7 +606,7 @@
 
                                             </select>
                                             <select id="texture" value={texture} onChange={(e) => setTexture(e.target.value)}>
-                                                <option value="">選擇材質</option>
+                                                <option value="">材質</option>
                                                 <option value="all">不拘</option>
                                                 <option value="glass">玻璃</option>
                                                 <option value="stainless">不鏽鋼</option>
@@ -616,7 +614,7 @@
                                                 <option value="woody">木質</option>
                                             </select>
                                             <select id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
-                                                <option value="">選擇價格</option>
+                                                <option value="">預算</option>
                                                 <option value="all">不拘</option>
                                                 <option value="low">低於 $100</option>
                                                 <option value="medium">$101 - $300</option>
@@ -644,7 +642,7 @@
                                                     </div>
                                                     <p className="product-info">{result.info}</p>
                                                     <div className="cta">
-                                                        <a href={`product.html?q=${result.id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
+                                                        <a href={`product.html?q=${result.id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
                                                     </div>
                                                 </div>
                                             </div>)
@@ -696,7 +694,6 @@
             const container = document.getElementById('root');
             const root = ReactDOM.createRoot(container);
             root.render(<MyApp />);
-        })();
     </script>
 </body>
 

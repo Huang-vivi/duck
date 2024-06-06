@@ -87,34 +87,34 @@ const Header = ({ active }) => {
 const Navtable = ({ active }) => {
   return (
     <>
-      <div className="about-us">
-        <div className="subMenu">
-          <ul className="nav nav-pills nav-tabs flex-column">
-            <li className="nav-item">
-              <a className={`nav-link  ${active === 'allproduct' ? 'active' : ''}`}
-                href="./all-product.html"
-              >全部商品</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link  ${active === 'glass' ? 'active' : ''}`}
-                href="./product-glass.html"
-              >玻璃</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link ${active === 'stainless' ? 'active' : ''}`}
-                href="./product-stainless.html" >不鏽鋼</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link ${active === 'woody' ? 'active' : ''}`}
-                href="./product-woody.html" >木製</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link ${active === 'ceramic' ? 'active' : ''}`}
-                href="./product-ceramic.html" >瓷器</a>
-            </li>
-          </ul>
-        </div>
-      </div >
+
+      <div className="subMenu">
+        <ul className="nav nav-pills nav-tabs flex-column">
+          <li className="nav-item">
+            <a className={`nav-link  ${active === 'allproduct' ? 'active' : ''}`}
+              href="./all-product.html"
+            >全部商品</a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link  ${active === 'glass' ? 'active' : ''}`}
+              href="./product-glass.html"
+            >玻璃</a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link ${active === 'stainless' ? 'active' : ''}`}
+              href="./product-stainless.html" >不鏽鋼</a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link ${active === 'woody' ? 'active' : ''}`}
+              href="./product-woody.html" >木製</a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link ${active === 'ceramic' ? 'active' : ''}`}
+              href="./product-ceramic.html" >瓷器</a>
+          </li>
+        </ul>
+      </div>
+
     </>)
 }
 
@@ -150,14 +150,14 @@ const Product = ({ name, info, url, id }) => {
     <>
       <div className="product">
 
-          <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-          <h3 className="productName">{name}</h3>
-          <p className="productInfo">
-            {info}
-          </p>
-          <div className="cta">
-            <a href={`product.html?q=${id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
-          </div>
+        <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+        <h3 className="productName">{name}</h3>
+        <p className="productInfo">
+          {info}
+        </p>
+        <div className="cta">
+          <a href={`product.html?q=${id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
+        </div>
 
       </div>
 

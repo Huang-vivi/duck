@@ -136,6 +136,7 @@
                     )
                 }
 
+
                 //網頁元件
                 const ProductPage = ({ id, info, content, name, priceregular, priceshow, url, url2, tag1, tag2, url3, url4 }) => {
 
@@ -144,19 +145,103 @@
                         setIsFavorite(!isFavorite); // 切換狀態
                     };
 
+
+                    const ProductQuantity = () => {
+                        const [quantity, setQuantity] = useState(1); // 初始数量为1
+
+                        const incrementQuantity = () => {
+                            setQuantity(prevQuantity => prevQuantity + 1);
+                        };
+
+                        const decrementQuantity = () => {
+                            if (quantity > 1) {
+                                setQuantity(prevQuantity => prevQuantity - 1);
+                            }
+                        };
+
+                        return (
+                            <div className="add-button">
+                                <button className="my-button-s" onClick={decrementQuantity}>-</button>
+                                <span>{quantity}</span>
+                                <button className="my-button-s" onClick={incrementQuantity}>+</button>
+                            </div>
+                        );
+                    };
+
+                    // 商品資訊 active設計
+                    const InfoTab = () => {
+                        const [activeTab, setActiveTab] = useState('#product-detail');
+
+                        useEffect(() => {
+                            // 檢查在組件加載時是否有 active 的菜單項
+                            // console.log("Initial activeTab: ", activeTab);
+                            const activeElement = document.querySelector('.detail-rule.active');
+                            // console.log("document.querySelector ", activeElement);
+                            if (activeElement) {
+                                const target = activeElement.getAttribute('href');
+                                setActiveTab(target);
+                            }
+                        }, []);
+
+                        const handleClick = (event, href) => {
+                            event.stopPropagation();
+                            event.preventDefault();
+                            // 更新新的 active 狀態
+                            setActiveTab(href);
+
+                        };
+
+                        return (<>
+                            <div className="product-description">
+                                <ul className="nav nav-pills nav-fill" >
+                                    <li className="nav-item" >
+                                        <a className={`nav-link detail-rule ${activeTab === '#product-detail' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#product-detail')} href="#product-detail"
+                                        >商品介紹</a>
+                                    </li>
+                                    <li className="nav-item" >
+                                        <a className={`nav-link detail-rule ${activeTab === '#product-rule' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#product-rule')} href="#product-rule"
+                                        >銷售說明</a>
+                                    </li>
+                                </ul>
+                                <div className="product-detail-rule" >
+                                    <div className={`text fade ${activeTab === '#product-detail' ? 'show' : 'collapse'}`} id="product-detail" role="tabpanel" aria-labelledby="product-detail">
+                                        <h2>商品介紹</h2>
+                                        <p>{content}</p>
+                                        <div className="small img-center">
+                                            <img className="img-small" src={`./images/${url}.jpeg`} alt="" />
+                                            <img className="img-small" src={`./images/${url2}.jpeg`} alt="" />
+                                            <img className="img-small" src={`./images/${url3}.jpeg`} alt="" />
+                                            <img className="img-small" src={`./images/${url4}.jpeg`} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className={`text fade ${activeTab === '#product-rule' ? 'show' : 'collapse'}`} id="product-rule" role="tabpanel" aria-labelledby="product-rule">
+                                        <h2>銷售說明</h2>
+                                        <p>運費100 {content}</p>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </>)
+                    }
+
+
                     return (
                         <>  <div className="top-class">
-                                    <nav style={{
-                                        "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
-                                    }}
-                                        aria-label="breadcrumb">
-                                        <ol className="breadcrumb">
-                                            <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                                            <li className="breadcrumb-item"><a href="/all-product.html">全部商品</a></li>
-                                            <li className="breadcrumb-item active" aria-current="page">{name}</li>
-                                        </ol>
-                                    </nav>
-                                </div>
+                            <nav style={{
+                                "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                            }}
+                                aria-label="breadcrumb">
+                                <ol className="breadcrumb">
+                                    <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
+                                    <li className="breadcrumb-item"><a href="/all-product.html">全部商品</a></li>
+                                    <li className="breadcrumb-item active" aria-current="page">{name}</li>
+                                </ol>
+                            </nav>
+                        </div>
                             <div className="main-product">
                                 <div className="product-top">
                                     <div className="product-images">
@@ -172,55 +257,23 @@
                                     <div className="product-infomation">
                                         <h1>{name}</h1>
                                         <div className="tag-line">
-                                            <div>{tag1}</div>
-                                            <div>{tag2}</div>
+                                            <div className="product-label">{tag1}</div >
+                                            <div className="product-label">{tag2}</div>
                                         </div>
-                                        <div>{info}</div>
+                                        <div className="info-line" >{info}</div>
                                         <div className="price-line">
                                             <div className="priceregular" >$NT{priceregular}</div>
                                             <div className="priceshow" >$NT{priceshow}</div></div>
 
-                                        <input type="text" />
-                                        <button>立即購買</button>
-                                        <button>加入購物車</button>
-                                    </div>
-                                </div>
-                                <div className="product-description">
-
-                                    <ul className="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-                                        <li className="nav-item" role="presentation">
-                                            <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                                aria-selected="true">商品介紹</button>
-                                        </li>
-                                        <li className="nav-item" role="presentation">
-                                            <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-profile" type="button" role="tab"
-                                                aria-controls="pills-profile" aria-selected="false">銷售說明</button>
-                                        </li>
-                                    </ul>
-                                    <div className="tab-content" id="pills-tabContent">
-                                        <div className="tab-pane fade show active text" id="pills-home" role="tabpanel"
-                                            aria-labelledby="pills-home-tab">
-                                            <h2>商品介紹</h2>
-                                            <p>{content}</p>
-                                            <div className="small">
-                                                <img className="img-small" src={`./images/${url2}.jpeg`} alt="" />
-                                                <img className="img-small" src={`./images/${url3}.jpeg`} alt="" />
-                                                <img className="img-small" src={`./images/${url4}.jpeg`} alt="" />
-                                            </div>
+                                        <ProductQuantity />
+                                        <div className="cart-buy">
+                                            <button className="my-button-m">立即購買</button>
+                                            <button className="my-button-m">加入購物車</button>
                                         </div>
                                     </div>
 
-                                    <div className="tab-pane fade text" id="pills-profile" role="tabpanel"
-                                        aria-labelledby="pills-profile-tab">
-                                        <h2>銷售說明</h2>
-                                        <p>運費100
-                                        </p>
-
-                                    </div>
-
                                 </div>
+                                <InfoTab />
                             </div>
 
                         </>)
@@ -232,10 +285,7 @@
                         <Header active="all-product" />
                         <main>
                             <section className="all-product first-header">
-
-
                                 {renderProducts()}
-
                                 <div className="product-recommand">
                                     <header className="subTitle bold first-header">
                                         <img src="./images/header.png" alt="" />

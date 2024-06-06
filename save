@@ -148,3 +148,17 @@
                     );
                 }
 
+
+
+
+   <Switch>
+                        <Route exact path="/" render={() => <ProductList products={products} addToCart={addToCart} />} />
+                        <Route path="/cart" render={() => <Cart cart={cart} setCart={setCart} />} />
+                        <Route path="/checkout" render={() => <Checkout cart={cart} />} />
+                    </Switch>
+
+
+                    <Switch>
+                    <Route exact path="/" render={(props) => <ProductsPage {...props} addToCart={addToCart} />} />
+                    <Route path="/cart" render={(props) => <CartPage {...props} cart={cart} />} />
+                </Switch>
