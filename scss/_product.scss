@@ -10,42 +10,46 @@
   margin: 20px 0;
 }
 
-.all-product {
+
+.all-product-main {
   display: flex;
-  flex-wrap: wrap;
-  // justify-content: start;
-  // padding-left: 50px;
+  width: 100%;
+  padding: 0 25px;
+  justify-content: center;
 
+  @media($breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+  }
 
-  .subMenu{
-    width: 30%;
+  .subMenu {
+    width: 15%;
+
+    @media($breakpoint-md) {
+      width: 100%;
+    }
+  }
+
+  .all-product {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: start;
+    // padding-left: 50px;
+    flex-wrap: wrap;
+    width: 75%;
+    justify-content: center;
+    min-width: 555px;
+    // padding: 0 15px;
+
     @media($breakpoint-md) {
       width: 100%;
     }
   }
 }
 
-
-.all-product-main {
-  display: flex;
-  // width: 85%;
-
-  @media($breakpoint-md) {
-   flex-direction: column;
- align-items: center;
-  }
-}
-
 .first-header {
   margin-top: 100px;
 }
-
-.all-product-main .product-list {
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-}
-
 
 .product-s {
   padding: 15px;
@@ -174,12 +178,12 @@
   }
 }
 
-.img-center{
+.img-center {
   display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 
@@ -191,6 +195,7 @@
   .product-top {
     display: flex;
     justify-content: space-evenly;
+
     >* {
       margin: 20px;
     }
@@ -199,14 +204,16 @@
     .product-infomation {
       text-align: left;
 
-       > * {
-         text-align: left;
+      >* {
+        text-align: left;
         width: 85%;
-        padding:0 20px 10px 0;
+        padding: 0 20px 10px 0;
       }
 
-      h1, .info-line,.price-line{
-      padding-left: 3px;
+      h1,
+      .info-line,
+      .price-line {
+        padding-left: 3px;
       }
 
       .tag-line,
@@ -262,11 +269,11 @@
 }
 
 
-.cart-buy{
+.cart-buy {
   display: flex;
   flex-direction: row;
 }
 
-.product-detail-rule{
+.product-detail-rule {
   width: 100%;
 }

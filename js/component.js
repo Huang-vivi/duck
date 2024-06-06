@@ -13,10 +13,10 @@ const Footer = () => {
       </div>
       <div className="sitemap">
         <ul className="menu">
-          <li><a href="./about-us.html">品牌故事</a></li>
+          <li><a href="./about-allabout.html">品牌故事</a></li>
           <li><a href="./all-news.html">最新消息</a></li>
           <li><a href="./member.html">會員專區</a></li>
-          <li><a href="./contact-us.html">聯絡我們</a></li>
+          <li><a href="./about-contact-us.html">聯絡我們</a></li>
         </ul>
         <ul className="media">
           <li><a href="#"><i className="fa-brands fa-square-facebook fa-2xl" style={{ color: "#FFFADD" }}></i></a></li>
@@ -44,7 +44,7 @@ const Header = ({ active }) => {
         <div className="collapse navbar-collapse " id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className={` nav-link ${active === 'about-us' ? 'active' : ''}`} href="./about-us.html">關於我們</a>
+              <a className={` nav-link ${active === 'about-allabout' ? 'active' : ''}`} href="./about-allabout.html">關於我們</a>
             </li>
             <li className="nav-item">
               <a className={` nav-link ${active === 'all-news' ? 'active' : ''}`} href="./all-news.html">最新消息</a>
@@ -55,7 +55,7 @@ const Header = ({ active }) => {
                 找杯趣
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item" href="./all-product.html">ALL</a></li>
+                <li><a className="dropdown-item" href="./product-allproduct.html">ALL</a></li>
                 <li><a className="dropdown-item" href="./product-glass.html">玻璃</a></li>
                 <li><a className="dropdown-item" href="./product-stainless.html">不鏽鋼</a></li>
                 <li><a className="dropdown-item" href="./product-woody.html">木質</a></li>
@@ -65,7 +65,7 @@ const Header = ({ active }) => {
               <a className={` nav-link ${active === 'member' ? 'active' : ''}`} href="./member.html">會員專區</a>
             </li>
             <li className="nav-item">
-              <a className={` nav-link ${active === 'contact-us' ? 'active' : ''}`} href="./contact-us.html">聯絡我們</a>
+              <a className={` nav-link ${active === 'about-contact-us' ? 'active' : ''}`} href="./about-contact-us.html">聯絡我們</a>
             </li>
           </ul>
           <ul className="search navbar-nav d-flex">
@@ -84,33 +84,32 @@ const Header = ({ active }) => {
   )
 }
 
-const Navtable = ({ active }) => {
+const Navtable = ({ active,tab1,tab2,tab3,tab4,tab5,topic,tabname,tab2name,tab3name,tab4name,tab5name, noshow2,noshow3,noshow4,noshow1 ,noshow5}) => {
   return (
     <>
-
       <div className="subMenu">
         <ul className="nav nav-pills nav-tabs flex-column">
           <li className="nav-item">
-            <a className={`nav-link  ${active === 'allproduct' ? 'active' : ''}`}
-              href="./all-product.html"
-            >全部商品</a>
+            <a className={`nav-link ${noshow1}  ${active === tab1 ? 'active' : ''}`}
+              href={`./${topic}-${tab1}.html`}
+            >{tabname}</a>
           </li>
           <li className="nav-item">
-            <a className={`nav-link  ${active === 'glass' ? 'active' : ''}`}
-              href="./product-glass.html"
-            >玻璃</a>
+            <a className={`nav-link ${noshow2} ${active === tab2 ? 'active' : ''}`}
+              href={`./${topic}-${tab2}.html`}
+            >{tab2name}</a>
           </li>
           <li className="nav-item">
-            <a className={`nav-link ${active === 'stainless' ? 'active' : ''}`}
-              href="./product-stainless.html" >不鏽鋼</a>
+            <a className={`nav-link ${noshow3}  ${active === tab3 ? 'active' : ''}`}
+              href={`./${topic}-${tab3}.html`}  >{tab3name}</a>
           </li>
           <li className="nav-item">
-            <a className={`nav-link ${active === 'woody' ? 'active' : ''}`}
-              href="./product-woody.html" >木製</a>
+            <a className={`nav-link ${noshow4} ${active === tab4 ? 'active' : ''}`}
+              href={`./${topic}-${tab4}.html`}  >{tab4name}</a>
           </li>
           <li className="nav-item">
-            <a className={`nav-link ${active === 'ceramic' ? 'active' : ''}`}
-              href="./product-ceramic.html" >瓷器</a>
+            <a className={`nav-link ${noshow5} ${active === tab5 ? 'active' : ''}`}
+              href={`./${topic}-${tab5}.html`} >{tab5name}</a>
           </li>
         </ul>
       </div>

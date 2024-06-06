@@ -80,7 +80,8 @@
         //渲染json資料 函式
         const renderProducts = (products) => {
           return (<>
-            <div className="product-list all-product">
+            <div className=" all-product">
+            {/* <div className=" product-list all-product"> */}
               {products.map((product) => (
                 <ProductCardS
                   key={product.id}
@@ -132,13 +133,13 @@
 
         return (
           <>
-            <Header active="all-product" />
+            <Header active="about-allabout" />
             <main>
               <section className="all-product-page">
                 <header className="subTitle bold first-header">
                   <img src="./images/header.png" alt="" />
-                  <h2>所有產品</h2>
-                  <h3>ALL PRODUCT</h3>
+                  <h2>關於我們</h2>
+                  <h3>ABOUT US</h3>
                 </header>
                 <div className="top-class">
                   <nav style={{
@@ -147,7 +148,7 @@
                     aria-label="breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">全部商品</li>
+                      <li className="breadcrumb-item active" aria-current="page">關於我們</li>
                     </ol>
                   </nav>
 
@@ -159,7 +160,7 @@
                   </div>
                 </div>
                 <div className="all-product-main">
-                  <Navtable active="allproduct" />
+                  <Navtable active="allabout" tab1="allabout"  tab2="qa" tab3="contact-us" tab4="privacy" tab5="ceramic" topic="about" tabname="關於三杯鴨殿" tab2name="購物ＱＡ" tab3name="聯絡我們" tab4name="隱私權政策"  noshow5="collapse" />
                   {renderProducts(productData)}
                 </div>
               </section >

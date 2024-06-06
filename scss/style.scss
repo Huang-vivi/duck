@@ -261,7 +261,7 @@ footer {
     flex: 1;
 
     @media($breakpoint-md) {
-      width:100px;
+      width: 100px;
     }
   }
 
@@ -549,26 +549,73 @@ textarea {
   }
 }
 
-.contact-main {
-  width: 100%;
+.nav-contact {
   display: flex;
+  width: 100%;
+  padding: 0 25px;
+  justify-content: center;
 
+  @media($breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subMenu {
+    width: 15%;
+
+    @media($breakpoint-md) {
+      width: 100%;
+    }
+  }
+
+  .all-product {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: start;
+    // padding-left: 50px;
+    flex-wrap: wrap;
+    width: 75%;
+    justify-content: center;
+    min-width: 555px;
+    padding: 0 15px;
+
+    @media($breakpoint-md) {
+      width: 100%;
+    }
+  }
+}
+
+.contact-main {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .contact-img {
-    width: 50%;
+    background-image: url(../../images/bg1.jpeg);
+    -o-object-fit: fill;
+    object-fit: fill;
+    background-position: 0px -500px;
+    // background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
     border-radius: 30px;
     padding: 0 30px;
     margin: 0 20px;
   }
 
   .contact-form {
-    padding: 0 30px;
-    width: 50%;
+    padding: 10px 30px;
+    width: 100%;
     margin: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    justify-content:space-evenly;
+
+    p{
+      padding: 0px 30px;
+    }
 
     .smoove {
       display: flex;

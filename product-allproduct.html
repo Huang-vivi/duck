@@ -80,7 +80,8 @@
         //渲染json資料 函式
         const renderProducts = (products) => {
           return (<>
-            <div className="product-list all-product">
+            <div className=" all-product">
+            {/* <div className=" product-list all-product"> */}
               {products.map((product) => (
                 <ProductCardS
                   key={product.id}
@@ -93,7 +94,6 @@
                   priceregular={product.priceregular}
                   priceshow={product.priceshow} />
               ))}
-
             </div >
           </>)
         };
@@ -133,13 +133,13 @@
 
         return (
           <>
-            <Header active="about-us" />
+            <Header active="all-product" />
             <main>
-              <section >
+              <section className="all-product-page">
                 <header className="subTitle bold first-header">
                   <img src="./images/header.png" alt="" />
-                  <h2>關於我們</h2>
-                  <h3>ABOUT US</h3>
+                  <h2>所有產品</h2>
+                  <h3>ALL PRODUCT</h3>
                 </header>
                 <div className="top-class">
                   <nav style={{
@@ -148,16 +148,21 @@
                     aria-label="breadcrumb">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item"><a href="/index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page"></li>
+                      <li className="breadcrumb-item active" aria-current="page">全部商品</li>
                     </ol>
                   </nav>
-                  <div className="about-content">
-                  <Navtable active="about-us" />
 
+                  <div className="filter">
+                    <ul>
+                      <li>每頁展示數量 v </li>
+                      <li>商品排序 v </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-
-
+                <div className="all-product-main">
+                  <Navtable active="allproduct"  tab1="allproduct"  tab2="glass" tab3="stainless" tab4="woody" tab5="ceramic" topic="product" tabname="全部商品" tab2name="玻璃" tab3name="不鏽鋼" tab4name="木製" tab5name="瓷器"  />
+                  {renderProducts(productData)}
+                </div>
               </section >
             </main >
             <Footer />
