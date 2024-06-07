@@ -11717,4 +11717,10 @@ textarea {
 .privacy li {
   list-style: square;
   line-height: 1.5;
+}
+
+.news-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
