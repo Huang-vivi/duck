@@ -99,44 +99,6 @@
           </>)
         };
 
-        const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag1, tag2 }) => {
-          const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
-          const handleFavoriteClick = () => {
-            setIsFavorite(!isFavorite); // 切換狀態
-          };
-
-          return (
-            <div className="product-s">
-              <a href={`product.html?q=${id}`}>
-                <div className="change-img">
-                  <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
-                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-                </div>
-                <div className="name-tag">
-                  <h3 className="productName">{name}</h3>
-                  <div className="product-middle">
-                    <span className="product-label">{tag1}</span>
-                    <span className="product-label product-label2">{tag2}</span>
-                  </div>
-                </div>
-                <div className="product-bottom">
-
-                  <div className="product-price-show">NT${priceshow}</div>
-                  <div className="product-icon">
-                    <div className="add-list">
-                      <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#22668D", "fontSize": "2em" }} onClick={handleFavoriteClick}> </i>
-                    </div>
-                    <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD" }} > </i>
-                    </div>
-                  </div>
-                </div>
-              </a >
-            </div >
-          )
-        }
-
-
-
         return (
           <>
             <Header active="all-product" />

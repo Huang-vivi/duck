@@ -35,7 +35,7 @@ const Header = ({ active }) => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light bold">
       <div className="container-fluid flex-grow-1">
-        <a className="navbar-brand" href="./index.html"> <img src="./logo-w.ico" alt="三杯鴨LOGO" width="30"
+        <a className="navbar-brand" href="./index.html"> <img src="./logo-w2.ico" alt="三杯鴨LOGO" width="30"
           height="30" /></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,7 +187,7 @@ const renderProducts = (products) => {
 };
 
 //Product-商品頁小卡-ProductCardS 卡片元件
-const ProductCardS = ({ id, name, priceregular, priceshow, url, tag1, tag2 }) => {
+const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag1, tag2 }) => {
   const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
   const handleFavoriteClick = () => {
     setIsFavorite(!isFavorite); // 切換狀態
@@ -196,12 +196,17 @@ const ProductCardS = ({ id, name, priceregular, priceshow, url, tag1, tag2 }) =>
   return (
     <div className="product-s">
       <a href={`product.html?q=${id}`}>
-        <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-        <h3 className="productName">{name}</h3>
-        <div className="product-middle">
-          <span className="product-label">{tag1}</span>
-          <span className="product-label">{tag2}</span>
-        </div>
+      <div className="change-img">
+                  <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
+                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+                </div>
+                <div className="name-tag">
+                  <h3 className="productName">{name}</h3>
+                  <div className="product-middle">
+                    <span className="product-label">{tag1}</span>
+                    <span className="product-label product-label2">{tag2}</span>
+                  </div>
+                </div>
         <div className="product-bottom">
 
           <div className="product-price-show">NT${priceshow}</div>

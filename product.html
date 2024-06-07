@@ -267,8 +267,8 @@
 
                                         <ProductQuantity />
                                         <div className="cart-buy">
-                                            <button className="my-button-m">立即購買</button>
-                                            <button className="my-button-m">加入購物車</button>
+                                            <button className="my-button-m"><a href="./cart.html"> 立即購買</a></button>
+                                            <button className="my-button-m">< a href="./cart.html">加入購物車</a></button>
                                         </div>
                                     </div>
 
@@ -293,11 +293,11 @@
                                         <h3>RECOMMAND PRODUCT</h3>
                                     </header>
                                     <div className="recommand-list">
-                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
-                                    <div className="product-list">
-                                        {renderProductsClass(filteredProducts)}
-                                    </div>
-                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{
+                                        <i className="fa-solid fa-square-caret-left fa-2xl" style={{ "color": "#22668D" }}></i>
+                                        <div className="product-list">
+                                            {renderProductsClass(filteredProducts)}
+                                        </div>
+                                        <i className="fa-solid fa-square-caret-right fa-2xl" style={{
                                             "color": "#22668D"
                                         }}></i>
                                     </div>

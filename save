@@ -162,3 +162,12 @@
                     <Route exact path="/" render={(props) => <ProductsPage {...props} addToCart={addToCart} />} />
                     <Route path="/cart" render={(props) => <CartPage {...props} cart={cart} />} />
                 </Switch>
+
+
+<div class="member-contact">
+
+
+
+
+      <div class="delievry-contact">
+
