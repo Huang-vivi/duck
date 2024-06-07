@@ -25,7 +25,8 @@
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    padding: $table-cell-padding-y $table-cell-padding-x;
+    // padding: $table-cell-padding-y $table-cell-padding-x;
+    padding: 1rem 1rem;
     background-color: var(--#{$variable-prefix}table-bg);
     // border-bottom-width: $table-border-width;
     border-bottom-width: 0;

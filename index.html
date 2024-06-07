@@ -49,364 +49,111 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-            const { useState, useEffect } = React;
+        const { useState, useEffect } = React;
 
-            function MyApp() {
-                const [productData, setProductData] = useState([]);
-                const [selectedMaterial, setSelectedMaterial] = useState('');
-                const [currentStartIndex, setCurrentStartIndex] = useState(0);
-                const [currentStartIndex1, setCurrentStartIndex1] = useState(0);
-                const [currentStartIndex2, setCurrentStartIndex2] = useState(0);
-                const [postData, setPostData] = useState([]);
+        function MyApp() {
+            const [productData, setProductData] = useState([]);
+            const [selectedMaterial, setSelectedMaterial] = useState('');
+            const [currentStartIndex, setCurrentStartIndex] = useState(0);
+            const [currentStartIndex1, setCurrentStartIndex1] = useState(0);
+            const [currentStartIndex2, setCurrentStartIndex2] = useState(0);
+            const [postData, setPostData] = useState([]);
 
-                //讀取json資料
-                useEffect(() => {
-                    const fetchData = async () => {
-                        const data = await fetchProductData();
-                        if (data) {
-                            setProductData(data);
-                        }
-                    };
-
-                    fetchData();
-                }, []);
-
-                //渲染json資料 函式
-                const renderProducts = (products) => {
-                    return (<>
-
-                        <div className="product-list">
-
-                            {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
-                                <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
-                            ))}
-                        </div >
-
-                    </>)
-                };
-
-                const [color, setColor] = useState('');
-                const [texture, setTexture] = useState('');
-                const [price, setPrice] = useState('');
-                const [tag1, setTag1] = useState('');
-                const [tag2, setTag2] = useState('');
-                const [info, setInfo] = useState('');
-                const [url, setUrl] = useState('');
-                const [result, setResult] = useState({
-
-                    "id": "1",
-                    "texture": "glass",
-                    "priceshow": "99",
-                    "price": "low",
-                    "color": "white",
-                    "tag1": "職人手作",
-                    "tag2": "限量",
-                    "name": "鴨趣造型馬克杯",
-                    "info": "這款鴨趣造型馬克杯就像一隻可愛的小鴨，擁有迷人的外觀和獨特的造型！",
-                    "url": "product1"
-                });
-
-                const filterProducts = () => {
-                    // console.log('Selected color:', color);
-                    // console.log('Selected texture:', texture);
-                    // console.log('Selected price:', price);
-
-                    const filteredRandomProducts = productData.filter(product => {
-                        return (color === "" || color === "all" || product.color === color) &&
-                            (texture === "" || texture === "all" || product.texture === texture) &&
-                            (price === "" || price === "all" || product.price === price);
-                    });
-
-                    if (filteredRandomProducts.length > 0) {
-                        const randomProduct = filteredRandomProducts[Math.floor(Math.random() * filteredRandomProducts.length)];
-                        setResult(randomProduct)
-                        console.log(randomProduct);
-                    } else {
-                        setResult(null);
+            //讀取json資料
+            useEffect(() => {
+                const fetchData = async () => {
+                    const data = await fetchProductData();
+                    if (data) {
+                        setProductData(data);
                     }
                 };
 
-                // 跑馬燈無限巡迴
-                document.addEventListener("DOMContentLoaded", function () {
-                    const marqueeInner = document.querySelector('.marquee-inner');
-                    const images = marqueeInner.querySelectorAll('img');
-                    const totalWidth = Array.from(images).reduce((acc, img) => acc + img.offsetWidth, 0);
+                fetchData();
+            }, []);
 
-                    marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
+            //渲染json資料 函式
+            const renderProducts = (products) => {
+                return (<>
+
+                    <div className="product-list">
+
+                        {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
+                            <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
+                        ))}
+                    </div >
+
+                </>)
+            };
+
+            const [color, setColor] = useState('');
+            const [texture, setTexture] = useState('');
+            const [price, setPrice] = useState('');
+            const [tag1, setTag1] = useState('');
+            const [tag2, setTag2] = useState('');
+            const [info, setInfo] = useState('');
+            const [url, setUrl] = useState('');
+            const [result, setResult] = useState({
+
+                "id": "1",
+                "texture": "glass",
+                "priceshow": "99",
+                "price": "low",
+                "color": "white",
+                "tag1": "職人手作",
+                "tag2": "限量",
+                "name": "鴨趣造型馬克杯",
+                "info": "這款鴨趣造型馬克杯就像一隻可愛的小鴨，擁有迷人的外觀和獨特的造型！",
+                "url": "product1"
+            });
+
+            const filterProducts = () => {
+                // console.log('Selected color:', color);
+                // console.log('Selected texture:', texture);
+                // console.log('Selected price:', price);
+
+                const filteredRandomProducts = productData.filter(product => {
+                    return (color === "" || color === "all" || product.color === color) &&
+                        (texture === "" || texture === "all" || product.texture === texture) &&
+                        (price === "" || price === "all" || product.price === price);
                 });
 
-                //材質切換按鈕
-                const TextureTabs = ({ textureData }) => {
-                    const [activeTab, setActiveTab] = useState('glass');
-
-                    const handleTabClick = (tab) => {
-                        setActiveTab(tab);
-                    };
-
-                    // 根据选项卡按钮显示不同的介绍文本
-                    const getTabContent = () => {
-                        const filteredProducts = productData.filter(product => product.texture === activeTab);
-
-                        //上一頁 下一頁 設計
-                        const NextProduct = () => {
-
-
-                            const handlePrevClick = () => {
-                                if (currentStartIndex > 0) {
-                                    setCurrentStartIndex(currentStartIndex - 1);
-                                    // const productWidth = 210;
-                                    // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                    // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                                }
-                            };
-
-                            const handleNextClick = () => {
-                                if (currentStartIndex < filteredProducts.length - 4) {
-                                    setCurrentStartIndex(currentStartIndex + 1);
-                                    // const productWidth = 210;
-                                    // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                    // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                                }
-                            };
-
-                            return (
-                                <div className="pre-next">
-                                    <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
-                                        <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
-                                    </button>
-                                    {renderProducts(filteredProducts)}
-                                    <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProducts.length - 4}>
-                                        <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
-                                    </button>
-                                </div >
-                            );
-                        };
-
-
-                        if (filteredProducts.length === 0) {
-                            return <p>No products available for this material.</p>;
-                        }
-                        switch (activeTab) {
-                            case 'glass':
-                                return (
-                                    <>
-                                        <div className="texture-content active" id="glass">
-                                            <div className="texture-info">
-                                                <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
-                                                <a href="./product-glass.html">立即逛逛</a>
-                                            </div>
-                                            <NextProduct />
-                                        </div >
-                                    </>);
-                            case 'stainless':
-                                return (<>
-                                    <div className="texture-content active " id="stainless">
-                                        <div className="texture-info">
-                                            <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
-                                            <a href="./product-stainless.html">立即逛逛</a>
-                                        </div>
-                                        <NextProduct />
-                                    </div>
-                                </>);
-                            case 'ceramic':
-                                return (<>
-                                    <div className="texture-content active" id="ceramic">
-                                        <div className="texture-info">
-                                            <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
-                                            <a href="./product-ceramic.html">立即逛逛</a>
-                                        </div>
-                                        <NextProduct />
-                                    </div>
-                                </>);
-                            case 'woody':
-                                return (<>
-                                    <div className="texture-content active" id="woody">
-                                        <div className="texture-info">
-                                            <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
-                                            <a href="./product-woody.html">立即逛逛</a>
-                                        </div>
-                                        <NextProduct />
-                                    </div >
-                                </>);
-                        }
-                    };
-
-                    return (
-                        <>
-                            <div className="textMenu">
-                                <ul className="texture">
-                                    <li>
-                                        <a
-                                            className={`texture-button ${activeTab === 'glass' ? 'active' : ''}`}
-                                            onClick={() => {
-                                                event.preventDefault();
-                                                handleTabClick('glass')
-                                            }}
-                                            href="#"
-                                        >
-                                            <h3>玻璃</h3>
-                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'glass' ? 'show' : 'collapse'}`} style={{ color: '#FFFADD' }}></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            className={`texture-button ${activeTab === 'woody' ? 'active' : ''}`}
-                                            onClick={() => {
-                                                event.preventDefault(); handleTabClick('woody')
-                                            }}
-                                            href="#"
-                                        >
-                                            <h3>木質</h3>
-                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'woody' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            className={`texture-button ${activeTab === 'ceramic' ? 'active' : ''}`}
-                                            onClick={() => {
-                                                event.preventDefault(); handleTabClick('ceramic')
-                                            }}
-                                            href="#"
-                                        >
-                                            <h3>瓷器</h3>
-                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'ceramic' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            className={`texture-button ${activeTab === 'stainless' ? 'active' : ''}`}
-                                            onClick={() => {
-                                                event.preventDefault(); handleTabClick('stainless')
-                                            }}
-                                            href="#"
-                                        >
-                                            <h3>不鏽鋼</h3>
-                                            <i className={ `fa-solid fa-mug-hot fa-lg ${activeTab === 'stainless' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
-                                        </a>
-                                    </li>
-                                </ul >
-                            </div>
-                            <div className="textureList">
-                                {getTabContent(activeTab)}
-                            </div>
-                        </>
-                    )
+                if (filteredRandomProducts.length > 0) {
+                    const randomProduct = filteredRandomProducts[Math.floor(Math.random() * filteredRandomProducts.length)];
+                    setResult(randomProduct)
+                    console.log(randomProduct);
+                } else {
+                    setResult(null);
                 }
+            };
 
-                // 次目錄active設計
-                const Navbar = () => {
-                    const [activeItem, setActiveItem] = useState('#about-quackmug');
+            // 跑馬燈無限巡迴
+            document.addEventListener("DOMContentLoaded", function () {
+                const marqueeInner = document.querySelector('.marquee-inner');
+                const images = marqueeInner.querySelectorAll('img');
+                const totalWidth = Array.from(images).reduce((acc, img) => acc + img.offsetWidth, 0);
 
-                    useEffect(() => {
-                        // 檢查在組件加載時是否有 active 的菜單項
-                        const activeElement = document.querySelector('.nav-link.active');
-                        if (activeElement) {
-                            const target = activeElement.getAttribute('href');
-                            setActiveItem(target);
-                        }
-                    }, []);
+                marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
+            });
 
-                    const handleClick = (event, href) => {
-                        event.stopPropagation();
-                        event.preventDefault();
-                        // 更新新的 active 狀態
-                        setActiveItem(href);
+            //材質切換按鈕
+            const TextureTabs = ({ textureData }) => {
+                const [activeTab, setActiveTab] = useState('glass');
 
-                    };
-                    return (
-                        <>
-                            <div className="about-us">
-                                <div className="subMenu">
-                                    <ul className="nav nav-pills nav-tabs flex-column">
-                                        <li className="nav-item">
-                                            <a className={`nav-link ${activeItem === '#about-quackmug' ? 'active' : ''}`}
-                                                onClick={(e) => handleClick(e, '#about-quackmug')} href="#about-quackmug"
-                                            >關於我們</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className={`nav-link ${activeItem === '#about-pay' ? 'active' : ''}`}
-                                                onClick={(e) => handleClick(e, '#about-pay')} >付款方式</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className={`nav-link ${activeItem === '#about-delivery-fee' ? 'active' : ''}`}
-                                                onClick={(e) => handleClick(e, '#about-delivery-fee')} >運費政策</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className={`nav-link ${activeItem === '#about-return' ? 'active' : ''}`}
-                                                onClick={(e) => handleClick(e, '#about-return')} >退貨規則</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="about-info ">
-                                    <div className={` container fade ${activeItem === '#about-quackmug' ? 'show' : 'collapse'}`} id="about-quackmug" role="tabpanel"
-                                        aria-labelledby="about-quackmug">
-                                        <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                        <h4>關於三杯鴨</h4>
-                                        <p>"每個人都值得擁有好杯鴨，用一杯重啟儀式美好的生活時光。"</p>
-                                        <p> 馬克杯是生活中容易被忽略之物，然而三杯鴨馬克杯期望能陪伴你的日常，溫暖陪伴寒冷的冬天、沁涼你的炎炎夏日，還是埋首時的精神陪伴，或者親友相聚的歡樂時光，能讓你在繁忙的日子中找到片刻的溫馨。！ </p>
-                                        <p>三杯鴨專注於挑選、設計獨特的鴨子造型馬克杯，不僅堅持無毒安全材質，更以職人精神，打造有故事的馬克杯。陪伴你度過人生的起伏，無論是歡笑還是挑戰，我們堅持提供最好的品項，讓每一個值得舉杯的時刻更美好。
-                                        </p>
-                                    </div>
-                                    <div className={`container fade  ${activeItem === '#about-pay' ? 'show' : 'collapse'}`} id="about-pay" role="tabpanel" aria-labelledby="about-pay">
-                                        <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                        <h4>付款方式</h4>
-                                        <ul>
-                                            <li>信用卡：即時線上一次刷卡付款方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。</li>
-                                            <li>LINE Pay：付款不需輸入信用卡資訊及3D驗證，僅需輸入專屬密碼即可使用信用卡進行付款，節省您的付款時間。</li>
-                                            <li>Apple Pay：請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。</li>
-                                        </ul>
-                                    </div>
+                const handleTabClick = (tab) => {
+                    setActiveTab(tab);
+                };
 
-                                    <div className={` container fade  ${activeItem === '#about-delivery-fee' ? 'show' : 'collapse'}`} id="about-delivery-fee" role="tabpanel"
-                                        aria-labelledby="about-delivery-fee">
-                                        <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                        <h4>運費政策</h4>
-                                        <p>三杯鴨以宅急便寄送本店商品，運費120元，商品滿2000享免運費優惠。</p>
-                                        <p>配送範圍限台灣本島各縣市(不含郵政信箱)，因商品為易碎物品，為了保障雙方權益，請您在拆封開箱過程中務必全程錄影。</p>
-                                    </div>
-                                    <div className={` container fade  ${activeItem === '#about-return' ? 'show' : 'collapse'}`} id="about-return" role="tabpanel"
-                                        aria-labelledby="about-return">
-                                        <div><img src="./images/bg1.jpeg" alt="" /></div>
-                                        <h4>退貨原則</h4>
-                                        <h5>商品鑑賞期</h5>
-                                        <p>依照消費者保護法規定，從商品抵達開始即擁有７天商品鑑賞期，猶豫期非試用期。</p>
-                                        <h5>退換貨須知</h5>
-                                        <p>如有退貨需求，請於收到商品７天內聯絡客服人員，並提供「姓名」、「訂單編號」、「連絡電話」、「退換貨商品名稱」、「退換貨原因及照片」等資料，客服收到後將協助進行退換貨。</p>
-                                        <p>退貨商品須為未經拆封使用，或非人為瑕疵所造成的污損、故障，並保留完整的原始包裝（含外包裝紙盒、贈品、其他附件）。</p>
-                                        <p><strong>退貨客服專線：02-2200-0123。</strong></p>
-                                        <h5>退換貨流程</h5>
-                                        <p>聯絡客服人員 → 確認可換貨 → 準備完整商品及發票 → 提供收件時間及聯絡資訊、地址 → 由我端委託之物流進行回收。</p>
-                                    </div>
+                // 根据选项卡按钮显示不同的介绍文本
+                const getTabContent = () => {
+                    const filteredProducts = productData.filter(product => product.texture === activeTab);
 
-                                </div>
-                            </div >
-                        </>)
-                }
-
-
-                //讀取新聞的 json資料
-                useEffect(() => {
-                    const fetchData = async () => {
-                        const data = await fetchPostData();
-                        if (data) {
-                            const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-                            setPostData(data);
-                        }
-                    };
-                    fetchData();
-                }, []);
-
-                const filteredNewsPosts = postData.filter(post => post.type === "最新公告");
-                const filteredSalesPosts = postData.filter(post => post.type === "最新優惠");
-
-                //渲染json資料 最新優惠 函式
-                const renderSalesPosts = (posts) => {
                     //上一頁 下一頁 設計
-                    const NextSalesPost = () => {
+                    const NextProduct = () => {
+
 
                         const handlePrevClick = () => {
-                            if (currentStartIndex1 > 0) {
-                                setCurrentStartIndex1(currentStartIndex1 - 1);
+                            if (currentStartIndex > 0) {
+                                setCurrentStartIndex(currentStartIndex - 1);
                                 // const productWidth = 210;
                                 // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
                                 // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
@@ -414,28 +161,281 @@
                         };
 
                         const handleNextClick = () => {
-                            if (currentStartIndex1 < filteredNewsPosts.length - 4) {
-                                setCurrentStartIndex1(currentStartIndex1 + 1);
+                            if (currentStartIndex < filteredProducts.length - 4) {
+                                setCurrentStartIndex(currentStartIndex + 1);
                                 // const productWidth = 210;
                                 // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
                                 // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
                             }
                         };
-                        return (<>
+
+                        return (
                             <div className="pre-next">
-                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex1 === 0}>
+                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
                                     <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
                                 </button>
-                                <a href="./all-news.html">查看全部</a>
-                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex1 >= filteredNewsPosts.length - 4}>
+                                {renderProducts(filteredProducts)}
+                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProducts.length - 4}>
                                     <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
                                 </button>
                             </div >
-                        </>
                         );
-                    }
+                    };
 
+
+                    if (filteredProducts.length === 0) {
+                        return <p>No products available for this material.</p>;
+                    }
+                    switch (activeTab) {
+                        case 'glass':
+                            return (
+                                <>
+                                    <div className="texture-content active" id="glass">
+                                        <div className="texture-info">
+                                            <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
+                                            <a href="./product-glass.html">立即逛逛</a>
+                                        </div>
+                                        <NextProduct />
+                                    </div >
+                                </>);
+                        case 'stainless':
+                            return (<>
+                                <div className="texture-content active " id="stainless">
+                                    <div className="texture-info">
+                                        <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
+                                        <a href="./product-stainless.html">立即逛逛</a>
+                                    </div>
+                                    <NextProduct />
+                                </div>
+                            </>);
+                        case 'ceramic':
+                            return (<>
+                                <div className="texture-content active" id="ceramic">
+                                    <div className="texture-info">
+                                        <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
+                                        <a href="./product-ceramic.html">立即逛逛</a>
+                                    </div>
+                                    <NextProduct />
+                                </div>
+                            </>);
+                        case 'woody':
+                            return (<>
+                                <div className="texture-content active" id="woody">
+                                    <div className="texture-info">
+                                        <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
+                                        <a href="./product-woody.html">立即逛逛</a>
+                                    </div>
+                                    <NextProduct />
+                                </div >
+                            </>);
+                    }
+                };
+
+                return (
+                    <>
+                        <div className="textMenu">
+                            <ul className="texture">
+                                <li>
+                                    <a
+                                        className={`texture-button ${activeTab === 'glass' ? 'active' : ''}`}
+                                        onClick={() => {
+                                            event.preventDefault();
+                                            handleTabClick('glass')
+                                        }}
+                                        href="#"
+                                    >
+                                        <h3>玻璃</h3>
+                                        <i className={`fa-solid fa-mug-hot fa-lg ${activeTab === 'glass' ? 'show' : 'collapse'}`} style={{ color: '#FFFADD' }}></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`texture-button ${activeTab === 'woody' ? 'active' : ''}`}
+                                        onClick={() => {
+                                            event.preventDefault(); handleTabClick('woody')
+                                        }}
+                                        href="#"
+                                    >
+                                        <h3>木質</h3>
+                                        <i className={`fa-solid fa-mug-hot fa-lg ${activeTab === 'woody' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`texture-button ${activeTab === 'ceramic' ? 'active' : ''}`}
+                                        onClick={() => {
+                                            event.preventDefault(); handleTabClick('ceramic')
+                                        }}
+                                        href="#"
+                                    >
+                                        <h3>瓷器</h3>
+                                        <i className={`fa-solid fa-mug-hot fa-lg ${activeTab === 'ceramic' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`texture-button ${activeTab === 'stainless' ? 'active' : ''}`}
+                                        onClick={() => {
+                                            event.preventDefault(); handleTabClick('stainless')
+                                        }}
+                                        href="#"
+                                    >
+                                        <h3>不鏽鋼</h3>
+                                        <i className={`fa-solid fa-mug-hot fa-lg ${activeTab === 'stainless' ? 'show' : 'collapse'}`} style={{ color: "#FFFADD" }}></i>
+                                    </a>
+                                </li>
+                            </ul >
+                        </div>
+                        <div className="textureList">
+                            {getTabContent(activeTab)}
+                        </div>
+                    </>
+                )
+            }
+
+            // 次目錄active設計
+            const Navbar = () => {
+                const [activeItem, setActiveItem] = useState('#about-quackmug');
+
+                useEffect(() => {
+                    // 檢查在組件加載時是否有 active 的菜單項
+                    const activeElement = document.querySelector('.nav-link.active');
+                    if (activeElement) {
+                        const target = activeElement.getAttribute('href');
+                        setActiveItem(target);
+                    }
+                }, []);
+
+                const handleClick = (event, href) => {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    // 更新新的 active 狀態
+                    setActiveItem(href);
+
+                };
+                return (
+                    <>
+                        <div className="about-us">
+                            <div className="subMenu">
+                                <ul className="nav nav-pills nav-tabs flex-column">
+                                    <li className="nav-item">
+                                        <a className={`nav-link ${activeItem === '#about-quackmug' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#about-quackmug')} href="#about-quackmug"
+                                        >關於我們</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className={`nav-link ${activeItem === '#about-pay' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#about-pay')} >付款方式</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className={`nav-link ${activeItem === '#about-delivery-fee' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#about-delivery-fee')} >運費政策</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className={`nav-link ${activeItem === '#about-return' ? 'active' : ''}`}
+                                            onClick={(e) => handleClick(e, '#about-return')} >退貨規則</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="about-info ">
+                                <div className={` container fade ${activeItem === '#about-quackmug' ? 'show' : 'collapse'}`} id="about-quackmug" role="tabpanel"
+                                    aria-labelledby="about-quackmug">
+                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                    <h4>關於三杯鴨</h4>
+                                    <p>"每個人都值得擁有好杯鴨，用一杯重啟儀式美好的生活時光。"</p>
+                                    <p> 馬克杯是生活中容易被忽略之物，然而三杯鴨馬克杯期望能陪伴你的日常，溫暖陪伴寒冷的冬天、沁涼你的炎炎夏日，還是埋首時的精神陪伴，或者親友相聚的歡樂時光，能讓你在繁忙的日子中找到片刻的溫馨。！ </p>
+                                    <p>三杯鴨專注於挑選、設計獨特的鴨子造型馬克杯，不僅堅持無毒安全材質，更以職人精神，打造有故事的馬克杯。陪伴你度過人生的起伏，無論是歡笑還是挑戰，我們堅持提供最好的品項，讓每一個值得舉杯的時刻更美好。
+                                    </p>
+                                </div>
+                                <div className={`container fade  ${activeItem === '#about-pay' ? 'show' : 'collapse'}`} id="about-pay" role="tabpanel" aria-labelledby="about-pay">
+                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                    <h4>付款方式</h4>
+                                    <ul>
+                                        <li>信用卡：即時線上一次刷卡付款方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。</li>
+                                        <li>LINE Pay：付款不需輸入信用卡資訊及3D驗證，僅需輸入專屬密碼即可使用信用卡進行付款，節省您的付款時間。</li>
+                                        <li>Apple Pay：請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。</li>
+                                    </ul>
+                                </div>
+
+                                <div className={` container fade  ${activeItem === '#about-delivery-fee' ? 'show' : 'collapse'}`} id="about-delivery-fee" role="tabpanel"
+                                    aria-labelledby="about-delivery-fee">
+                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                    <h4>運費政策</h4>
+                                    <p>三杯鴨以宅急便寄送本店商品，運費120元，商品滿2000享免運費優惠。</p>
+                                    <p>配送範圍限台灣本島各縣市(不含郵政信箱)，因商品為易碎物品，為了保障雙方權益，請您在拆封開箱過程中務必全程錄影。</p>
+                                </div>
+                                <div className={` container fade  ${activeItem === '#about-return' ? 'show' : 'collapse'}`} id="about-return" role="tabpanel"
+                                    aria-labelledby="about-return">
+                                    <div><img src="./images/bg1.jpeg" alt="" /></div>
+                                    <h4>退貨原則</h4>
+                                    <h5>商品鑑賞期</h5>
+                                    <p>依照消費者保護法規定，從商品抵達開始即擁有７天商品鑑賞期，猶豫期非試用期。</p>
+                                    <h5>退換貨須知</h5>
+                                    <p>如有退貨需求，請於收到商品７天內聯絡客服人員，並提供「姓名」、「訂單編號」、「連絡電話」、「退換貨商品名稱」、「退換貨原因及照片」等資料，客服收到後將協助進行退換貨。</p>
+                                    <p>退貨商品須為未經拆封使用，或非人為瑕疵所造成的污損、故障，並保留完整的原始包裝（含外包裝紙盒、贈品、其他附件）。</p>
+                                    <p><strong>退貨客服專線：02-2200-0123。</strong></p>
+                                    <h5>退換貨流程</h5>
+                                    <p>聯絡客服人員 → 確認可換貨 → 準備完整商品及發票 → 提供收件時間及聯絡資訊、地址 → 由我端委託之物流進行回收。</p>
+                                </div>
+
+                            </div>
+                        </div >
+                    </>)
+            }
+
+
+            //讀取新聞的 json資料
+            useEffect(() => {
+                const fetchData = async () => {
+                    const data = await fetchPostData();
+                    if (data) {
+                        const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        setPostData(data);
+                    }
+                };
+                fetchData();
+            }, []);
+
+            const filteredNewsPosts = postData.filter(post => post.type === "最新公告");
+            const filteredSalesPosts = postData.filter(post => post.type === "最新優惠");
+
+            //渲染json資料 最新優惠 函式
+            const renderSalesPosts = (posts) => {
+                //上一頁 下一頁 設計
+                const NextSalesPost = () => {
+
+                    const handlePrevClick = () => {
+                        if (currentStartIndex1 > 0) {
+                            setCurrentStartIndex1(currentStartIndex1 - 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
+
+                    const handleNextClick = () => {
+                        if (currentStartIndex1 < filteredNewsPosts.length - 4) {
+                            setCurrentStartIndex1(currentStartIndex1 + 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
                     return (<>
+                        <div className="pre-next">
+                            <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex1 === 0}>
+                                <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                            <a href="./all-news.html">查看全部</a>
+                            <button className="next" onClick={handleNextClick} disabled={currentStartIndex1 >= filteredNewsPosts.length - 4}>
+                                <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                        </div >
+                    </>
+                    );
+                }
+
+                return (<>
                     <div className="sales-box">
                         <div className="articleList">
                             {posts.slice(currentStartIndex1, currentStartIndex1 + 4).map((post) => (
@@ -453,247 +453,247 @@
                         </div>
                         < NextSalesPost />
                     </div>
-                    </>)
-                };
+                </>)
+            };
 
-                //優惠公告物件
-                const SalesBox = ({ postId, url, title, date, type, content, content2 }) => {
+            //優惠公告物件
+            const SalesBox = ({ postId, url, title, date, type, content, content2 }) => {
 
 
-                    return (
-                        <>
+                return (
+                    <>
 
-                            <article className="sale">
-                                <div className="text">
-                                    <div className="time">
-                                        <time>{date}</time>
-                                    </div>
-                                    <h4>{title}</h4>
+                        <article className="sale">
+                            <div className="text">
+                                <div className="time">
+                                    <time>{date}</time>
                                 </div>
-                                <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
-                            </article>
+                                <h4>{title}</h4>
+                            </div>
+                            <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
+                        </article>
 
-                        </>
-                    )
-                }
+                    </>
+                )
+            }
 
-                //渲染json資料 最新公告 函式
-                const renderNewsPosts = (posts) => {
+            //渲染json資料 最新公告 函式
+            const renderNewsPosts = (posts) => {
 
+                return (<>
+                    {posts.slice(currentStartIndex2, currentStartIndex2 + 1).map((post) => (
+                        < NewsBox
+                            key={post.postId}
+                            postId={post.postId}
+                            url={post.url}
+                            title={post.title}
+                            date={post.date}
+                            type={post.type}
+                            content={post.content}
+                            content2={post.content2}
+                        />
+                    ))}
+                </>)
+            };
+
+            //最新公告物件
+            const NewsBox = ({ postId, url, title, date, type, content, content2 }) => {
+
+                //上一頁 下一頁 設計
+                const NextNewsPost = () => {
+
+                    const handlePrevClick = () => {
+                        if (currentStartIndex2 > 0) {
+                            setCurrentStartIndex2(currentStartIndex2 - 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
+
+                    const handleNextClick = () => {
+                        if (currentStartIndex2 < filteredNewsPosts.length - 1) {
+                            setCurrentStartIndex2(currentStartIndex2 + 1);
+                            // const productWidth = 210;
+                            // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
+                            // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
+                        }
+                    };
                     return (<>
-                        {posts.slice(currentStartIndex2, currentStartIndex2 + 1).map((post) => (
-                            < NewsBox
-                                key={post.postId}
-                                postId={post.postId}
-                                url={post.url}
-                                title={post.title}
-                                date={post.date}
-                                type={post.type}
-                                content={post.content}
-                                content2={post.content2}
-                            />
-                        ))}
-                    </>)
-                };
+                        <div className="pre-next">
+                            <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex2 === 0}>
+                                <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#FFCC70" }}></i>
+                            </button>
+                            <a href="./all-news.html">查看全部</a>
 
-                //最新公告物件
-                const NewsBox = ({ postId, url, title, date, type, content, content2 }) => {
-
-                    //上一頁 下一頁 設計
-                    const NextNewsPost = () => {
-
-                        const handlePrevClick = () => {
-                            if (currentStartIndex2 > 0) {
-                                setCurrentStartIndex2(currentStartIndex2 - 1);
-                                // const productWidth = 210;
-                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                            }
-                        };
-
-                        const handleNextClick = () => {
-                            if (currentStartIndex2 < filteredNewsPosts.length - 1) {
-                                setCurrentStartIndex2(currentStartIndex2 + 1);
-                                // const productWidth = 210;
-                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                            }
-                        };
-                        return (<>
-                            <div className="pre-next">
-                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex2 === 0}>
-                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#FFCC70" }}></i>
-                                </button>
-                                <a href="./all-news.html">查看全部</a>
-
-                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex2 >= filteredNewsPosts.length - 1}>
-                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#FFCC70" }}></i>
-                                </button>
-                            </div >
-                        </>
-                        );
-                    }
-
-                    return (
-                        <>
-                            <div className="news-box">
-                                <div className="articleList">
-                                    <article className="news-content">
-                                        <time>{date}</time>
-                                        <h4>{title}</h4>
-                                        <p>{content}</p>
-                                        <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
-                                    </article>
-                                </div>
-                                < NextNewsPost />
-                            </div >
-
-                        </>
-                    )
+                            <button className="next" onClick={handleNextClick} disabled={currentStartIndex2 >= filteredNewsPosts.length - 1}>
+                                <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#FFCC70" }}></i>
+                            </button>
+                        </div >
+                    </>
+                    );
                 }
 
                 return (
                     <>
-                        <Header active="home" />
-                        <main>
-                            <section id="banner">
-                                <div className="slogan">
-                                    <div className="slogan-left"><img src="./images/solgan2.svg" alt="" /></div>
-                                    <div className="slogan-right"><img className="img1" src="./images/rotate2.svg" alt="" /></div>
-                                </div>
-                                <div className="marquee">
-                                    <div className="a1">
-                                        <img src="./images/bg.jpeg" alt="" />
-                                        <img src="./images/bg1.jpeg" alt="" />
-                                        <img src="./images/bg3.jpeg" alt="" />
-                                        <img src="./images/bg4.jpeg" alt="" />
-                                        <img src="./images/bg5.jpeg" alt="" />
-                                        <img src="./images/bg.jpeg" alt="" />
-                                        <img src="./images/bg1.jpeg" alt="" />
-                                        <img src="./images/bg3.jpeg" alt="" />
-                                        <img src="./images/bg4.jpeg" alt="" />
-                                        <img src="./images/bg5.jpeg" alt="" />
-                                    </div>
-                                </div>
-                            </section>
+                        <div className="news-box">
+                            <div className="articleList">
+                                <article className="news-content">
+                                    <time>{date}</time>
+                                    <h4>{title}</h4>
+                                    <p>{content}</p>
+                                    <a href={`news.html?q=${postId}`}> 點我閱讀 </a>
+                                </article>
+                            </div>
+                            < NextNewsPost />
+                        </div >
 
-                            <section id="category">
-                                <header className="subTitle bold">
-                                    <img src="./images/header.png" alt="" />
-                                    <h2>精選種類</h2>
-                                    <h3>ALL PRODUCT</h3>
-                                </header>
-                                <TextureTabs textureData={productData} />
-                            </section>
-
-
-                            <section id="service">
-                                <header className="subTitle bold">
-                                    <img src="./images/header.png" alt="" />
-                                    <h2>找尋命定馬克杯</h2>
-                                    <h3>SURPRISE</h3>
-                                </header>
-                                <div className="surprise">
-                                    <div className="picker">
-                                        <div className="filters">
-                                            <select id="color" value={color} onChange={(e) => setColor(e.target.value)}>
-                                                <option value="">顏色</option>
-                                                <option value="all">不拘</option>
-                                                <option value="red">紅色</option>
-                                                <option value="blue">藍色</option>
-                                                <option value="green">綠色</option>
-                                                <option value="white">白色</option>
-
-                                            </select>
-                                            <select id="texture" value={texture} onChange={(e) => setTexture(e.target.value)}>
-                                                <option value="">材質</option>
-                                                <option value="all">不拘</option>
-                                                <option value="glass">玻璃</option>
-                                                <option value="stainless">不鏽鋼</option>
-                                                <option value="ceramic">陶瓷</option>
-                                                <option value="woody">木質</option>
-                                            </select>
-                                            <select id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
-                                                <option value="">預算</option>
-                                                <option value="all">不拘</option>
-                                                <option value="low">低於 $100</option>
-                                                <option value="medium">$101 - $300</option>
-                                                <option value="high">高於 $300</option>
-                                            </select>
-                                        </div>
-                                        <button className="my-button" onClick={filterProducts}>隨機馬克杯</button>
-                                    </div>
-
-                                    <div className="product-w">
-                                        <div className="icon">
-                                            <i className="fa-regular fa-heart fa-lg" style={{ color: "#355282" }}></i>
-                                            <i className="fa-solid fa-heart fa-lg" style={{ color: "#355282" }}></i>
-                                        </div>
-                                        {result ? (
-                                            <div className="product">
-                                                <div className="image"> <img src={`./images/${result.url}.jpeg`} alt="" />
-                                                </div>
-                                                <div className="product-text">
-                                                    <span className="product-label">{result.tag1}</span>
-                                                    <span className="product-label">{result.tag2}</span>
-                                                    <div className="name-price">
-                                                        <h4 className="product-name">{result.name}</h4>
-                                                        <p className="product-price">${result.priceshow}</p>
-                                                    </div>
-                                                    <p className="product-info">{result.info}</p>
-                                                    <div className="cta">
-                                                        <a href={`product.html?q=${result.id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>)
-                                            : (
-                                                <p>再試試其他條件吧！ </p>
-
-                                            )}
-                                    </div>
-                                </div>
-                            </section >
-
-                            <section id="news-campaign">
-                                <div id="news">
-                                    <header className="subTitle-half bold">
-                                        <img src="./images/header.png" alt="" />
-                                        <h2 style={{ color: "#FFFADD" }}>最新公告</h2>
-                                        <h3>NEWS</h3>
-                                    </header>
-                                    {renderNewsPosts(filteredNewsPosts)}
-                                </div>
-                                <div id="campaign">
-                                    <header className="subTitle-half bold">
-                                        <img src="./images/header.png" alt="" />
-                                        <h2>本週特賣</h2>
-                                        <h3 style={{ color: "#22668D" }}>SALE </h3>
-                                    </header>
-
-                                    {renderSalesPosts(filteredSalesPosts)}
-
-
-
-                                </div>
-                            </section>
-
-                            <section id="about">
-                                <header className="subTitle bold" style={{ marginTop: "150px" }}>
-                                    <img src="./images/header.png" alt="" />
-                                    <h2>關於三杯鴨</h2>
-                                    <h3>ABOUT US</h3>
-                                </header>
-                                < Navbar />
-                            </section >
-                        </main >
-
-                        <Footer />
-                    </ >)
-
+                    </>
+                )
             }
-            const container = document.getElementById('root');
-            const root = ReactDOM.createRoot(container);
-            root.render(<MyApp />);
+
+            return (
+                <>
+                    <Header active="home" />
+                    <main>
+                        <section id="banner">
+                            <div className="slogan">
+                                <div className="slogan-left"><img src="./images/solgan2.svg" alt="" /></div>
+                                <div className="slogan-right"><img className="img1" src="./images/rotate2.svg" alt="" /></div>
+                            </div>
+                            <div className="marquee">
+                                <div className="a1">
+                                    <img src="./images/bg.jpeg" alt="" />
+                                    <img src="./images/bg1.jpeg" alt="" />
+                                    <img src="./images/bg3.jpeg" alt="" />
+                                    <img src="./images/bg4.jpeg" alt="" />
+                                    <img src="./images/bg5.jpeg" alt="" />
+                                    <img src="./images/bg.jpeg" alt="" />
+                                    <img src="./images/bg1.jpeg" alt="" />
+                                    <img src="./images/bg3.jpeg" alt="" />
+                                    <img src="./images/bg4.jpeg" alt="" />
+                                    <img src="./images/bg5.jpeg" alt="" />
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="category">
+                            <header className="subTitle bold">
+                                <img src="./images/header.png" alt="" />
+                                <h2>精選種類</h2>
+                                <h3>ALL PRODUCT</h3>
+                            </header>
+                            <TextureTabs textureData={productData} />
+                        </section>
+
+
+                        <section id="service" className="service">
+                            <div className="surprise">
+                                <div className="picker">
+                                    <header className="subTitle bold">
+                                        <img src="./images/header.png" alt="" />
+                                        <h2>找尋命定馬克杯</h2>
+                                        <h3>SURPRISE</h3>
+                                    </header>
+                                    <div className="filters">
+                                        <select id="color" value={color} onChange={(e) => setColor(e.target.value)}>
+                                            <option value="">顏色</option>
+                                            <option value="all">不拘</option>
+                                            <option value="red">紅色</option>
+                                            <option value="blue">藍色</option>
+                                            <option value="green">綠色</option>
+                                            <option value="white">白色</option>
+
+                                        </select>
+                                        <select id="texture" value={texture} onChange={(e) => setTexture(e.target.value)}>
+                                            <option value="">材質</option>
+                                            <option value="all">不拘</option>
+                                            <option value="glass">玻璃</option>
+                                            <option value="stainless">不鏽鋼</option>
+                                            <option value="ceramic">陶瓷</option>
+                                            <option value="woody">木質</option>
+                                        </select>
+                                        <select id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
+                                            <option value="">預算</option>
+                                            <option value="all">不拘</option>
+                                            <option value="low">低於 $100</option>
+                                            <option value="medium">$101 - $300</option>
+                                            <option value="high">高於 $300</option>
+                                        </select>
+                                    </div>
+                                    <button className="my-button" onClick={filterProducts}>隨機馬克杯</button>
+                                </div>
+
+                                <div className="product-w">
+                                    <div className="icon">
+                                        <i className="fa-regular fa-heart fa-lg" style={{ color: "#355282" }}></i>
+                                        <i className="fa-solid fa-heart fa-lg" style={{ color: "#355282" }}></i>
+                                    </div>
+                                    {result ? (
+                                        <div className="product">
+                                            <div className="image"> <img src={`./images/${result.url}.jpeg`} alt="" />
+                                            </div>
+                                            <div className="product-text">
+                                                <span className="product-label">{result.tag1}</span>
+                                                <span className="product-label">{result.tag2}</span>
+                                                <div className="name-price">
+                                                    <h4 className="product-name">{result.name}</h4>
+                                                    <p className="product-price">${result.priceshow}</p>
+                                                </div>
+                                                <p className="product-info">{result.info}</p>
+                                                <div className="cta">
+                                                    <a href={`product.html?q=${result.id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFADD" }}></i></a>
+                                                </div>
+                                            </div>
+                                        </div>)
+                                        : (
+                                            <p>再試試其他條件吧！ </p>
+
+                                        )}
+                                </div>
+                            </div>
+                        </section >
+
+                        <section id="news-campaign">
+                            <div id="news">
+                                <header className="subTitle-half bold">
+                                    <img src="./images/header.png" alt="" />
+                                    <h2 style={{ color: "#FFFADD" }}>最新公告</h2>
+                                    <h3>NEWS</h3>
+                                </header>
+                                {renderNewsPosts(filteredNewsPosts)}
+                            </div>
+                            <div id="campaign">
+                                <header className="subTitle-half bold">
+                                    <img src="./images/header.png" alt="" />
+                                    <h2>本週特賣</h2>
+                                    <h3 style={{ color: "#22668D" }}>SALE </h3>
+                                </header>
+
+                                {renderSalesPosts(filteredSalesPosts)}
+
+
+
+                            </div>
+                        </section>
+
+                        <section id="about">
+                            <header className="subTitle bold" style={{ marginTop: "150px" }}>
+                                <img src="./images/header.png" alt="" />
+                                <h2>關於三杯鴨</h2>
+                                <h3>ABOUT US</h3>
+                            </header>
+                            < Navbar />
+                        </section >
+                    </main >
+
+                    <Footer />
+                </ >)
+
+        }
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
     </script>
 </body>
 
