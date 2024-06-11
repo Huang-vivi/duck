@@ -5,11 +5,11 @@ const Footer = () => {
     <footer>
       <a className="logo" href="index.html"><img src="./logo.ico" alt="三杯鴨logo" className="logo" /></a>
       <div className="info">
-        <address>ADD.壓箱市鴨香區鴨鳴路181巷12樓</address>
+        <address>ADD.壓箱市鴨香區鴨鳴路181巷</address>
         <p>TEL. 02-2200-0124</p>
         <p>EMAIL. pig20071219@gmail.com</p>
         <p>OPENING HOURS. 10:00-19:00</p>
-        <small>© 2024 Duckup Inc.</small>
+        <small>© 2024 Quackmug.com Inc.</small>
       </div>
       <div className="sitemap">
         <ul className="menu">

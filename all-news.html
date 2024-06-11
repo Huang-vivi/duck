@@ -154,7 +154,7 @@
                                                 }}
                                                 href="#"
                                             >
-                                                <h3>最新公告</h3> </a> </li>
+                                                <h3>最新公告<i className={`fa-solid fa-mug-hot fa-lg ${activeTab === '最新公告' ? 'show' : 'collapse'}`} style={{ color: '#FFFADD' }}></i> </h3></a> </li>
                                         <li>
                                             <a
                                                 className={`news-button ${activeTab === '最新優惠' ? 'active' : ''}`}
@@ -163,7 +163,8 @@
                                                 }}
                                                 href="#"
                                             >
-                                                <h3>最新優惠</h3> </a> </li>
+                                                <h3>最新優惠<i className={`fa-solid fa-mug-hot fa-lg ${activeTab === '最新優惠' ? 'show' : 'collapse'}`} style={{ color: '#FFFADD' }}></i></h3>
+                                                </a> </li>
                                     </ul >
                                 </div>
                                 {getTabContent(activeTab)}
@@ -190,6 +191,7 @@
                                         <ol className="breadcrumb">
                                             <li className="breadcrumb-item"><a href="./index.html">Home</a></li>
                                             <li className="breadcrumb-item active" aria-current="page">最新消息</li>
+
                                         </ol>
                                     </nav>
                                 </div>

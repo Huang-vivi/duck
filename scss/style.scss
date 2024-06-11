@@ -258,6 +258,11 @@ footer {
     padding: 40px 30px 20px 30px;
   }
 
+  @media($breakpoint-sm) {
+    padding: 0 20px;
+    justify-content: center;
+  }
+
   .info {
     flex: 4;
     display: flex;
@@ -266,6 +271,11 @@ footer {
 
     @media($breakpoint-md) {
       flex: 6;
+    }
+
+    @media($breakpoint-sm) {
+      justify-content: center;
+      margin: 10px 10px;
     }
 
     >* {
@@ -279,54 +289,59 @@ footer {
     @media($breakpoint-md) {
       width: 100px;
     }
+
+    @media($breakpoint-sm) {
+      margin-top: 30px;
+    }
   }
 
   .sitemap {
     flex: 4;
     align-items: center;
 
-    .menu {
-      display: flex;
-      justify-content: flex-end;
-      padding: 0 150px;
-
-      @media($breakpoint-md) {
-        padding: 0 20px;
-      }
-
-      li {
-        margin: 0;
-        display: block;
-      }
-
-      a {
-        color: $main-white;
-        writing-mode: vertical-rl;
-        /* 从右向左垂直书写 */
-        text-orientation: upright;
-        /* 文字方向正常显示 */
-        margin: 10px 5px;
-      }
+    @media($breakpoint-sm) {
+      display: none;
     }
-
-    .media {
-      display: flex;
-      justify-content: flex-end;
-      padding: 0 150px;
-
-      @media($breakpoint-md) {
-        padding: 0 20px;
-      }
-
-
-      li {
-        margin: 10px;
-        display: block;
-      }
-    }
-
   }
 
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 150px;
+
+    @media($breakpoint-md) {
+      padding: 0 20px;
+    }
+
+    li {
+      margin: 0;
+      display: block;
+    }
+
+    a {
+      color: $main-white;
+      writing-mode: vertical-rl;
+      /* 从右向左垂直书写 */
+      text-orientation: upright;
+      /* 文字方向正常显示 */
+      margin: 10px 5px;
+    }
+  }
+
+  .media {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 150px;
+
+    @media($breakpoint-md) {
+      padding: 0 20px;
+    }
+
+    li {
+      margin: 10px;
+      display: block;
+    }
+  }
 }
 
 .breadcrumb a {
@@ -648,7 +663,7 @@ textarea {
   p {
     text-align: justify;
     line-height: 1.5;
-    margin-bottom:.5rem
+    margin-bottom: .5rem
   }
 
 
@@ -659,30 +674,30 @@ textarea {
 
 }
 
-.paragraph{
+.paragraph {
   margin-bottom: 80px;
 }
 
 
-.accordion{
+.accordion {
   width: 85%;
   padding-top: 20px;
 }
 
 
-.privacy{
+.privacy {
   text-align: justify;
   padding: 0 50px;
   ;
 
-  li{
-    list-style:square;
+  li {
+    list-style: square;
     line-height: 1.5;
   }
 }
 
 
-.news-center{
+.news-center {
   display: flex;
   justify-content: center;
   align-items: center;

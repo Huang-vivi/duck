@@ -6,17 +6,30 @@
   padding-right: 50px;
   // max-width: 1360px;
 
+
+  @media($breakpoint-sm) {
+    padding: 0 20px;
+
+   }
+
   .newsTab {
     display: flex;
     flex-direction: row;
     justify-content: center;
 
     .news-button {
-      background-color: $main-white;
-      border: 3px $main-blue solid;
+      // background-color: $main-white;
+      color: $main-blue;
+      background-color: $main-lightblue;
+      // border: 3px $main-blue solid;
       border-radius: 20px;
       margin: 20px;
-      padding: 5px 10px;
+      margin-bottom: 15px;
+      padding: 5px 20px;
+
+      i{
+        margin-left: 10px;
+      }
     }
 
     .active {
@@ -31,12 +44,25 @@
     width: 100%;
     margin: 0 auto;
     row-gap: 40px;
+    // justify-content: center;
+
+  @media($breakpoint-sm) {
+
+    justify-content: center;
+   }
+
+
 
     .post {
       width: 33.333%;
       padding: 0 20px;
       // margin: 30px;
+      min-width: 350px;
       justify-content: center;
+
+      @media($breakpoint-sm) {
+       width: 200px;
+      }
 
 
       .postImg {

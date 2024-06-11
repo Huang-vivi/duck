@@ -162,9 +162,10 @@
 
       .texture-button {
         display: flex;
-        // color: $main-white;
-        background-color: $main-white;
-        border: 3px $main-blue solid;
+        color: $main-blue;
+        background-color: $main-lightblue;
+        // background-color: $main-white;
+        // border: 3px $main-blue solid;
         border-radius: 20px;
         // margin: 20px;
         margin-bottom: 15px;
