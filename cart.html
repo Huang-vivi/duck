@@ -183,12 +183,16 @@
                       <tr>
                         <th scope="col"><div>
                           <label htmlFor="voucher">優惠卷</label>
-                          <input type="text" name="voucher" id="voucher" title="請輸入優惠卷六碼" placeholder="輸入優惠卷六碼" />
                         </div></th>
+                        <th><input type="text" name="voucher" id="voucher" title="請輸入優惠卷六碼" placeholder="輸入優惠卷六碼" />
+                          </th>
                         <th scope="col">
                           <div>
                             <label htmlFor="redeem">折扣金</label>
-                            <input type="text" name="redeem" id="redeem" title="輸入抵用的折扣金額" placeholder="輸入抵用的折扣金額" /></div>
+                          </div>
+                        </th>
+                        <th>
+                          <input type="text" name="redeem" id="redeem" title="輸入抵用的折扣金額" placeholder="輸入抵用的折扣金額" />
                         </th>
                       </tr>
                     </thead>
@@ -230,15 +234,15 @@
                           <table className="table  ">
                             <tbody>
                               <tr>
-                                <td>  <label htmlFor="category">運送方式</label></td>
-                                <td> <select name="category" className="delievry-selsct" id="delievry">
+                                <td>  <label htmlFor="delievry">運送方式</label></td>
+                                <td> <select name="delievry" className="delievry-selsct" id="delievry">
                                   <option value="">請選擇貨運方式</option>
                                   <option value="選項1">宅配</option>
                                 </select></td>
                               </tr>
                               <tr>
-                                <td><label htmlFor="username">付費方式</label></td>
-                                <td> <select name="category" className="delievry-selsct" id="delievry">
+                                <td><label htmlFor="payment">付費方式</label></td>
+                                <td> <select name="category" className="delievry-selsct" id="payment">
                                   <option value="">請選擇付款方式</option>
                                   <option value="選項1">LINEPAY</option>
                                   <option value="選項2">信用卡</option>
@@ -247,8 +251,8 @@
                                 </select> </td>
                               </tr>
                               <tr>
-                                <td> <label htmlFor="username">收件地址：</label></td>
-                                <td>   <input type="address" name="username" id="username" title="請輸入收件地址" placeholder="請輸入收件地址" required />
+                                <td> <label htmlFor="address">收件地址：</label></td>
+                                <td>   <input type="address" name="address" id="address" title="請輸入收件地址" placeholder="請輸入收件地址" required />
                                 </td>
                               </tr>
                             </tbody>
@@ -302,6 +306,10 @@
                   </tfoot>
                 </table>
               </div>
+              <div className="cart-sent-out">
+                <button className="my-button-m">
+                  <a href="./cart.html"> 送出訂單</a></button>
+                </div>
             </section>
           </main >
 

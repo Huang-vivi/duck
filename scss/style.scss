@@ -420,11 +420,15 @@ select {
   }
 
   .member-info {
-    width: 50%;
+    width: 55%;
     background-color: $main-yellow-trans;
-    margin: 0px 50px;
     border-radius: 30px;
-    padding: 100px 40px;
+    margin: auto 30px;
+    padding: 0 30px;
+
+    .subTitle-half{
+      padding-top: 0px;
+    }
 
     @media($breakpoint-md) {
       width: 100%;
@@ -456,7 +460,7 @@ select {
   }
 
   .member-login {
-    width: 50%;
+    width: 40%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -488,7 +492,7 @@ select {
 
 
 .form-content {
-  padding: 0 40px;
+  // padding: 0 40px;
   max-width: 600px;
   margin: 20px auto;
   border-radius: 5px;
