@@ -122,7 +122,8 @@ const Navtable = ({ active,tab1,tab2,tab3,tab4,tab5,topic,tabname,tab2name,tab3n
 
 async function fetchProductData() {
   try {
-    const response = await axios.get('./json/product.json');
+    // const response = await axios.get('./json/product.json');
+    const response = await axios.get('https://huang-vivi.github.io/duck/json/product.json');
     return response.data.productData;
   } catch (error) {
     console.error("Error fetching product data:", error);
@@ -134,7 +135,8 @@ async function fetchProductData() {
 
 async function fetchPostData() {
   try {
-    const response = await axios.get('./json/post.json');
+    // const response = await axios.get('./json/post.json');
+    const response = await axios.get('https://huang-vivi.github.io/duck/json/post.json');
     return response.data;
   } catch (error) {
     console.error("Error fetching product data:", error);
