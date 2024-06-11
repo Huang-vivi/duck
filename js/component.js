@@ -177,6 +177,7 @@ const renderProducts = (products) => {
           name={product.name}
           info={product.info}
           url={product.url}
+          url2={product.url2}
           tag1={product.tag1}
           tag2={product.tag2}
           priceregular={product.priceregular}

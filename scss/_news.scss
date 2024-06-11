@@ -1,33 +1,27 @@
 .newsContent {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  @include center-c-jc;
   padding-left: 50px;
   padding-right: 50px;
   // max-width: 1360px;
 
-
   @media($breakpoint-sm) {
-    padding: 0 20px;
-
-   }
+    padding: $interval-x-l;
+  }
 
   .newsTab {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include center-r-jc;
 
     .news-button {
       // background-color: $main-white;
       color: $main-blue;
       background-color: $main-lightblue;
       // border: 3px $main-blue solid;
-      border-radius: 20px;
+      border-radius: $radius-xs;
       margin: 20px;
       margin-bottom: 15px;
       padding: 5px 20px;
 
-      i{
+      i {
         margin-left: 10px;
       }
     }
@@ -46,12 +40,9 @@
     row-gap: 40px;
     // justify-content: center;
 
-  @media($breakpoint-sm) {
-
-    justify-content: center;
-   }
-
-
+    @media($breakpoint-sm) {
+      justify-content: center;
+    }
 
     .post {
       width: 33.333%;
@@ -61,22 +52,20 @@
       justify-content: center;
 
       @media($breakpoint-sm) {
-       width: 200px;
+        width: 200px;
       }
-
 
       .postImg {
         height: 250px;
         width: 460px;
         object-fit: cover;
-        border-radius: 30px;
+        border-radius: $radius-s;
         transform: scale(1);
         transition: all 0.3s linear;
 
-
         &:hover {
           transform: scale(1.15);
-          background-image: rgba(0,0,0,0.5);
+          background-image: rgba(0, 0, 0, 0.5);
         }
       }
 
@@ -85,13 +74,13 @@
         justify-content: center;
         display: flex;
         overflow: hidden;
-        border-radius: 30px;
+        border-radius: $radius-s;
       }
 
       .postType {
         background-color: $main-yellow;
         border: 3px $main-yellow solid;
-        border-radius: 20px;
+        border-radius: $radius-xs;
         color: $main-blue;
         margin: 10px;
         padding: 5px 10px;
@@ -114,54 +103,49 @@
         @include line-save(2);
         padding: 0 20px;
       }
-
     }
   }
 }
 
-.post-top{
+.post-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 80%;
-    margin-top: 50px;
-    border-bottom: 5px solid $main-blue;
+  margin-top: 50px;
+  border-bottom: 5px solid $main-blue;
 
-
-  div{
+  div {
     font-size: map-get($font-size, title-s);
     margin-bottom: 10px;
   }
 }
 
-.post-content{
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.post-content {
+  @include center-all-c;
   background-color: $main-lightblue-trans;
   width: 85%;
   border-radius: 50px;
 }
 
-.post-main{
+.post-main {
   display: flex;
   flex-direction: column;
 
-  img{
+  img {
     width: 900px;
     height: 600px;
     margin: 40px;
     object-fit: cover;
   }
 
-  div{
+  div {
     margin: 20px auto;
     justify-content: center;
     display: flex;
   }
 
-  p{
+  p {
     margin: 0 80px 80px 80px;
     width: 80%;
   }

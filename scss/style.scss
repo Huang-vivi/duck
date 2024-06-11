@@ -16,13 +16,12 @@
 @import "reset";
 @import 'bootstrap/bootstrap.scss';
 @import "varible";
-
+@import "function";
 
 /* 共用CSS */
 
 * {
   box-sizing: border-box;
-
   /* 不累加邊框與內距的寬度 */
 }
 
@@ -32,7 +31,6 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
-
 
 body {
   font : {
@@ -45,16 +43,8 @@ body {
   background-color: $main-white;
 }
 
-
 section {
-  display: flex;
-  flex-direction: column;
-  /* 主軸：垂直 */
-  justify-content: flex-start;
-  // /* 主軸(垂直)置中 */
-  // align-items: center;
-  /* 副軸(水平)置中 */
-  // height: 100vh;
+  @include center-c-jc;
 }
 
 h1 {
@@ -96,13 +86,11 @@ h5 {
   background-color: rgba(143, 205, 221, 0.3);
   text-align: center;
   width: fit-content;
-  padding: 0 20px;
+  padding: $interval-x-l;
 }
 
 .subTitle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include center-c-aic;
   margin: $interval-l;
   height: 120px;
 
@@ -114,7 +102,7 @@ h5 {
   h2 {
     font-size: map-get($font-size, title-m);
     color: $main-blue;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.5;
   }
 
   h3 {
@@ -126,15 +114,19 @@ h5 {
 .my-button {
   height: 50px;
   padding: 5px 20px;
-  margin: 20px;
+  margin: $interval-Xl;
   width: 60%;
   /* line-height: 50px; */
   text-align: center;
   border-radius: $radius-s;
   color: $main-white;
   background-color: $main-blue;
-  box-shadow: 4px 4px 0px 0px #405983;
-  border: 1px solid #405983;
+  @include box-shadow (4px, #405983);
+
+  &:hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
 }
 
 .my-button-m {
@@ -147,8 +139,7 @@ h5 {
   border-radius: $radius-s;
   color: $main-blue;
   background-color: $main-yellow;
-  border: 1px solid #ff8f17;
-  box-shadow: 3px 3px 0px 0px #ff8f17;
+  @include box-shadow (3px, #ff8f17);
 
   &:hover {
     transform: translate(3px, 3px);
@@ -156,9 +147,7 @@ h5 {
   }
 }
 
-
 .add-button {
-
   >* {
     margin: 10px;
   }
@@ -167,24 +156,19 @@ h5 {
     height: 25px;
     width: 25px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: $radius-min;
     color: $main-white;
     background-color: $main-yellow-trans;
     color: $main-blue;
-
 
     &:hover {
       color: $main-lightblue;
     }
   }
-
 }
 
-
 .subTitle-half {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include center-c-aic;
   // margin: $interval-Xl;
   padding-top: 50px;
   height: 25%;
@@ -197,7 +181,7 @@ h5 {
   h2 {
     font-size: map-get($font-size, title-m);
     color: $main-blue;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.5;
   }
 
   h3 {
@@ -221,8 +205,7 @@ a {
 
 // .menu &,
 .search {
-  display: flex;
-  flex-direction: column;
+  @include center-c;
   margin: $interval-x-l;
   border-bottom: solid 2px transparent;
   transition: 1s;
@@ -233,7 +216,6 @@ a {
 .menu a:hover {
   color: $main-yellow;
 }
-
 
 
 .logo {
@@ -397,7 +379,7 @@ select {
   margin: 20px;
   color: $main-blue;
   background-color: $main-lightblue;
-  border-radius: 5px;
+  border-radius: $radius-min;
   border: 0;
 }
 
@@ -412,21 +394,18 @@ select {
   flex-direction: row;
 
   @media($breakpoint-md) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include center-all-c;
     margin-bottom: 200px;
   }
 
   .member-info {
     width: 55%;
     background-color: $main-yellow-trans;
-    border-radius: 30px;
+    border-radius: $radius-s;
     margin: auto 30px;
     padding: 0 30px;
 
-    .subTitle-half{
+    .subTitle-half {
       padding-top: 0px;
     }
 
@@ -445,13 +424,9 @@ select {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
       }
-
-
     }
   }
-
 
   .member-info-web {
     @media($breakpoint-md) {
@@ -462,10 +437,7 @@ select {
   .member-login {
     width: 40%;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+    @include center-c-jc;
 
     .login-tab {
       display: flex;
@@ -474,7 +446,6 @@ select {
       .tab {
         background-color: $main-blue-trans;
         padding: 10px 30px;
-
       }
 
       .active {
@@ -485,18 +456,14 @@ select {
         }
       }
     }
-
   }
 }
-
-
 
 .form-content {
   // padding: 0 40px;
   max-width: 600px;
   margin: 20px auto;
-  border-radius: 5px;
-
+  border-radius: $radius-min;
 
   h2 {
     text-align: center;
@@ -517,21 +484,16 @@ select {
 //公用
 form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  @include center-all-c;
 
   input {
     margin-bottom: 10px;
-    border-radius: 30px;
+    border-radius: $radius-s;
   }
 
   >div:last-child {
     display: none;
   }
-
 
   .forgot {
     display: flex;
@@ -635,7 +597,7 @@ textarea {
     background-size: cover;
     width: 90%;
     height: 180px;
-    border-radius: 30px;
+    border-radius: $radius-s;
     padding: 0 30px;
     margin: 0 20px;
   }
@@ -670,12 +632,10 @@ textarea {
     margin-bottom: .5rem
   }
 
-
   h4 {
     margin-bottom: 30px;
     margin-top: 30px;
   }
-
 }
 
 .paragraph {

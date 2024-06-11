@@ -43,15 +43,18 @@ $font-weight-black:900;
 $interval-s:5px;
 $interval-m:10px;
 $interval-l:15px;
-$interval-Xl:30px;
+$interval-Xl:20px;
+$interval-XXl:30px;
 
 $interval-x-s: 0 5px;
 $interval-x-m:0 10px;
-$interval-x-l:0 15px;
+$interval-x-l:0 20px;
 
 $interval-title:30px 15px;
 
 
 //border-radius
-$radius-s: 30px;
+$radius-min: 5px;
 $radius-xs: 20px;
+$radius-s: 30px;
+$radius-Xl:999px
