@@ -130,6 +130,7 @@
                                 content={product.content}
                                 tag1={product.tag1}
                                 tag2={product.tag2}
+                                sellinfo={product.sellinfo}
                                 priceregular={product.priceregular}
                                 priceshow={product.priceshow} />))
                         }
@@ -139,7 +140,7 @@
 
 
                 //網頁元件
-                const ProductPage = ({ id, info, content, name, priceregular, priceshow, url, url2, tag1, tag2, url3, url4 }) => {
+                const ProductPage = ({ id, info, content, name, priceregular, priceshow, url, url2, tag1, tag2, url3, url4, sellinfo }) => {
 
                     const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
                     const handleFavoriteClick = () => {
@@ -219,7 +220,8 @@
                                     </div>
                                     <div className={`text fade ${activeTab === '#product-rule' ? 'show' : 'collapse'}`} id="product-rule" role="tabpanel" aria-labelledby="product-rule">
                                         <h2>銷售說明</h2>
-                                        <p>運費100 {content}</p>
+                                        <p> 運費：100元 （滿1500元免運費！）</p>
+                                        <p> {sellinfo}</p>
 
                                     </div>
                                 </div>
