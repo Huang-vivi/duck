@@ -1,6 +1,6 @@
 # 三杯鴨-鴨子馬克杯旗艦店
 ” 每個人都值得擁有好鴨杯，用一杯重啟美好生活儀式 "。 <br>
-這是一個鴨子馬克杯旗艦店，專售＃職人設計、＃獨一無二的手作鴨子馬克杯。
+這是一個鴨子馬克杯旗艦店，專售職人設計、獨一無二的手作鴨子馬克杯。
 
 ## 特色
 1. 視覺可愛暖心設計，結合馬克杯溫暖陪伴的特質，提升UX體驗。
@@ -11,17 +11,17 @@
 **使用react(CDN)、sass開發**
 
 ## 目錄
-- [Function-map / UI/UX Design](#Function-map)
-- [首頁功能](#首頁功能)
-- [關於我們- about us/ QA / contact us / privacy](#關於三杯鴨)
-- [最新消息- news / sales ](#最新消息)
-- [找杯趣- ALL/ textures ](#找杯趣)
-- [會員專區](#會員專區)
-- [購物車頁面](#購物車頁面)
+- [UIUX設計 ](#UIUX設計)
+- [首頁 HOMEPAGE](#首頁功能)
+- [關於我們 ABOUT US](#關於三杯鴨)
+- [最新消息 NEWS](#最新消息)
+- [找杯趣 PRODUCT](#找杯趣)
+- [會員專區 MEMBER](#會員專區)
+- [購物車頁面 CART](#購物車頁面)
 
 
-## Function-map / UI/UX Design
-[Figme-Function](https://www.figma.com/proto/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?page-id=1146%3A377&node-id=1146-753&viewport=354%2C427%2C0.45&t=iH1165ggMcmF2T4N-1&scaling=min-zoom)
+## UIUX設計
+[Figme-Function Map](https://www.figma.com/proto/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?page-id=1146%3A377&node-id=1146-753&viewport=354%2C427%2C0.45&t=iH1165ggMcmF2T4N-1&scaling=min-zoom) <br>
 [Figme-UIUX設計稿](https://www.figma.com/design/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?node-id=1146-3242&t=j2LXkqKWYLZe9RwE-1)
 
 ## 首頁功能
