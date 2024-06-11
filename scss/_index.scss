@@ -496,6 +496,7 @@
       box-shadow: 4px 4px 0px 0px #405983;
       border-radius: $radius-s;
       min-width: 500px;
+      max-width: 900px;
       margin: 250px auto ;
 
       @media($breakpoint-md) {

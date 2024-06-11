@@ -30,8 +30,8 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- 手動設定favicon -->
-  <link rel="icon" href="./images/favicon.png"">
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="https://huang-vivi.github.io/duck/images/favicon.png">
+  <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel=" stylesheet" href="./scss/css/style.css">
 
   <!-- Bootstrap 5 JS and Popper.js -->
@@ -42,239 +42,237 @@
   <!-- Axios CDN -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <!-- 引入 Footer.js 文件 -->
-  <script src="./js/component.js" type="text/babel"></script>
+  <!-- 引入 Component.js 文件 -->
+  <script src="https://huang-vivi.github.io/duck/js/component.js" type="text/babel"></script>
+  <!-- <script src="./js/component.js" type="text/babel"></script> -->
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
+    const { useState, useEffect } = React;
+    function MyApp() {
 
-    (async () => {
-      const { useState, useEffect } = React;
-      function MyApp() {
+      //驗證密碼
+      function SignUpForm() {
+        const [username, setUsername] = useState('');
+        const [password, setPassword] = useState('');
+        const [confirmPassword, setConfirmPassword] = useState('');
+        const [passwordMatch, setPasswordMatch] = useState(true);
 
-        //驗證密碼
-        function SignUpForm() {
-          const [username, setUsername] = useState('');
-          const [password, setPassword] = useState('');
-          const [confirmPassword, setConfirmPassword] = useState('');
-          const [passwordMatch, setPasswordMatch] = useState(true);
+        const handlePasswordChange = (e) => {
+          setPassword(e.target.value);
+          setPasswordMatch(e.target.value === confirmPassword);
+        };
 
-          const handlePasswordChange = (e) => {
-            setPassword(e.target.value);
-            setPasswordMatch(e.target.value === confirmPassword);
-          };
+        const handleConfirmPasswordChange = (e) => {
+          setConfirmPassword(e.target.value);
+          setPasswordMatch(e.target.value === password);
+        };
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          if (password !== confirmPassword) {
+            alert('密碼不匹配，請重新輸入');
+            return;
+          }
+          // 处理表单提交逻辑
+        };
 
-          const handleConfirmPasswordChange = (e) => {
-            setConfirmPassword(e.target.value);
-            setPasswordMatch(e.target.value === password);
-          };
-          const handleSubmit = (e) => {
-            e.preventDefault();
-            if (password !== confirmPassword) {
-              alert('密碼不匹配，請重新輸入');
-              return;
-            }
-            // 处理表单提交逻辑
-          };
+        return (<>
+          <form>
+            <div>
+              <label htmlFor="username">請輸入信箱</label>
+              <input id="username" type="email" className="form-control" name="username" value={username}
+                onChange={(e) => setUsername(e.target.value)} required />
+            </div>
+            <div>
+              <label htmlFor="password">請輸入新密碼</label>
+              <input id="password" type="password" className="form-control" name="password" value={password}
+                onChange={handlePasswordChange} required />
+            </div>
+            <div>
+              <label htmlFor="password-confirm">請再次輸入密碼</label>
+              <input id="password-confirm" type="password" className="form-control" name="password-confirm" value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                required />
+              {!passwordMatch && (
+                <div className="text-danger">密碼不匹配，請重新輸入</div>
+              )}
+            </div>
 
-          return (<>
-            <form>
-              <div>
-                <label htmlFor="username">請輸入信箱</label>
-                <input id="username" type="email" className="form-control" name="username" value={username}
-                  onChange={(e) => setUsername(e.target.value)} required />
-              </div>
-              <div>
-                <label htmlFor="password">請輸入新密碼</label>
-                <input id="password" type="password" className="form-control" name="password" value={password}
-                  onChange={handlePasswordChange} required />
-              </div>
-              <div>
-                <label htmlFor="password-confirm">請再次輸入密碼</label>
-                <input id="password-confirm" type="password" className="form-control" name="password-confirm" value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                  required />
-                {!passwordMatch && (
-                  <div className="text-danger">密碼不匹配，請重新輸入</div>
-                )}
-              </div>
+            <button type="submit" className="btn my-button btn-primary submitBtn">快速註冊</button>
+          </form>
+        </>)
+      }
 
-              <button type="submit" className="btn my-button btn-primary submitBtn">快速註冊</button>
-            </form>
-          </>)
-        }
+      //新聞切換按鈕
+      const MemberTabs = () => {
+        const [activeTab, setActiveTab] = useState('signup');
 
-        //新聞切換按鈕
-        const MemberTabs = () => {
-          const [activeTab, setActiveTab] = useState('signup');
+        useEffect(() => {
+          // 檢查在組件加載時是否有 active 的菜單項
+          const activeElement = document.querySelector('.tab.active');
+          if (activeElement) {
+            const target = activeElement.getAttribute('checkname');
+            setActiveTab(target);
+          }
+        }, []);
 
-          useEffect(() => {
-            // 檢查在組件加載時是否有 active 的菜單項
-            const activeElement = document.querySelector('.tab.active');
-            if (activeElement) {
-              const target = activeElement.getAttribute('checkname');
-              setActiveTab(target);
-            }
-          }, []);
-
-          const handleClick = (event, id) => {
-            event.stopPropagation();
-            event.preventDefault();
-            // 更新新的 active 狀態
-            setActiveTab(id);
-          };
-
-          return (
-            <>
-              <ul className="login-tab">
-                <li
-                  className={`tab ${activeTab === 'signup' ? 'active' : ''}`}
-                  onClick={(e) => handleClick(e, 'signup')} checkname="signup" >
-                  <a href="#signup">註冊</a></li>
-                <li className={`tab ${activeTab === 'login' ? 'active' : ''}`}
-                  onClick={(e) => handleClick(e, 'login')} checkname="login" >
-                  <a href="#login">登入</a></li>
-              </ul>
-
-              <div className="form-content">
-                <div id="signup" className={` ${activeTab === 'signup' ? 'show' : 'collapse'} `}>
-                  <h2>快速註冊領折扣！</h2>
-                  {SignUpForm()}
-                </div>
-
-                <div id="login" className={` ${activeTab === 'login' ? 'show' : 'collapse'} `}>
-                  <h2>Welcome Back!</h2>
-                  <form action="/" method="post">
-                    <div id="signup">
-                      <label htmlFor="username">使用者信箱</label>
-                      <input id="username" type="email" className="form-control" name="username" required />
-                    </div>
-                    <div>
-                      <label htmlFor="password">密碼</label>
-                      <input id="password" type="password" className="form-control" name="password" required />
-                    </div>
-                    <p className="forgot"><a href="#">Forgot Password?</a></p>
-                    <button type="reset" className="btn my-button btn-primary ">登入</button>
-
-                  </form>
-                </div>
-              </div>
-            </>);
-        }
+        const handleClick = (event, id) => {
+          event.stopPropagation();
+          event.preventDefault();
+          // 更新新的 active 狀態
+          setActiveTab(id);
+        };
 
         return (
           <>
-            <Header active="member" />
-            <main>
-              <header className="subTitle bold subTitle-half ">
-                <img src="./images/header.png" alt="" />
-                <h2>會員登入</h2>
-                <h3>MEMBER</h3>
-              </header>
-              <section >
-                <div className="top-class">
-                  <nav style={{
-                    "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
-                  }}
-                    aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item"><a href="./index.html">Home</a></li>
-                      <li className="breadcrumb-item active" aria-current="page">會員專區</li>
-                    </ol>
-                  </nav>
-                </div>
-                <div className="member">
+            <ul className="login-tab">
+              <li
+                className={`tab ${activeTab === 'signup' ? 'active' : ''}`}
+                onClick={(e) => handleClick(e, 'signup')} checkname="signup" >
+                <a href="#signup">註冊</a></li>
+              <li className={`tab ${activeTab === 'login' ? 'active' : ''}`}
+                onClick={(e) => handleClick(e, 'login')} checkname="login" >
+                <a href="#login">登入</a></li>
+            </ul>
 
-                  <div className="member-info">
-                    <div className="member-info-mobile">
-                      <p>
-                        <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                          點我看會員制度
-                        </a>
-                      </p>
-                      <div className="collapse" id="collapseExample">
-                        <table className="table text-center align-middle ">
-                          <thead >
-                            <tr className="bold">
-                              <th scope="col"></th>
-                              <th scope="col"><i className="fa-solid fa-hat-cowboy fa-2xl"></i><br />勇者鴨</th>
-                              <th scope="col"><i className="fa-brands fa-pied-piper-hat fa-2xl"></i><br />劍士鴨</th>
-                              <th scope="col"><i className="fa-solid fa-hat-wizard fa-2xl"></i><br /> 王者鴨</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">入會資格</th>
-                              <td>免費註冊</td>
-                              <td>1年內消費滿2千</td>
-                              <td>2年內消費滿5千</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">會員好康</th>
-                              <td>註冊禮-50元購物金 <br /> 神秘生日禮 <br />購物金回饋：1%</td>
-                              <td>升等禮-100元購物金 <br />神秘生日禮 <br />購物金回饋：3%</td>
-                              <td>升等禮-300元購物金 <br />神秘生日禮 <br />購物金回饋：5%</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">續會門檻</th>
-                              <td >-</td>
-                              <td >年度累積滿1千元</td>
-                              <td>年度累積滿2千元</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+            <div className="form-content">
+              <div id="signup" className={` ${activeTab === 'signup' ? 'show' : 'collapse'} `}>
+                <h2>快速註冊領折扣！</h2>
+                {SignUpForm()}
+              </div>
 
-                    <table className=" member-info-web table text-center align-middle ">
-                      <thead >
-                        <tr className="bold">
-                          <th scope="col"></th>
-                          <th scope="col"><i className="fa-solid fa-hat-cowboy fa-2xl"></i><br />勇者鴨</th>
-                          <th scope="col"><i className="fa-brands fa-pied-piper-hat fa-2xl"></i><br />劍士鴨</th>
-                          <th scope="col"><i className="fa-solid fa-hat-wizard fa-2xl"></i><br /> 王者鴨</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">入會資格</th>
-                          <td>免費註冊</td>
-                          <td>1年內消費滿2千</td>
-                          <td>2年內消費滿5千</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">會員好康</th>
-                          <td>註冊禮-50元購物金 <br /> 神秘生日禮 <br />購物金回饋：1%</td>
-                          <td>升等禮-100元購物金 <br />神秘生日禮 <br />購物金回饋：3%</td>
-                          <td>升等禮-300元購物金 <br />神秘生日禮 <br />購物金回饋：5%</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">續會門檻</th>
-                          <td >-</td>
-                          <td >年度累積滿1千元</td>
-                          <td>年度累積滿2千元</td>
-                        </tr>
-                      </tbody>
-                    </table>
+              <div id="login" className={` ${activeTab === 'login' ? 'show' : 'collapse'} `}>
+                <h2>Welcome Back!</h2>
+                <form action="/" method="post">
+                  <div id="signup">
+                    <label htmlFor="username">使用者信箱</label>
+                    <input id="username" type="email" className="form-control" name="username" required />
                   </div>
-
-                  <div className="member-login">
-                    <MemberTabs />
+                  <div>
+                    <label htmlFor="password">密碼</label>
+                    <input id="password" type="password" className="form-control" name="password" required />
                   </div>
+                  <p className="forgot"><a href="#">Forgot Password?</a></p>
+                  <button type="reset" className="btn my-button btn-primary ">登入</button>
 
-                </div>
-              </section>
-            </main >
-            <Footer />
-          </ >)
-
+                </form>
+              </div>
+            </div>
+          </>);
       }
-      const container = document.getElementById('root');
-      const root = ReactDOM.createRoot(container);
-      root.render(<MyApp />);
-    })();
+
+      return (
+        <>
+          <Header active="member" />
+          <main>
+            <header className="subTitle bold subTitle-half ">
+              <img src="./images/header.png" alt="" />
+              <h2>會員登入</h2>
+              <h3>MEMBER</h3>
+            </header>
+            <section >
+              <div className="top-class">
+                <nav style={{
+                  "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                }}
+                  aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><a href="./index.html">Home</a></li>
+                    <li className="breadcrumb-item active" aria-current="page">會員專區</li>
+                  </ol>
+                </nav>
+              </div>
+              <div className="member">
+
+                <div className="member-info">
+                  <div className="member-info-mobile">
+                    <p>
+                      <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        點我看會員制度
+                      </a>
+                    </p>
+                    <div className="collapse" id="collapseExample">
+                      <table className="table text-center align-middle ">
+                        <thead >
+                          <tr className="bold">
+                            <th scope="col"></th>
+                            <th scope="col"><i className="fa-solid fa-hat-cowboy fa-2xl"></i><br />勇者鴨</th>
+                            <th scope="col"><i className="fa-brands fa-pied-piper-hat fa-2xl"></i><br />劍士鴨</th>
+                            <th scope="col"><i className="fa-solid fa-hat-wizard fa-2xl"></i><br /> 王者鴨</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">入會資格</th>
+                            <td>免費註冊</td>
+                            <td>1年內消費滿2千</td>
+                            <td>2年內消費滿5千</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">會員好康</th>
+                            <td>註冊禮-50元購物金 <br /> 神秘生日禮 <br />購物金回饋：1%</td>
+                            <td>升等禮-100元購物金 <br />神秘生日禮 <br />購物金回饋：3%</td>
+                            <td>升等禮-300元購物金 <br />神秘生日禮 <br />購物金回饋：5%</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">續會門檻</th>
+                            <td >-</td>
+                            <td >年度累積滿1千元</td>
+                            <td>年度累積滿2千元</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <table className=" member-info-web table text-center align-middle ">
+                    <thead >
+                      <tr className="bold">
+                        <th scope="col"></th>
+                        <th scope="col"><i className="fa-solid fa-hat-cowboy fa-2xl"></i><br />勇者鴨</th>
+                        <th scope="col"><i className="fa-brands fa-pied-piper-hat fa-2xl"></i><br />劍士鴨</th>
+                        <th scope="col"><i className="fa-solid fa-hat-wizard fa-2xl"></i><br /> 王者鴨</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">入會資格</th>
+                        <td>免費註冊</td>
+                        <td>1年內消費滿2千</td>
+                        <td>2年內消費滿5千</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">會員好康</th>
+                        <td>註冊禮-50元購物金 <br /> 神秘生日禮 <br />購物金回饋：1%</td>
+                        <td>升等禮-100元購物金 <br />神秘生日禮 <br />購物金回饋：3%</td>
+                        <td>升等禮-300元購物金 <br />神秘生日禮 <br />購物金回饋：5%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">續會門檻</th>
+                        <td >-</td>
+                        <td >年度累積滿1千元</td>
+                        <td>年度累積滿2千元</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="member-login">
+                  <MemberTabs />
+                </div>
+
+              </div>
+            </section>
+          </main >
+          <Footer />
+        </ >)
+
+    }
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<MyApp />);
   </script>
 </body>
 

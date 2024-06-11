@@ -20,9 +20,9 @@ const Footer = () => {
         </ul>
         <ul className="media">
           <li><a href="#"><i className="fa-brands fa-square-facebook fa-2xl" style={{ color: "#FFFADD" }}></i></a></li>
-          <li><a href="#service"><i className="fa-brands fa-square-instagram fa-2xl" style={{ color: "#FFFADD" }}></i></a>
+          <li><a href="#"><i className="fa-brands fa-square-instagram fa-2xl" style={{ color: "#FFFADD" }}></i></a>
           </li>
-          <li><a href="#about"><i className="fa-brands fa-square-x-twitter fa-2xl" style={{ color: "#FFFADD" }}></i></a>
+          <li><a href="#"><i className="fa-brands fa-square-x-twitter fa-2xl" style={{ color: "#FFFADD" }}></i></a>
           </li>
         </ul>
       </div>
@@ -64,22 +64,20 @@ const Header = ({ active }) => {
             <li className="nav-item">
               <a className={` nav-link ${active === 'member' ? 'active' : ''}`} href="./member.html">會員專區</a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className={` nav-link ${active === 'about-contact-us' ? 'active' : ''}`} href="./about-contact-us.html">聯絡我們</a>
-            </li>
+            </li> */}
           </ul>
           <ul className="search navbar-nav d-flex">
             <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass fa-xl"
               style={{ color: "#22668D" }}></i></a></li>
-            <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-cart-shopping fa-xl"
+            <li className="nav-item"><a className="nav-link" href="./cart"><i className="fa-solid fa-cart-shopping fa-xl"
               style={{ color: "#22668D" }}></i></a></li>
-            <li className="nav-item"><a className="nav-link" href="#"><i className="fa-solid fa-user fa-xl"
+            <li className="nav-item"><a className="nav-link" href="./member"><i className="fa-solid fa-user fa-xl"
               style={{ color: "#22668D" }}></i></a></li>
           </ul>
         </div>
-
       </div>
-
     </nav>
   )
 }
