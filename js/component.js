@@ -165,28 +165,6 @@ const Product = ({ name, info, url, id }) => {
 }
 
 
-//Product-商品頁小卡-渲染json資料 函式
-const renderProducts = (products) => {
-  return (<>
-    <div className="product-list all-product">
-
-      {products.map((product) => (
-        <ProductCardS
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          info={product.info}
-          url={product.url}
-          url2={product.url2}
-          tag1={product.tag1}
-          tag2={product.tag2}
-          priceregular={product.priceregular}
-          priceshow={product.priceshow} />
-      ))}
-    </div >
-  </>)
-};
-
 //Product-商品頁小卡-ProductCardS 卡片元件
 const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag1, tag2 }) => {
   const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
