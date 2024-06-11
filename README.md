@@ -22,7 +22,7 @@
 
 
 ## Function-map
-<https://www.figma.com/proto/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?page-id=1146%3A377&node-id=1146-753&viewport=354%2C427%2C0.45&t=iH1165ggMcmF2T4N-1&scaling=min-zoom>
+[Figme-Function](https://www.figma.com/proto/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?page-id=1146%3A377&node-id=1146-753&viewport=354%2C427%2C0.45&t=iH1165ggMcmF2T4N-1&scaling=min-zoom)
 
 ## UIUX設計稿
 <https://www.figma.com/design/TaOUE7cbQWwCfzxOUVZgti/%E9%BB%83%E9%9D%96%E9%9B%AF?node-id=1146-3242&t=j2LXkqKWYLZe9RwE-1>
