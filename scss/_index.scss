@@ -166,7 +166,7 @@
         background-color: $main-lightblue;
         // background-color: $main-white;
         // border: 3px $main-blue solid;
-        border-radius:$radius-xs;
+        border-radius: $radius-xs;
         // margin: 20px;
         margin-bottom: 15px;
         padding: 5px 20px;
@@ -287,7 +287,8 @@
     width: 240px;
     padding: 15px;
     margin: 15px;
-    background-color: white;
+    background-color: $main-white;
+    border: 1px solid #405983;
     box-shadow: 4px 4px 0px 0px #405983;
     border-radius: $radius-xs;
     display: flex;
@@ -314,8 +315,8 @@
     }
 
     .productImg {
-      height: 160px;
-      width: 160px;
+      height: 200px;
+      width: 200px;
       border-radius: $radius-s;
     }
 
@@ -337,10 +338,10 @@
 .cta {
   display: flex;
   background-color: $main-blue;
-  width: 150px;
+  width: 60%;
   padding: 8px;
   border-radius: $radius-s;
-  color: white;
+  color: $main-white;
   justify-content: center;
   align-items: center;
   margin: 10px;
@@ -390,6 +391,23 @@
       justify-content: end;
       height: auto;
     }
+
+
+.cta {
+  display: flex;
+  background-color: $main-yellow;
+  width: 60%;
+  padding: 8px;
+  border-radius: $radius-s;
+  color: $main-blue;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+  a {
+    color: $main-white;
+  }
+}
 
     .picker {
       margin: 20px auto;
@@ -455,12 +473,13 @@
       width: calc(60% - 120px);
       padding: 30px 40px;
       background-color: $main-white;
-      background-color: $main-blue 5px soild;
+      border: 1px solid #405983;
       box-shadow: 4px 4px 0px 0px #405983;
       border-radius: $radius-s;
       min-width: 500px;
       max-width: 900px;
       margin: 250px auto;
+      position: relative;
 
       @media($breakpoint-md) {
         min-width: 350px;
@@ -512,6 +531,9 @@
       }
 
       .icon {
+        position: absolute;
+        right: 5%;
+        top: 10%;
         display: flex;
         justify-content: end;
       }

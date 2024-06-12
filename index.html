@@ -72,20 +72,6 @@
                 fetchData();
             }, []);
 
-            //渲染json資料 函式
-            const renderProducts = (products) => {
-                return (<>
-
-                    <div className="product-list">
-
-                        {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
-                            <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
-                        ))}
-                    </div >
-
-                </>)
-            };
-
             const [color, setColor] = useState('');
             const [texture, setTexture] = useState('');
             const [price, setPrice] = useState('');
@@ -107,6 +93,7 @@
                 "url": "product1"
             });
 
+            //篩選產品函式
             const filterProducts = () => {
                 // console.log('Selected color:', color);
                 // console.log('Selected texture:', texture);
@@ -121,7 +108,6 @@
                 if (filteredRandomProducts.length > 0) {
                     const randomProduct = filteredRandomProducts[Math.floor(Math.random() * filteredRandomProducts.length)];
                     setResult(randomProduct)
-                    console.log(randomProduct);
                 } else {
                     setResult(null);
                 }
@@ -132,57 +118,78 @@
                 const marqueeInner = document.querySelector('.marquee-inner');
                 const images = marqueeInner.querySelectorAll('img');
                 const totalWidth = Array.from(images).reduce((acc, img) => acc + img.offsetWidth, 0);
-
                 marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
             });
+
+            //渲染json資料 函式
+            const renderProducts = (products, currentStartIndex) => {
+                return (<>
+                    <div className="product-list">
+                        {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
+                            <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
+                        ))}
+                    </div >
+                </>)
+            };
+
 
             //材質切換按鈕
             const TextureTabs = ({ textureData }) => {
                 const [activeTab, setActiveTab] = useState('glass');
+                const [currentStartIndexGlass, setCurrentStartIndexGlass] = useState(0);
+                const [currentStartIndexWoody, setCurrentStartIndexWoody] = useState(0);
+                const [currentStartIndexStainless, setCurrentStartIndexStainless] = useState(0);
+                const [currentStartIndexCeramic, setCurrentStartIndexCeramic] = useState(0);
 
                 const handleTabClick = (tab) => {
                     setActiveTab(tab);
-                };
+                    switch (tab) {
+                        case 'glass':
+                            setCurrentStartIndex(currentStartIndexGlass);
+                            break;
+                        case 'stainless':
+                            setCurrentStartIndex(currentStartIndexStainless);
+                            break;
+                        case 'ceramic':
+                            setCurrentStartIndex(currentStartIndexCeramic);
+                            break;
+                        case 'woody':
+                            setCurrentStartIndex(currentStartIndexWoody);
+                            break;
+                        default:
+                            setCurrentStartIndex(0); // 默认情况重置为0
+                            break;
+                    }
+                }
 
+                //上一頁 下一頁 設計
+                const NextProduct = ({ currentStartIndex, setCurrentStartIndex, filteredProductTab }) => {
+                    const handlePrevClick = () => {
+                        if (currentStartIndex > 0) {
+                            setCurrentStartIndex(currentStartIndex - 1);
+                        }
+                    };
+                    const handleNextClick = () => {
+                        if (currentStartIndex < filteredProductTab.length - 4) {
+                            setCurrentStartIndex(currentStartIndex + 1);
+                        }
+                    };
+
+                    return (
+                        <div className="pre-next">
+                            <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
+                                <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                            {renderProducts(filteredProductTab, currentStartIndex)}
+                            <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProductTab.length - 4}>
+                                <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
+                            </button>
+                        </div >
+                    );
+                };
                 // 根据选项卡按钮显示不同的介绍文本
                 const getTabContent = () => {
                     const filteredProducts = productData.filter(product => product.texture === activeTab);
-
-                    //上一頁 下一頁 設計
-                    const NextProduct = () => {
-
-
-                        const handlePrevClick = () => {
-                            if (currentStartIndex > 0) {
-                                setCurrentStartIndex(currentStartIndex - 1);
-                                // const productWidth = 210;
-                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                            }
-                        };
-
-                        const handleNextClick = () => {
-                            if (currentStartIndex < filteredProducts.length - 4) {
-                                setCurrentStartIndex(currentStartIndex + 1);
-                                // const productWidth = 210;
-                                // const scrollAmount = currentStartIndex * (productWidth + 30); // 商品项宽度 + 间隔
-                                // document.querySelector('.product-list').style.transform = `translateX(-${scrollAmount}px)`;
-                            }
-                        };
-
-                        return (
-                            <div className="pre-next">
-                                <button className="pre" onClick={handlePrevClick} disabled={currentStartIndex === 0}>
-                                    <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
-                                </button>
-                                {renderProducts(filteredProducts)}
-                                <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProducts.length - 4}>
-                                    <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
-                                </button>
-                            </div >
-                        );
-                    };
-
 
                     if (filteredProducts.length === 0) {
                         return <p>No products available for this material.</p>;
@@ -196,7 +203,8 @@
                                             <p>精美外觀透明優雅，能直觀欣賞飲品的顏色狀態，適合各種飲料。</p>
                                             <a href="./product-glass.html">立即逛逛</a>
                                         </div>
-                                        <NextProduct />
+
+                                        <NextProduct currentStartIndex={currentStartIndexGlass} setCurrentStartIndex={setCurrentStartIndexGlass} filteredProductTab={filteredProducts} />
                                     </div >
                                 </>);
                         case 'stainless':
@@ -206,7 +214,8 @@
                                         <p>不鏽鋼馬克杯堅固耐用，保溫性能優異、易清洗無異味。</p>
                                         <a href="./product-stainless.html">立即逛逛</a>
                                     </div>
-                                    <NextProduct />
+
+                                    <NextProduct currentStartIndex={currentStartIndexStainless} setCurrentStartIndex={setCurrentStartIndexStainless} filteredProductTab={filteredProducts} />
                                 </div>
                             </>);
                         case 'ceramic':
@@ -216,7 +225,7 @@
                                         <p>陶瓷馬克杯能夠保溫，且容易清洗，適合日常使用。</p>
                                         <a href="./product-ceramic.html">立即逛逛</a>
                                     </div>
-                                    <NextProduct />
+                                    <NextProduct currentStartIndex={currentStartIndexCeramic} setCurrentStartIndex={setCurrentStartIndexCeramic} filteredProductTab={filteredProducts} />
                                 </div>
                             </>);
                         case 'woody':
@@ -226,7 +235,7 @@
                                         <p>木頭馬克杯以其自然質樸的外觀和溫暖的手感著稱，天然質感香氣。</p>
                                         <a href="./product-woody.html">立即逛逛</a>
                                     </div>
-                                    <NextProduct />
+                                    <NextProduct currentStartIndex={currentStartIndexWoody} setCurrentStartIndex={setCurrentStartIndexWoody} filteredProductTab={filteredProducts} />
                                 </div >
                             </>);
                     }

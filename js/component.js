@@ -82,7 +82,7 @@ const Header = ({ active }) => {
   )
 }
 
-const Navtable = ({ active,tab1,tab2,tab3,tab4,tab5,topic,tabname,tab2name,tab3name,tab4name,tab5name, noshow2,noshow3,noshow4,noshow1 ,noshow5}) => {
+const Navtable = ({ active, tab1, tab2, tab3, tab4, tab5, topic, tabname, tab2name, tab3name, tab4name, tab5name, noshow2, noshow3, noshow4, noshow1, noshow5 }) => {
   return (
     <>
       <div className="subMenu">
@@ -155,7 +155,7 @@ const Product = ({ name, info, url, id }) => {
           {info}
         </p>
         <div className="cta">
-          <a href={`product.html?q=${id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "#FFFFFF" }}></i></a>
+          <a href={`product.html?q=${id}`}> 點我逛逛 <i className="fa-solid fa-cart-shopping fa-xl" style={{ color: "##FFFADD" }}></i></a>
         </div>
 
       </div>
@@ -168,34 +168,32 @@ const Product = ({ name, info, url, id }) => {
 //Product-商品頁小卡-ProductCardS 卡片元件
 const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag1, tag2 }) => {
   const [isFavorite, setIsFavorite] = useState(false); // 狀態來追蹤愛心是否被點擊
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (event) => {
+    event.preventDefault();
     setIsFavorite(!isFavorite); // 切換狀態
   };
 
   return (
     <div className="product-s">
       <a href={`product.html?q=${id}`}>
-      <div className="change-img">
-                  <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
-                  <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
-                </div>
-                <div className="name-tag">
-                  <h3 className="productName">{name}</h3>
-                  <div className="product-middle">
-                    <span className="product-label">{tag1}</span>
-                    <span className="product-label product-label2">{tag2}</span>
-                  </div>
-                </div>
-        <div className="product-bottom">
-
-          <div className="product-price-show">NT${priceshow}</div>
-          <div className="product-icon">
-            <div className="add-list">
-              <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#22668D", "font-size": "2em" }} onClick={handleFavoriteClick}> </i>
-            </div>
-            <div className="add-cart"><i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD" }} > </i>
-            </div>
+        <div className="change-img">
+          <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
+          <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+          <div className="add-list">
+            <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#E39529", "fontSize": "2em" }} onClick={handleFavoriteClick}> </i>
           </div>
+        </div>
+        <div className="name-tag">
+          <h3 className="productName">{name}</h3>
+          <div className="product-middle">
+            <div className="label-group">
+              <span className="product-label">{tag1}</span>
+              <span className="product-label product-label2">{tag2}</span>
+            </div>
+            <div className="product-price-show">NT${priceshow}</div>
+          </div>
+        </div>
+        <div className="add-cart">加入購物車<i className="fa-solid fa-cart-shopping fa-l" style={{ "color": "#FFFADD" }} > </i>
         </div>
       </a>
     </div>
