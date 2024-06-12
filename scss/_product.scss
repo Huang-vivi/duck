@@ -7,7 +7,17 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px 130px 0 130px;
+  padding: 20px  130px;
+
+
+  @media($breakpoint-md) {
+    padding: 5px  50px;
+  }
+
+  @media($breakpoint-sm) {
+    padding: 5px  20px;
+  }
+
 }
 
 .all-product-main {
@@ -230,7 +240,7 @@
 }
 
 .img-center {
-  @include center-all-r;
+  @include center-all-c;
   padding: 20px;
 }
 

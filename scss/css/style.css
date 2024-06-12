@@ -9969,6 +9969,11 @@ h1, .h1 {
   margin-bottom: 10px;
   font-size: 32px;
 }
+@media (max-width:820px) {
+  h1, .h1 {
+    font-size: 20px;
+  }
+}
 
 .bold {
   font-family: "GenJyuuGothic-Bold";
@@ -10949,7 +10954,17 @@ select {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px 130px 0 130px;
+  padding: 20px 130px;
+}
+@media (max-width:820px) {
+  .top-class {
+    padding: 5px 50px;
+  }
+}
+@media (max-width:640px) {
+  .top-class {
+    padding: 5px 20px;
+  }
 }
 
 .all-product-main {
@@ -11182,7 +11197,7 @@ select {
 
 .img-center {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   justify-items: center;
   align-items: center;
@@ -11382,6 +11397,11 @@ select {
   margin-bottom: 15px;
   padding: 5px 20px;
 }
+@media (max-width:820px) {
+  .newsContent .newsTab .news-button {
+    margin: 10px;
+  }
+}
 .newsContent .newsTab .news-button i {
   margin-left: 10px;
 }
@@ -11466,6 +11486,11 @@ select {
   margin-top: 50px;
   border-bottom: 5px solid #22668D;
 }
+@media (max-width:820px) {
+  .post-top {
+    margin-top: 20px;
+  }
+}
 .post-top div {
   font-size: 20px;
   margin-bottom: 10px;
@@ -11493,6 +11518,19 @@ select {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media (max-width:820px) {
+  .post-main img {
+    width: 500px;
+    height: 400px;
+    margin: 0px;
+  }
+}
+@media (max-width:640px) {
+  .post-main img {
+    width: 280px;
+    height: 140px;
+  }
+}
 .post-main div {
   margin: 20px auto;
   justify-content: center;
@@ -11501,6 +11539,13 @@ select {
 .post-main p {
   margin: 0 80px 80px 80px;
   width: 80%;
+}
+@media (max-width:820px) {
+  .post-main p {
+    width: 100%;
+    margin: 10px 0 20px 0;
+    padding: 0 20px;
+  }
 }
 
 .member {

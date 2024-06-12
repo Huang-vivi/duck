@@ -21,6 +21,10 @@
       margin-bottom: 15px;
       padding: 5px 20px;
 
+      @media($breakpoint-md) {
+        margin: 10px;
+      }
+
       i {
         margin-left: 10px;
       }
@@ -115,6 +119,10 @@
   margin-top: 50px;
   border-bottom: 5px solid $main-blue;
 
+  @media($breakpoint-md) {
+    margin-top: 20px;
+  }
+
   div {
     font-size: map-get($font-size, title-s);
     margin-bottom: 10px;
@@ -137,6 +145,17 @@
     height: 600px;
     margin: 40px;
     object-fit: cover;
+
+    @media($breakpoint-md) {
+      width: 500px;
+      height: 400px;
+      margin: 0px;
+    }
+
+    @media($breakpoint-sm) {
+      width: 280px;
+      height: 140px;
+    }
   }
 
   div {
@@ -148,5 +167,11 @@
   p {
     margin: 0 80px 80px 80px;
     width: 80%;
+
+    @media($breakpoint-md) {
+      width: 100%;
+      margin: 10px 0 20px 0;
+      padding: 0 20px;
+    }
   }
 }
