@@ -121,23 +121,25 @@
                 marqueeInner.style.animationDuration = `${totalWidth / 100}px`;
             });
 
+            const screenWidth = window.innerWidth;
+            let numVisibleProducts = 4; // 默认显示4个产品
+
+            if (screenWidth <= 640) {
+                numVisibleProducts = 1;
+            } // 在手机上显示3个产品
+            else if (screenWidth <= 640) {
+                numVisibleProducts = 2; // 在手机上显示3个产品
+            } else if (screenWidth <= 820) {
+                numVisibleProducts = 3; // 在平板上显示4个产品
+            }
+
             //渲染json資料 函式
             const renderProducts = (products, currentStartIndex) => {
 
-                const isMobile = useMediaQuery('(max-width: 640px)');
-                const isTablets = useMediaQuery('(max-width:820px)');
-
-                let numVisibleProducts = 4; // 默认显示4个产品
-
-                if (isMobile) {
-                    numVisibleProducts = 2; // 在手机上显示3个产品
-                } else if (isTablet) {
-                    numVisibleProducts = 3; // 在平板上显示4个产品
-                }
 
                 return (<>
                     <div className="product-list">
-                        {products.slice(currentStartIndex, currentStartIndex + 4).map((product) => (
+                        {products.slice(currentStartIndex, currentStartIndex + numVisibleProducts).map((product) => (
                             <Product id={product.id} key={product.name} name={product.name} info={product.info} url={product.url} />
                         ))}
                     </div >
@@ -182,7 +184,7 @@
                         }
                     };
                     const handleNextClick = () => {
-                        if (currentStartIndex < filteredProductTab.length - 4) {
+                        if (currentStartIndex < filteredProductTab.length - numVisibleProducts) {
                             setCurrentStartIndex(currentStartIndex + 1);
                         }
                     };

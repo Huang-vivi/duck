@@ -214,6 +214,20 @@
   }
 }
 
+.product-label {
+  font-size: map-get($font-size, xs);
+  border-radius: $radius-xs;
+  padding: 5px;
+  border: #405983 .8px solid;
+  height: fit-content;
+  margin: 3px;
+
+  @media($breakpoint-md) {
+    padding: 3px;
+    margin: 2px;
+  }
+}
+
 .product-images {
   border: #405983 .4px solid;
   display: flex;
