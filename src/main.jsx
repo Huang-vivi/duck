@@ -18,7 +18,7 @@ import ProductWoody from './pages/ProductWoody.jsx';
 // 這裡取代了原本寫在 HTML 底部的 ReactDOM.createRoot
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/duck/">
       <Routes>
         {/* 當網址是 / 時，顯示 App (首頁) 元件 */}
         <Route path="/" element={<App />} />
