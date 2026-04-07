@@ -1,0 +1,99 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
+import { Navtable } from '../components/component.jsx';
+
+export default function AboutPrivacy() {
+  // 當進入此頁面時，動態更改網頁標題
+  useEffect(() => {
+    document.title = "三杯鴨-隱私權政策";
+  }, []);
+
+  return (
+
+        <>
+          <Header active="about-allabout" />
+          <main>
+            <section >
+              <header className="subTitle bold first-header">
+                <img src="./images/header.png" alt="" />
+                <h2>隱私權政策</h2>
+                <h3>PRIVACY</h3>
+              </header>
+              <div className="top-class">
+                <nav style={{
+                  "--bs-breadcrumb-divider": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\")"
+                }}
+                  aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item " ><Link to="/about-allabout"> 關於三杯鴨</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">隱私權政策</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="nav-contact">
+                <Navtable active="privacy" tab1="allabout" tab2="qa" tab3="contact-us" tab4="privacy" topic="about" tabname="關於三杯鴨" tab2name="購物ＱＡ" tab3name="聯絡我們" tab4name="隱私權政策" noshow5="collapse" />
+                <div class="contact-main">
+                  <div className="contact-img"> </div>
+                  <div className="contact-content privacy">
+                    <h4>三杯鴨隱私權政策</h4>
+                    <p>三杯鴨（以下簡稱「本公司」）非常重視您的隱私權保護，將依個人資料保護法及本隱私權政策蒐集、處理及利用您的個人資料，並提供您對個人資料權利之行使與保護。本隱私權政策適用之範圍：</p>
+                    <div class="paragraph">
+                      <h5>個人資料保護法應告知事項</h5>
+                      <ul>
+                        <li>蒐集單位：三杯鴨 </li>
+                        <li>蒐集目的：提供本公司相關服務、行銷、契約、類似契約或其他法律關係事務、客戶管理與服務、網路購物及其他電子商務服務、廣告和商業行為管理業務、以及經營合於營業登記項目或組織章程所定之業務。</li>
+                        <li>溫馨提醒：網際網路並不是一個安全的資訊傳輸環境，請您在使用本網站時，切勿公開透露您個人資料，因該資料有可能會被他人蒐集和使用，特別是網路上公開的發言場合，如聊天室、留言版，更應避免發表個人身份、密碼或電子郵件等相關個人資料。</li>
+                      </ul>
+                    </div>
+                    <div class="paragraph">
+                      <h5>個人資料蒐集</h5>
+                      <ul>
+                        <li>當您瀏覽本公司經營之相關網站時，不會主動要求輸入個人資料。</li>
+                        <li>當您完成購物流程或參加其他活動時，網站會要求您登錄個人資料，以便完成交易與相關服務。</li>
+                        <li>註冊過程中您可以為自己設定一組電子郵件及密碼，經由該帳號，您可依照網站說明使用相關會員服務。</li>
+                        <li>請確認您所提供的個人資料真實準確，本公司不會承擔您資料中所提供不準確或不完整資訊所造成之損害或錯誤，此將須自行負責。</li>
+                        <li>如果您拒絕提供個人資料，可能無法充分利用本網站某些服務。</li>
+                        <li>請妥善保管您的會員帳號及密碼，不要將上述資料提供給任何人或允許任何人以您的個人資料申請或使用帳號、密碼，本公司不會承擔任何不當使用密碼之責任。</li>
+                        <li>如果您與他人共用電腦或使用公共電腦，請記得關閉瀏覽器，以防他人看到上述資料取得您帳號的方法。</li>
+                        <li>訂閱電子報只需提供Email帳號，使用者想取消訂閱，可聯繫相應網站之客服協助取消訂閱。</li>
+                      </ul>
+                    </div>
+                    <div class="paragraph">
+                      <h5>個人資料類別</h5>
+                      <p>識別類（姓名、職稱、地址、聯絡電話、電子郵件信箱）、特徵類（年齡、性別、出生年月日等）、社會情況類（興趣、休閒、生活格調、消費模式等）、教育、技術或其他專業類（學歷）、受僱情形類（任職公司、職務等）、其他（為完成收款或付款所需之資料、往來電子郵件、網站留言、系統自動紀錄之軌跡資訊及其他得以直接或間接識別，使用者身分之個人資料等），惟將以實際本公司取得之個人資料為限。</p>
+                    </div>
+                    <div class="paragraph">
+                      <h5>個人資料利用</h5>
+                      <p>本網站所蒐集足以識別使用者身分的個人資料，均僅供本公司、關係企業、子公司及其日後成立之子公司或關係企業於其內部、依照蒐集之目的進行處理和利用，除非事先說明、或為完成提供服務或履行合約義務之必要、或依照相關法令規定或有權主管機關之命令或要求，否則本網站不會將足以識別使用者身分的個人資料提供給第三人（包括境內及境外）、或移作蒐集目的以外之使用。</p>
+                    </div>
+                    <div class="paragraph">
+                      <h5>行使個人資料權利方式</h5>
+                      <p>依個人資料保護法第3條規定，您就您的個人資料享有查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用、請求刪除之權利。您可以透過寄送電子郵件至(service@duckcup.com.tw)方式行使上開權利，本公司將於收悉您的請求後，儘速處理。但因本網站執行職務、業務所必須，以及依相關法令規定，必須存檔備查之交易資料，不在此限。</p>
+                    </div>
+                    <div class="paragraph">
+                      <h5>個人資料蒐集、處理及利用說明</h5>
+                      <p>若您所填寫之送貨地址、聯絡人、聯絡方式等非您本人之個人資料，您同意已取得各該當事人之同意提供予本公司，並已代本公司就前開法定告知事項予以告知。
+                        除依法應提供予司法、檢調機關、相關主管機關，或與本公司協力廠商為執行相關活動必要範圍之利用外，本公司將不會任意將您的個人資料提供予第三人。</p>
+                    </div>
+                    <div class="paragraph">
+                      <h5>Cookie</h5>
+                      <p>為便於日後的辨識，當您使用本網站服務時，本公司可能會在您的電腦上設定與存取Cookie。
+                        您可以透過設定您的個人電腦或上網設備，決定是否允許Cookie技術的使用，若您關閉Cookie時，可能會造成您使用本網站服務時之不便利或部分功能限制。</p>
+                    </div>
+                    <div class="paragraph">
+                      <h5>隱私權政策之修改</h5>
+                      <p>本公司有權隨時修改本隱私政策及本網站各項內容之權利，將於網站同一位置公告更改聲明外，不會再對會員進行個別通知。
+                        若您對本隱私權保護政策有任何問題或不同意該等變更或修改，可利用電子郵件(service@duckcup.com.tw)直接與本公司聯繫或停止使用本網站服務。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section >
+          </main >
+          <Footer />
+        </>);
+
+    }
