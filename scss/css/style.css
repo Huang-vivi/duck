@@ -10218,11 +10218,7 @@ footer .menu li {
 }
 footer .menu a {
   color: #FFFADD;
-  writing-mode: vertical-rl;
-  /* 从右向左垂直书写 */
   text-orientation: upright;
-  /* 文字方向正常显示 */
-  margin: 10px 5px;
 }
 footer .media {
   display: flex;
