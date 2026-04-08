@@ -16,7 +16,7 @@ export default function ProductStainless() {
     fetchData();
   }, []);
 
-  const filteredProducts = productData.filter(product => product.texture === "stainless");
+  const filteredProducts = productData.filter(product => product.texture === "stainless" || product.texture === "不鏽鋼");
 
   return (
     <>

@@ -16,7 +16,7 @@ export default function ProductGlass() {
     fetchData();
   }, []);
 
-  const filteredProducts = productData.filter(product => product.texture === "glass");
+  const filteredProducts = productData.filter(product => product.texture === "glass" || product.texture === "玻璃");
 
   return (
     <>

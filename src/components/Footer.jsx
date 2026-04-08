@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer>
-      <Link className="logo" to="/"><img src="./logo.ico" alt="Quackmug Logo" className="logo" /></Link>
+      <Link className="logo" to="/"><img src="/duck/logo.ico" alt="Quackmug Logo" className="logo" /></Link>
       <div className="info">
         <address>ADD. 181 Yaming Rd., Yaxiang Dist., Yaxiang City</address>
         <p>TEL. 02-2200-0124</p>

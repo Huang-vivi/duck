@@ -16,7 +16,7 @@ export default function ProductWoody() {
     fetchData();
   }, []);
 
-  const filteredProducts = productData.filter(product => product.texture === "woody");
+  const filteredProducts = productData.filter(product => product.texture === "woody" || product.texture === "木質" || product.texture === "木製");
 
   return (
     <>

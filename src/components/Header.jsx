@@ -4,7 +4,7 @@ const Header = ({ active }) => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light bold">
       <div className="container-fluid flex-grow-1">
-        <Link className="navbar-brand" to="/"> <img src="./logo-w2.ico" alt="三杯鴨LOGO" width="30"
+        <Link className="navbar-brand" to="/"> <img src="/duck/logo-w2.ico" alt="三杯鴨LOGO" width="30"
           height="30" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

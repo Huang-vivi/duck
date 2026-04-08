@@ -69,10 +69,10 @@ export default function Product() {
                             <h2>商品介紹</h2>
                             <p>{content}</p>
                             <div className="small img-center">
-                                <img className="img-small" src={`./images/${url}.jpeg`} alt="" />
-                                <img className="img-small" src={`./images/${url2}.jpeg`} alt="" />
-                                <img className="img-small" src={`./images/${url3}.jpeg`} alt="" />
-                                <img className="img-small" src={`./images/${url4}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url2}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url3}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url4}.jpeg`} alt="" />
                             </div>
                         </div>
                         <div className={`text fade ${activeTab === '#product-rule' ? 'show' : 'collapse'}`} id="product-rule">
@@ -100,12 +100,12 @@ export default function Product() {
                     <div className="product-top">
                         <div className="product-images">
                             <div className="big">
-                                <img className="img-main" src={`./images/${url}.jpeg`} alt="" />
+                                <img className="img-main" src={`/duck/images/${url}.jpeg`} alt="" />
                             </div>
                             <div className="small">
-                                <img className="img-small" src={`./images/${url2}.jpeg`} alt="" />
-                                <img className="img-small" src={`./images/${url3}.jpeg`} alt="" />
-                                <img className="img-small" src={`./images/${url4}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url2}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url3}.jpeg`} alt="" />
+                                <img className="img-small" src={`/duck/images/${url4}.jpeg`} alt="" />
                             </div>
                         </div>
                         <div className="product-infomation">
@@ -140,7 +140,7 @@ export default function Product() {
                     {!product ? <div>Loading...</div> : <ProductPage {...product} />}
                     <div className="product-recommand">
                         <header className="subTitle bold first-header">
-                            <img src="./images/header.png" alt="" />
+                            <img src="/duck/images/header.png" alt="" />
                             <h2>類似商品</h2>
                             <h3>RECOMMAND PRODUCT</h3>
                         </header>

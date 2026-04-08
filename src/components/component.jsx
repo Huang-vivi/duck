@@ -68,7 +68,7 @@ export const Product = ({ name, info, url, id }) => {
     <>
       <div className="product">
 
-        <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+        <img className="productImg" src={`/duck/images/${url}.jpeg`} alt="" />
         <h3 className="productName">{name}</h3>
         <p className="productInfo">
           {info}
@@ -96,8 +96,8 @@ export const ProductCardS = ({ id, name, priceregular, priceshow, url, url2, tag
     <div className="product-s">
       <Link to={`/product?q=${id}`}>
         <div className="change-img">
-          <img className="productImg" src={`./images/${url2}.jpeg`} alt="" />
-          <img className="productImg" src={`./images/${url}.jpeg`} alt="" />
+          <img className="productImg" src={`/duck/images/${url2}.jpeg`} alt="" />
+          <img className="productImg" src={`/duck/images/${url}.jpeg`} alt="" />
           <div className="add-list">
             <i className={`fa-${isFavorite ? 'solid' : 'regular'} fa-heart fa-xl`} style={{ color: "#E39529", "fontSize": "2em" }} onClick={handleFavoriteClick}> </i>
           </div>

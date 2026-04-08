@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 export default function App() {
     const [productData, setProductData] = useState([]);
     const [selectedMaterial, setSelectedMaterial] = useState('');
-    const [currentStartIndex, setCurrentStartIndex] = useState(0);
     const [currentStartIndex1, setCurrentStartIndex1] = useState(0);
     const [currentStartIndex2, setCurrentStartIndex2] = useState(0);
     const [postData, setPostData] = useState([]);
@@ -47,9 +46,24 @@ export default function App() {
     //篩選產品函式
     const filterProducts = () => {
         const filteredRandomProducts = productData.filter(product => {
-            return (color === "" || color === "all" || product.color === color) &&
-                (texture === "" || texture === "all" || product.texture === texture) &&
-                (price === "" || price === "all" || product.price === price);
+            const matchColor = color === "" || color === "all" || product.color === color ||
+                (color === "red" && (product.color === "紅色" || product.color === "紅")) ||
+                (color === "blue" && (product.color === "藍色" || product.color === "藍")) ||
+                (color === "green" && (product.color === "綠色" || product.color === "綠")) ||
+                (color === "white" && (product.color === "白色" || product.color === "白"));
+
+            const matchTexture = texture === "" || texture === "all" || product.texture === texture ||
+                (texture === "glass" && product.texture === "玻璃") ||
+                (texture === "stainless" && product.texture === "不鏽鋼") ||
+                (texture === "ceramic" && (product.texture === "陶瓷" || product.texture === "瓷器")) ||
+                (texture === "woody" && (product.texture === "木質" || product.texture === "木製"));
+
+            const matchPrice = price === "" || price === "all" || product.price === price ||
+                (price === "low" && product.price === "低") ||
+                (price === "medium" && product.price === "中") ||
+                (price === "high" && product.price === "高");
+
+            return matchColor && matchTexture && matchPrice;
         });
 
         if (filteredRandomProducts.length > 0) {
@@ -111,23 +125,6 @@ export default function App() {
 
         const handleTabClick = (tab) => {
             setActiveTab(tab);
-            switch (tab) {
-                case 'glass':
-                    setCurrentStartIndex(currentStartIndexGlass);
-                    break;
-                case 'stainless':
-                    setCurrentStartIndex(currentStartIndexStainless);
-                    break;
-                case 'ceramic':
-                    setCurrentStartIndex(currentStartIndexCeramic);
-                    break;
-                case 'woody':
-                    setCurrentStartIndex(currentStartIndexWoody);
-                    break;
-                default:
-                    setCurrentStartIndex(0); // 默认情况重置为0
-                    break;
-            }
         }
 
         //上一頁 下一頁 設計
@@ -149,7 +146,7 @@ export default function App() {
                         <i className="fa-solid fa-square-caret-left fa-2xl" style={{ color: "#22668d" }}></i>
                     </button>
                     {renderProducts(filteredProductTab, currentStartIndex)}
-                    <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProductTab.length - 4}>
+                    <button className="next" onClick={handleNextClick} disabled={currentStartIndex >= filteredProductTab.length - numVisibleProducts}>
                         <i className="fa-solid fa-square-caret-right fa-2xl" style={{ color: "#22668d" }}></i>
                     </button>
                 </div >
@@ -158,7 +155,13 @@ export default function App() {
 
         // 根据选项卡按钮显示不同的介绍文本
         const getTabContent = () => {
-            const filteredProducts = productData.filter(product => product.texture === activeTab);
+            const filteredProducts = textureData.filter(product => {
+                return product.texture === activeTab ||
+                    (activeTab === 'glass' && product.texture === '玻璃') ||
+                    (activeTab === 'stainless' && product.texture === '不鏽鋼') ||
+                    (activeTab === 'ceramic' && (product.texture === '陶瓷' || product.texture === '瓷器')) ||
+                    (activeTab === 'woody' && (product.texture === '木質' || product.texture === '木製'));
+            });
 
             if (filteredProducts.length === 0) {
                 return <p>No products available for this material.</p>;
@@ -318,7 +321,7 @@ export default function App() {
                     <div className="about-info ">
                         <div className={` container fade ${activeItem === '#about-quackmug' ? 'show' : 'collapse'}`} id="about-quackmug" role="tabpanel"
                             aria-labelledby="about-quackmug">
-                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                        <div><img src="/duck/images/bg1.jpeg" alt="" /></div>
                             <h4>About Quackmug</h4>
                             <p>"Everyone deserves a good mug. Restart your wonderful daily life rituals with a cup."</p>
                             <p> Mugs are often overlooked in life, but Quackmug hopes to accompany your daily routine. Whether providing warmth in the cold winter, refreshing you in the hot summer, offering spiritual support while you work, or joining the joyous moments gathered with family and friends, we hope you find a moment of coziness in your busy days! </p>
@@ -326,7 +329,7 @@ export default function App() {
                             </p>
                         </div>
                         <div className={`container fade  ${activeItem === '#about-pay' ? 'show' : 'collapse'}`} id="about-pay" role="tabpanel" aria-labelledby="about-pay">
-                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                        <div><img src="/duck/images/bg1.jpeg" alt="" /></div>
                             <h4>Payment Methods</h4>
                             <ul>
                                 <li>Credit Card: Instant online payment. The transaction process uses SSL encryption to protect your personal privacy data.</li>
@@ -337,14 +340,14 @@ export default function App() {
 
                         <div className={` container fade  ${activeItem === '#about-delivery-fee' ? 'show' : 'collapse'}`} id="about-delivery-fee" role="tabpanel"
                             aria-labelledby="about-delivery-fee">
-                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                        <div><img src="/duck/images/bg1.jpeg" alt="" /></div>
                             <h4>Shipping Policy</h4>
                             <p>Quackmug uses courier delivery. The shipping fee is 120 NTD, and orders over 2000 NTD enjoy free shipping.</p>
                             <p>Delivery area is limited to the main island of Taiwan. Since the products are fragile, please record the unboxing process to protect the rights of both parties.</p>
                         </div>
                         <div className={` container fade  ${activeItem === '#about-return' ? 'show' : 'collapse'}`} id="about-return" role="tabpanel"
                             aria-labelledby="about-return">
-                            <div><img src="./images/bg1.jpeg" alt="" /></div>
+                        <div><img src="/duck/images/bg1.jpeg" alt="" /></div>
                             <h4>Return Policy</h4>
                             <h5>Appreciation Period</h5>
                             <p>In accordance with consumer protection laws, you have a 7-day appreciation period starting from the arrival of the product. This is not a trial period.</p>
@@ -505,28 +508,28 @@ export default function App() {
             <main>
                 <section id="banner">
                     <div className="slogan">
-                        <div className="slogan-left"><img src="./images/solgan2.svg" alt="" /></div>
-                        <div className="slogan-right"><img className="img1" src="./images/rotate2.svg" alt="" /></div>
+                        <div className="slogan-left"><img src="/duck/images/solgan2.svg" alt="" /></div>
+                        <div className="slogan-right"><img className="img1" src="/duck/images/rotate2.svg" alt="" /></div>
                     </div>
                     <div className="marquee">
                         <div className="a1">
-                            <img src="./images/bg.jpeg" alt="" />
-                            <img src="./images/bg1.jpeg" alt="" />
-                            <img src="./images/bg3.jpeg" alt="" />
-                            <img src="./images/bg4.jpeg" alt="" />
-                            <img src="./images/bg5.jpeg" alt="" />
-                            <img src="./images/bg.jpeg" alt="" />
-                            <img src="./images/bg1.jpeg" alt="" />
-                            <img src="./images/bg3.jpeg" alt="" />
-                            <img src="./images/bg4.jpeg" alt="" />
-                            <img src="./images/bg5.jpeg" alt="" />
+                            <img src="/duck/images/bg.jpeg" alt="" />
+                            <img src="/duck/images/bg1.jpeg" alt="" />
+                            <img src="/duck/images/bg3.jpeg" alt="" />
+                            <img src="/duck/images/bg4.jpeg" alt="" />
+                            <img src="/duck/images/bg5.jpeg" alt="" />
+                            <img src="/duck/images/bg.jpeg" alt="" />
+                            <img src="/duck/images/bg1.jpeg" alt="" />
+                            <img src="/duck/images/bg3.jpeg" alt="" />
+                            <img src="/duck/images/bg4.jpeg" alt="" />
+                            <img src="/duck/images/bg5.jpeg" alt="" />
                         </div>
                     </div>
                 </section>
 
                 <section id="category">
                     <header className="subTitle bold">
-                        <img src="./images/header.png" alt="" />
+                        <img src="/duck/images/header.png" alt="" />
                         <h2>Featured Categories</h2>
                         <h3>ALL PRODUCT</h3>
                     </header>
@@ -537,7 +540,7 @@ export default function App() {
                     <div className="surprise">
                         <div className="picker">
                             <header className="subTitle bold">
-                                <img src="./images/header.png" alt="" />
+                                <img src="/duck/images/header.png" alt="" />
                                 <h2>Find Your Mug</h2>
                                 <h3>SURPRISE</h3>
                             </header>
@@ -576,7 +579,7 @@ export default function App() {
                             </div>
                             {result ? (
                                 <div className="product">
-                                    <div className="image"> <img src={`./images/${result.url}.jpeg`} alt="" />
+                                    <div className="image"> <img src={`/duck/images/${result.url}.jpeg`} alt="" />
                                     </div>
                                     <div className="product-text">
                                         <span className="product-label">{result.tag1}</span>
@@ -601,7 +604,7 @@ export default function App() {
                 <section id="news-campaign">
                     <div id="news">
                         <header className="subTitle-half bold">
-                            <img src="./images/header.png" alt="" />
+                            <img src="/duck/images/header.png" alt="" />
                             <h2 style={{ color: "#FFFADD" }}>Latest News</h2>
                             <h3>NEWS</h3>
                         </header>
@@ -609,7 +612,7 @@ export default function App() {
                     </div>
                     <div id="campaign">
                         <header className="subTitle-half bold">
-                            <img src="./images/header.png" alt="" />
+                            <img src="/duck/images/header.png" alt="" />
                             <h2>Weekly Sale</h2>
                             <h3 style={{ color: "#22668D" }}>SALE </h3>
                         </header>
@@ -619,7 +622,7 @@ export default function App() {
 
                 <section id="about">
                     <header className="subTitle bold" style={{ marginTop: "150px" }}>
-                        <img src="./images/header.png" alt="" />
+                        <img src="/duck/images/header.png" alt="" />
                         <h2>About Quackmug</h2>
                         <h3>ABOUT US</h3>
                     </header>

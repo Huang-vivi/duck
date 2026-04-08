@@ -16,7 +16,7 @@ export default function ProductCeramic() {
     fetchData();
   }, []);
 
-  const filteredProducts = productData.filter(product => product.texture === "ceramic");
+  const filteredProducts = productData.filter(product => product.texture === "ceramic" || product.texture === "陶瓷" || product.texture === "瓷器");
 
   return (
     <>
