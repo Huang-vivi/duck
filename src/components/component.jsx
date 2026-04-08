@@ -39,8 +39,8 @@ export const Navtable = ({ active, tab1, tab2, tab3, tab4, tab5, topic, tabname,
 //取得 json-product資料
 export async function fetchProductData() {
   try {
-    // const response = await axios.get('./json/product.json');
-    const response = await axios.get('https://huang-vivi.github.io/duck/json/product.json');
+    const response = await axios.get('./json/product.json');
+    // const response = await axios.get('https://huang-vivi.github.io/duck/json/product.json');
     return response.data.productData;
   } catch (error) {
     console.error("Error fetching product data:", error);
@@ -52,8 +52,8 @@ export async function fetchProductData() {
 
 export async function fetchPostData() {
   try {
-    // const response = await axios.get('./json/post.json');
-    const response = await axios.get('https://huang-vivi.github.io/duck/json/post.json');
+    const response = await axios.get('./json/post.json');
+    // const response = await axios.get('https://huang-vivi.github.io/duck/json/post.json');
     return response.data;
   } catch (error) {
     console.error("Error fetching product data:", error);
